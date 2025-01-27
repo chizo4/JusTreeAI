@@ -1,0 +1,100 @@
+{
+  "node": "Age",
+  "question": "Are you at least 18 years old and under 30 years old?",
+  "yes": {
+    "node": "Program",
+    "question": "Are you enrolled in an mbo (bol), hbo, or university program, or planning to enroll? Excluding mbo bbl.",
+    "yes": {
+      "node": "Enrollment",
+      "question": "Are you enrolled as a full-time or dual student? (Part-time programs are excluded)",
+      "yes": {
+        "node": "Duration",
+        "question": "Does the program last at least 1 year?",
+        "yes": {
+          "node": "Recognition",
+          "question": "Is the program recognized in the Netherlands? (The school or university can let you know)",
+          "yes": {
+            "node": "Nationality",
+            "question": "Do you have the Dutch nationality or a residence permit? (Permit types II, III, IV, V. Check DUO for other situations)",
+            "yes": {
+              "result": "Eligible",
+              "message": "You are eligible to apply for student finance."
+            },
+            "no": {
+              "result": "NotEligible",
+              "message": "You are not eligible to apply for student finance."
+            }
+          },
+          "no": {
+            "result": "NotEligible",
+            "message": "You are not eligible to apply for student finance."
+          }
+        },
+        "no": {
+          "result": "NotEligible",
+          "message": "You are not eligible to apply for student finance."
+        }
+      },
+      "no": {
+        "result": "NotEligible",
+        "message": "You are not eligible to apply for student finance."
+      }
+    },
+    "no": {
+      "result": "NotEligible",
+      "message": "You are not eligible to apply for student finance."
+    }
+  },
+  "no": {
+    "node": "HBO_UNI",
+    "question": "Are you in hbo or university and under 18 years old? (In this case, no minimum age applies)",
+    "yes": {
+      "node": "Enrollment",
+      "question": "Are you enrolled as a full-time or dual student? (Part-time programs are excluded)",
+      "yes": {
+        "node": "Duration",
+        "question": "Does the program last at least 1 year?",
+        "yes": {
+          "node": "Recognition",
+          "question": "Is the program recognized in the Netherlands? (The school or university can let you know)",
+          "yes": {
+            "node": "Nationality",
+            "question": "Do you have the Dutch nationality or a residence permit? (Permit types II, III, IV, V. Check DUO for other situations)",
+            "yes": {
+              "result": "Eligible",
+              "message": "You are eligible to apply for student finance."
+            },
+            "no": {
+              "result": "NotEligible",
+              "message": "You are not eligible to apply for student finance."
+            }
+          },
+          "no": {
+            "result": "NotEligible",
+            "message": "You are not eligible to apply for student finance."
+          }
+        },
+        "no": {
+          "result": "NotEligible",
+          "message": "You are not eligible to apply for student finance."
+        }
+      },
+      "no": {
+        "result": "NotEligible",
+        "message": "You are not eligible to apply for student finance."
+      }
+    },
+    "no": {
+      "node": "MBO_Under18",
+      "question": "Are you in mbo and under 18 years old? (You can already apply for the student travel product)",
+      "yes": {
+        "result": "StudentTravel",
+        "message": "You can apply for the student travel product."
+      },
+      "no": {
+        "result": "NotEligible",
+        "message": "You are not eligible to apply for student finance."
+      }
+    }
+  }
+}
