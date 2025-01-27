@@ -1,0 +1,502 @@
+[
+    {
+        "id": 92,
+        "description": "Thomas is 30 years old and pursuing a recognized bachelor\u2019s degree in marketing at an HBO institution in the Netherlands. The program lasts three years, and he holds a type V residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 40,
+        "description": "Jeroen is 19 years old and attending a full-time MBO (bol) program in graphic design. The program is recognized and lasts one year. He has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 48,
+        "description": "Thijs is 18 years old and starting a recognized MBO (bol) program in automotive technology. The program lasts one year. He has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 52,
+        "description": "Sara is 16 years old and following an MBO (bol) program. The program is recognized and takes 6 months.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 99,
+        "description": "Vera is 21 years old and studying in a one-year unrecognized program in journalism at a private institute. She has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 76,
+        "description": "Milan is 19 years old and attending a dual program at an unrecognized vocational training school. The program lasts two years, and he holds a type IV residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 36,
+        "description": "Freya is 22 years old and pursuing a full-time master\u2019s degree in psychology at the University of Groningen. The program lasts two years and is recognized. She has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 1,
+        "description": "Anna is 19 years old and following a full-time bachelor's degree in psychology at a Dutch university. Her program is recognized and lasts three years. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 26,
+        "description": "Ben is 27 years old and studying full-time for a dual master\u2019s degree in urban planning at Utrecht University. The program lasts two years and is recognized. He has a type IV residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 27,
+        "description": "Lisa is 19 years old and pursuing a bachelor\u2019s degree in journalism at the Hogeschool Utrecht. The program lasts three years and is recognized. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 21,
+        "description": "Lotte is 23 years old and enrolled full-time in a three-year bachelor\u2019s degree in environmental studies at Tilburg University. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 74,
+        "description": "Victor is 29 years old and attending a part-time master\u2019s degree in chemistry at Delft University of Technology. The program is recognized and lasts two years. He has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 63,
+        "description": "Hassan is 23 years old and pursuing a bachelor\u2019s degree in law at a private, unaccredited institution in the Netherlands. The program lasts four years. He has a type II residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 39,
+        "description": "Paul is 21 years old and pursuing a bachelor\u2019s degree in business analytics at VU University Amsterdam. The program lasts three years and is recognized. He has a type IV residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 56,
+        "description": "Carlos is 19 years old and enrolled full-time in an MBO (bbl) program. The program takes two years. He holds a type I residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 60,
+        "description": "Ahmed is 25 years old and enrolled full-time in an MBO (bol) program. The program will last two years, and he has no valid residence permit or Dutch/EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 13,
+        "description": "Emma is 19 years old and starting a dual MBO (bol) program in early childhood education. The program lasts two years and is recognized. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 88,
+        "description": "Hugo is 19 years old and following a vocational training program that is not recognized as an MBO (bol) program. The program lasts two years, and he holds EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 34,
+        "description": "Julia is 19 years old and attending a recognized MBO (bol) program in graphic design. The program lasts one year. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 73,
+        "description": "Noor is 26 years old and pursuing a dual degree in business at a private institution that is not accredited as an HBO or university. The program lasts two years, and she has a type II residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 8,
+        "description": "Johan is 25 years old and enrolled full-time in an HBO nursing program at the Hogeschool van Utrecht. The program lasts four years and is recognized. He has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 9,
+        "description": "Elena is 18 years old and attending the bachelor program Artificial Intelligence at the VU. The program lasts three years and is recognized. She has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 41,
+        "description": "Chloe is 25 years old and studying full-time for a master\u2019s degree in environmental policy at Utrecht University. The program is recognized and lasts two years. She has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 55,
+        "description": "Aliyah is 26 years old and enrolled in a BBL program in the Netherlands. The program is recognized and will last two years. She has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 72,
+        "description": "Elise is 19 years old and enrolled in a one-year non-recognized language program at a private institute in the Netherlands. She has EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 96,
+        "description": "Ravi is 19 years old and enrolled in a recognized one-year MBO (bol) program in hospitality but has not requested the student travel product. He has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 54,
+        "description": "Nina is 23 years old and taking a one-year course at a private institution in the Netherlands. The institution is not recognized as an MBO, HBO, or university in the Netherlands.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 68,
+        "description": "Luca is 22 years old and studying part-time for a master\u2019s degree in philosophy at Erasmus University. The program is recognized and lasts one year. He has EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 18,
+        "description": "Adam is 25 years old and pursuing a dual bachelor\u2019s degree in economics at Erasmus University Rotterdam. The program lasts three years and is recognized. He has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 67,
+        "description": "Sophie is 19 years old and enrolled in a program that lasts only six months at an accredited HBO institution. She has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 22,
+        "description": "Matteo is 20 years old and studying full-time for an MBO (bol) program in software development. The program lasts two years and is recognized. He has a type II residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 42,
+        "description": "Zain is 18 years old and starting a recognized MBO (bol) program in software engineering. The program lasts two years. He holds a type III residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 49,
+        "description": "Ava is 26 years old and studying full-time for a dual master\u2019s program in biotechnology at Wageningen University. The program lasts two years and is recognized. She has a type III residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 23,
+        "description": "Anna is 24 years old and pursuing a dual master\u2019s degree in media studies at the University of Amsterdam. The program lasts two years and is recognized. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 97,
+        "description": "Sanne is 24 years old and pursuing a dual bachelor\u2019s degree in biology at an unaccredited private university in Amsterdam. The program lasts three years. She has EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 12,
+        "description": "Ibrahim is 21 years old and pursuing an HBO bachelor\u2019s degree in mechanical engineering at Fontys University. The program is recognized and lasts four years. He holds a type II residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 45,
+        "description": "Sophie is 20 years old and attending a full-time bachelor\u2019s program in literature at Leiden University. The program is recognized and lasts three years. She has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 59,
+        "description": "Lea is 21 years old and studying part-time at an HBO institution. She holds a type III residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 37,
+        "description": "Simon is 24 years old and studying full-time for a bachelor\u2019s degree in physics at Delft University of Technology. The program lasts three years and is recognized. He has a type II residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 10,
+        "description": "Lucas is 29 years old and enrolled full-time for a master\u2019s degree in architecture at a Dutch university (Technical University Eindhoven). The program is recognized and lasts three years. He holds a type V residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 25,
+        "description": "Mila is 18 years old and starting an MBO (bol) program in culinary arts. The program lasts one year and is recognized. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 98,
+        "description": "Hugo is 27 years old and attending a part-time master\u2019s program in public health at Maastricht University. The program lasts two years and is recognized. He holds a type IV residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 70,
+        "description": "Rami is 18 years old and following an MBO (bol) program but has not yet requested the student travel product. The program is recognized and lasts one year. He has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 29,
+        "description": "Sophie is 26 years old and pursuing a dual master\u2019s degree in public health at Maastricht University. The program lasts two years and is recognized. She has a type III residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 38,
+        "description": "Amara is 28 years old and enrolled in a dual master\u2019s program in law at Leiden University. The program is recognized and lasts two years. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 4,
+        "description": "Ali is 20 years old and studying full-time at an HBO institution for a bachelor's in business administration. His program is recognized, lasts four years, and he holds a type III residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 5,
+        "description": "Sofia is 28 years old and pursuing a dual degree in medicine at the VU. The program is recognized and lasts six years. She has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 35,
+        "description": "Marcus is 29 years old and studying full-time for a master\u2019s in renewable energy at Utrecht University. The program is recognized and lasts two years. He holds a type V residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 50,
+        "description": "Rafael is 20 years old and pursuing a full-time bachelor\u2019s degree in international business at the University of Groningen. The program lasts three years and is recognized. He has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 15,
+        "description": "Hannah is 26 years old and pursuing a dual master's degree in environmental science at Wageningen University. The program lasts two years and is recognized. She holds a type III residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 89,
+        "description": "Anika is 24 years old and studying for a bachelor\u2019s degree in business at a part-time program in Amsterdam. The program lasts four years and is recognized. She has a type III residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 2,
+        "description": "Mark is 24 years old and enrolled in a dual master\u2019s degree program in engineering at De Hogeschool van Amsterdam. The program is full-time, recognized, and lasts two years. He holds a valid type IV residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 64,
+        "description": "Mia is 29 years old and attending a part-time master\u2019s program in biology at Wageningen University. The program lasts two years and is recognized. She has EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 65,
+        "description": "Zoe is 18 years old and following a dual MBO (bbl) program in the Netherlands. The program is recognized and lasts two years. She has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 32,
+        "description": "Eva is 21 years old and pursuing a dual bachelor\u2019s degree in environmental science at Wageningen University. The program lasts three years and is recognized. She has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 66,
+        "description": "Amir is 20 years old and enrolled in a bachelor\u2019s program in business at a non-recognized private university in the Netherlands. The program lasts three years. He holds a type IV residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 87,
+        "description": "Louise is 28 years old and enrolled in a private course that is not accredited as an HBO or university. The program lasts one year, and she has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 81,
+        "description": "Iris is 19 years old and following an unrecognized course in creative arts at a private college in the Netherlands. The program lasts one year, and she has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 44,
+        "description": "Elias is 27 years old and studying full-time for a dual master\u2019s degree in data science at Tilburg University. The program lasts two years and is recognized. He has a type V residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 80,
+        "description": "Omar is 20 years old and studying at a non-recognized institution offering a two-year program in hospitality. He holds a type II residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 30,
+        "description": "Isa is 18 years old and attending an MBO (bol) program in business management. The program lasts two years and is recognized. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 71,
+        "description": "Tobias is 30 years old and attending a recognized part-time bachelor\u2019s program in political science at Leiden University. The program lasts four years, and he holds Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 17,
+        "description": "Olivia is 20 years old and studying full-time for a bachelor's degree in law at Utrecht University. The program is recognized and lasts three years. She holds a type IV residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 43,
+        "description": "Noor is 23 years old and pursuing a bachelor\u2019s degree in sociology at Erasmus University Rotterdam. The program lasts three years and is recognized. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 95,
+        "description": "Leila is 23 years old and following an unaccredited MBO program in digital marketing. The program lasts one year, and she has a type II residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 100,
+        "description": "Elias is 20 years old and pursuing a one-year course at a private college that is not accredited as an MBO, HBO, or university. He holds a type III residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 14,
+        "description": "Victor is 22 years old and enrolled in a full-time bachelor\u2019s degree in computer science at Delft University of Technology. The program lasts three years and is recognized. He has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 47,
+        "description": "Emma is 21 years old and attending a full-time bachelor\u2019s program in economics at Maastricht University. The program lasts three years and is recognized. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 20,
+        "description": "Lucas is 29 years old and enrolled in a one-year master\u2019s degree in artificial intelligence at Maastricht University. The program is recognized, and he holds a type V residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 6,
+        "description": "Max is 18 years old and enrolled in a one-year full-time MBO (bol) program in graphic design. The program is recognized and meets all requirements. He has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 24,
+        "description": "Finn is 21 years old and attending a bachelor\u2019s degree in aerospace engineering at Delft University of Technology. The program lasts three years and is recognized. He has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 28,
+        "description": "Nathan is 20 years old and studying full-time for a bachelor\u2019s in international relations at the University of Groningen. The program lasts three years and is recognized. He has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 85,
+        "description": "Stella is 17 years old and studying at an MBO (bol) program but has not requested the student travel product. The program is recognized and lasts two years. She has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 94,
+        "description": "Julian is 29 years old and pursuing a part-time master\u2019s degree in physics at Utrecht University. The program is recognized and lasts two years. He has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 82,
+        "description": "Karim is 25 years old and enrolled in an unaccredited MBO program that lasts three years. He holds a type IV residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 46,
+        "description": "Ahmed is 29 years old and pursuing a recognized dual master\u2019s program in industrial design at Eindhoven University of Technology. The program lasts two years. He has a type IV residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 93,
+        "description": "Freya is 22 years old and attending an unrecognized one-year program in media studies at a private institute. She has EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 58,
+        "description": "Victor is 18 years old and enrolled in a dual program with a duration of one year. The program is recognized, and he has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 83,
+        "description": "Ella is 22 years old and studying part-time at a recognized HBO institution for a bachelor\u2019s degree in international relations. The program lasts three years, and she has EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 19,
+        "description": "Sarah is 28 years old and enrolled in a dual degree program in architecture at Eindhoven University of Technology. The program lasts four years and is recognized. She has EU nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 16,
+        "description": "Noah is 18 years old and attending a full-time MBO (bol) program in digital marketing. The program lasts one year and is recognized. He has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 79,
+        "description": "Hana is 28 years old and attending a part-time program in psychology at Maastricht University. The program is recognized and lasts two years. She has a type III residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 31,
+        "description": "Aaron is 22 years old and studying full-time for a bachelor\u2019s degree in computer engineering at Eindhoven University of Technology. The program lasts three years and is recognized. He has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 7,
+        "description": "Diana is 22 years old and studying full-time for a master\u2019s degree in data science at a Dutch university. The program is recognized and lasts two years. She holds a type II residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 51,
+        "description": "Peter is 31 years old and is going to study the master Data Science at a Dutch university. He is enrolled in a recognized program and holds Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 78,
+        "description": "Jeroen is 18 years old and studying at a recognized MBO (bol) program that lasts only six months. He has EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 61,
+        "description": "Steven is 32 years old and starting a dual bachelor\u2019s program in history at Utrecht University. The program is recognized and lasts three years. He has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 3,
+        "description": "Lina is 17 years old and about to start a recognized MBO (bol) program in hospitality. The program is full-time and will last two years. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 33,
+        "description": "Daniel is 28 years old and enrolled full-time in a two-year master\u2019s degree in machine learning at Delft University of Technology. He has a type IV residence permit.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 69,
+        "description": "Anya is 25 years old and enrolled in a vocational course at a private, unrecognized training center. The course lasts two years. She has a type III residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 11,
+        "description": "Yasmin is 23 years old and studying full-time for a master\u2019s in education at Leiden University. The program lasts one year and is recognized. She has Dutch nationality.",
+        "decision": "Eligible"
+    },
+    {
+        "id": 57,
+        "description": "Julia is 20 years old and enrolled in a program at an unaccredited university in the Netherlands. The program will last three years, and she holds EU nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 91,
+        "description": "Sophie is 26 years old and studying at a part-time accredited program in environmental science at Wageningen University. The program lasts two years. She has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 53,
+        "description": "Tom is 20 years old and enrolled in a part-time bachelor\u2019s degree program at an HBO institution. The program is recognized. He holds a type II residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 62,
+        "description": "Layla is 17 years old and enrolled in an unrecognized vocational training course. The course lasts two years, and she has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 86,
+        "description": "Amir is 23 years old and pursuing a part-time master\u2019s degree in sociology at Leiden University. The program is recognized and lasts one year. He has a type II residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 90,
+        "description": "Leo is 20 years old and pursuing a one-year dual program in IT at an unaccredited training center. He holds a type IV residence permit.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 75,
+        "description": "Angela is 22 years old and following an MBO (bol) program that lasts six months. The program is recognized, and she has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 84,
+        "description": "Jan is 31 years old and following a dual master\u2019s degree in engineering at Delft University of Technology. The program is recognized and lasts two years. He has Dutch nationality.",
+        "decision": "NotEligible"
+    },
+    {
+        "id": 77,
+        "description": "Fatima is 23 years old and pursuing a bachelor\u2019s program in healthcare management at a private, non-accredited university. The program lasts three years. She has Dutch nationality.",
+        "decision": "NotEligible"
+    }
+]
