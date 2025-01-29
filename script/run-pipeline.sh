@@ -31,7 +31,7 @@
 TASK=${1:-"duo-student-finance"}
 DECISION_TREE=${2:-"yes"}
 MODEL=${3:-"llama3.2"}
-TEMPERATURE=${4:-0.7}
+TEMPERATURE=${4:-0.8}
 
 # STEP 1: Setup for input/output resources.
 RESULTS_DIR="results/$TASK"
@@ -48,9 +48,17 @@ if [ "$DECISION_TREE" == "yes" ] && [ ! -f "data/$TASK/decision-tree.json" ]; th
     exit 1
 fi
 
+# STEP 2: Validate the model name. Only support for 3 models now.
+VALID_MODELS=("llama3.2" "qwen2.5:1.5b" "deepseek-r1:8b")
+if [[ ! " ${VALID_MODELS[@]} " =~ " $MODEL " ]]; then
+    echo "ERROR: Invalid model '$MODEL'."
+    echo "Allowed models: ${VALID_MODELS[*]}"
+    exit 1
+fi
+
 ########################### RUN PIPELINE ###########################
 
-# STEP 2: Run the pipeline with the target LLM.
+# STEP 3: Run the pipeline with the target LLM.
 echo "***PROCESSING CASES FOR TASK: '$TASK'***"
 echo "***SETUP: (A) LLM: '$MODEL'. (B) TEMPERATURE: '$TEMPERATURE'.***"; echo
 python3 jus-tree-ai/pipeline.py \
