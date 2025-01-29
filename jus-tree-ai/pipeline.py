@@ -100,8 +100,7 @@ class Pipeline:
         with open(json_path, 'r') as f:
             return json.load(f)
 
-    @classmethod
-    def clean_json(cls, raw_output: str) -> str:
+    def clean_json(self: 'Pipeline', raw_output: str) -> tuple:
         '''
         Clean up the LLM output to ensure a valid JSON format.
 
@@ -114,19 +113,29 @@ class Pipeline:
             -------------------------
             cleaned_json : str
                 A clean JSON string.
+            thought_chain : str or None
+                Extracted thoughts if applicable (for deepseek-r1:8b).
         '''
-        print('---CLEANING OUTPUT---') #temp!
         raw_output = raw_output.strip()
+        # Extract <think></think> content for deepseek-r1:8b.
+        thought_chain = None
+        if self.model == 'deepseek-r1:8b':
+            think_match = re.search(r'<think>(.*?)</think>', raw_output, re.DOTALL)
+            if think_match:
+                thought_chain = think_match.group(1).strip()
+                # Remove the <think></think> content from the raw output.
+                raw_output = raw_output.replace(think_match.group(0), '').strip()
         # Attempt to extract JSON-like content using regex.
         json_match = re.search(r'\{.*\}', raw_output, re.DOTALL)
         if json_match:
-            return json_match.group(0)
+            return json_match.group(0), thought_chain
         # Handle missing brackets.
         if not raw_output.startswith('{'):
-            cleaned_json = '{' + raw_output
+            raw_output = '{' + raw_output
         if not raw_output.endswith('}'):
-            cleaned_json = raw_output + '}'
-        return cleaned_json
+            raw_output = raw_output + '}'
+        cleaned_json = raw_output
+        return cleaned_json, thought_chain
 
     def setup_task_files(self: 'Pipeline') -> None:
         '''
@@ -195,7 +204,7 @@ class Pipeline:
         '''
         # Specify the output format.
         prompt += '''
-        Please provide your answer in the following JSON format. Do NOT include any extra text:
+        Please provide your answer in the following JSON format. Do NOT include any extra text or fields:
         {
         "prediction": "<Eligible or NotEligible>",'''
         if self.args.decision_tree == 'yes':
@@ -231,9 +240,13 @@ class Pipeline:
                 text=True
             )
             # DEBUG: print the LLM output.
-            print("LLM Output:", result.stdout)
-            clean_output = self.clean_json(result.stdout)
-            return json.loads(clean_output)
+            print('LLM Output:', result.stdout)
+            # Process the LLM output into JSON.
+            clean_output, thought_chain = self.clean_json(result.stdout)
+            json_output = json.loads(clean_output)
+            if thought_chain:
+                json_output['thought_chain'] = thought_chain
+            return json_output
         except Exception as e:
             raise RuntimeError(e)
 
@@ -257,6 +270,9 @@ class Pipeline:
                 # Include traversal only if used the decision tree.
                 if self.args.decision_tree == 'yes':
                     case_result['traversal'] = output.get('traversal')
+                # Include thought-chain (if applicable).
+                if 'thought_chain' in output:
+                    case_result['thought_chain'] = output['thought_chain']
                 self.results.append(case_result)
             except Exception as e:
                 print(f'ERROR for CASE {case_id}: {e}')
