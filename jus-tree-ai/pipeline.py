@@ -141,11 +141,11 @@ class Pipeline:
         # Include the decision tree - if available.
         if self.args.decision_tree == 'yes':
             # Pre-process the JSON tree into string.
-            tree_str = json.dumps(self.decision_tree, indent=4)
+            decision_tree_str = json.dumps(self.decision_tree, indent=4)
             prompt += f'''
         Here is the decision tree in JSON format, based on the law.
         Each node represents the task criterion. Please follow the tree
-        logically to derive the decision:\n<TREE>\n
+        logically to derive the decision:\n\n<{decision_tree_str}>\n
         When traversing the tree, follow the logical path you take to decide.
         Example: Age (Eligible) -> Enrollment (NotEligible) -> Decision: "NotEligible".
         '''
