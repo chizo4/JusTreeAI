@@ -1,0 +1,695 @@
+[
+    {
+        "case_id": 92,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Thomas's program lasts three years, which is less than the required one year. This led to a decision of not being eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 40,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Jeroen is eligible for student finance because he meets the age requirement and his program is recognized, which in turn relies on his Dutch nationality or residence permit",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 48,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Thijs meets the minimum age requirement (18 years old), is enrolled in a recognized MBO program, and has Dutch nationality or a residence permit. Therefore, he is eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 52,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Sara is under 18 years old, the program duration criterion was not met, leading to a 'NotEligible' decision.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 99,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Vera is under 30 years old, she doesn't meet the criteria for the duration of the program. Although her program is recognized and she has Dutch nationality, this alone does not make her eligible for student finance as the program is not at least 1 year long.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotRecognized -> Nationality -> NotEligible"
+    },
+    {
+        "case_id": 76,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Since Milan is attending a dual program that lasts two years, he does not meet the criterion of being enrolled as a full-time or dual student, which excludes part-time programs.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 36,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Freya is enrolled as a full-time student, but the program lasts only 2 years. According to the tree, part-time programs are excluded, and since Freya's program does not meet this criterion, she is deemed not eligible for student finance.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 1,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Anna meets all criteria except for the minimum age requirement (18-30 years old). However, since her program is recognized in the Netherlands and she has Dutch nationality or a residence permit, she is eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 26,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Ben's program only lasts two years, which is less than the minimum duration of 1 year required for student finance. Therefore, he is not eligible to apply for student finance.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 27,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Lisa is eligible to apply for student finance because she meets the program criteria (recognized and Dutch nationality) and did not fail any of the previous conditions",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 21,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Lotte is under 30 years old, so the 'Age' node led to the next step. Since her program lasts less than a year, the 'Duration' node made it impossible for her to be eligible",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 74,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Victor is enrolled as a part-time student, which excludes full-time or dual students. As he is under 30 years old, the age criterion doesn't apply for part-time programs. The program's duration and recognition are not sufficient reasons to make Victor eligible.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 63,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Hassan is enrolled as a full-time student, but the program's duration is less than 1 year, so he is not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 39,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Paul is not enrolled as a full-time or dual student, so he does not meet the enrollment criterion. Despite being in a recognized program, this exclusion makes him ineligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 56,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Carlos is not eligible because his MBO program does not last at least 1 year, despite being enrolled as a full-time student. The decision tree led to the node 'Duration' where it was determined that the program's duration does not meet the criteria for eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 60,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Ahmed is enrolled as a full-time student, but the program only lasts one year. The decision tree requires programs to last at least one year for full-time enrollment, and Ahmed does not meet this criterion.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 13,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Emma meets the age requirement and is enrolled in an MBO program, which is recognized in the Netherlands. She also has Dutch nationality, making her eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 88,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Hugo is not enrolled as a full-time or dual student, so he does not meet the criteria for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 34,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Julia meets all the criteria for eligibility, including being under 30 years old (Age), enrolled in an MBO program, and having Dutch nationality.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 73,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Noor is enrolled as a dual student, but the program lasts only 2 years. The decision tree requires at least 1 year of study to be eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 8,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Johan is enrolled as a full-time student, but the program lasts only 4 years, which is less than 1 year. According to the decision tree, this makes him not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 9,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Elena's program lasts only 3 years, which is less than the minimum required duration of 1 year. Therefore, she is not eligible for student finance.",
+        "traversal": "Age -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 41,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Chloe's master's program lasts only 2 years, which is less than the minimum required duration of 1 year for full-time enrollment. Therefore, she is not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 55,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Aliyah is 26 years old and the program duration is less than 1 year, which is not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 72,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Elise is enrolled in a one-year non-recognized language program, the duration criterion led to a 'Not Eligible' decision. The age and program type criteria were met initially, but the recognition status of her program was not recognized in the Netherlands.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Not eligible"
+    },
+    {
+        "case_id": 96,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Ravi's program is only one year long, he does not meet the eligibility criterion of being enrolled in a program lasting at least 1 year.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 54,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Nina's program at a private institution does not meet the duration requirement of 1 year, so she is not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> No -> NotEligible"
+    },
+    {
+        "case_id": 68,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Luca is under 30 years old and the program lasts only one year, he does not meet the duration requirement to be eligible for student finance.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 18,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Adam meets the age criteria and is enrolled in a recognized university program. However, his nationality is Dutch, which makes him eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 67,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Sophie is under 30 years old and enrolled in a program lasting only six months, making her eligible to apply for student finance. Her Dutch nationality further supports this eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 22,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Matteo's MBO program lasts two years, which is less than the minimum required duration of one year. Hence, he is not eligible for student finance based on the decision tree.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 42,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Zain is at least 18 years old and enrolled in a recognized MBO program, meeting the first criteria. The program lasts less than one year, but it's recognized and he holds a type III residence permit, making him eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 49,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Ava's program is a dual master's program that lasts 2 years, which is less than the minimum duration of 1 year required for eligible students. Therefore, she does not meet the eligibility criteria.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 23,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Anna is under 30 years old and enrolled in a recognized dual master's program, but the program only lasts for two years. This meets the criteria of being less than one year, so she is not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 97,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Sanne is under 30 years old, but her program lasts only 3 years. This does not meet the condition of being enrolled in a program lasting at least 1 year.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 12,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Ibrahim is under 18 years old, so the program duration node was reached before reaching the enrollment node. This means he does not meet the eligibility criteria for student finance.",
+        "traversal": "Age -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 45,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Sophie meets all the criteria to be eligible for student finance, except for being under 30 years old. Since she has the Dutch nationality and her program is recognized in the Netherlands, she is eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 59,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Lea is not enrolled as a full-time or dual student, the program duration criterion is not met. As she holds a type III residence permit and does not meet the minimum age requirement of 18 years old and under 30 years old, she is not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 37,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Simon is under 30 years old and does not have the Dutch nationality or a residence permit (type II), so he is not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 10,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since the program only lasts three years, it is less than one year and therefore not eligible. Lucas's age also puts him over 18 and under 30, but this does not affect his eligibility in this case.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 25,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Mila is eligible to apply for student finance because she meets the age requirement, is enrolled in an mbo program, and has Dutch nationality.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 98,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Hugo's master's program lasts two years, which is less than the minimum required duration of one year. Therefore, he does not meet this criterion and is not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 70,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Rami is enrolled in an MBO program, but it is not recognized in the Netherlands. Although he meets the age criterion, lack of recognition leads to a negative decision.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 29,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Sophie is under 30 years old and has a type III residence permit, making her ineligible for student finance. The decision was influenced by the 'Nationality' node, as it determined that Sophie does not have Dutch nationality or any other eligible permit type.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 38,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Amara's program is a dual master\u2019s program that lasts two years, which does not meet the duration criterion of at least 1 year.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 4,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Ali's program is less than 1 year long, he does not meet the eligibility criteria for student finance. His age also affects his eligibility as a full-time or dual student.",
+        "traversal": "Age -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 5,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Sofia's program is recognized, but it lasts six years which is not at least one year. Therefore, she does not meet the required duration for student finance eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 35,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Marcus is not enrolled as a full-time or dual student because he holds a type V residence permit and the decision tree does not allow type V permits for full-time enrollment.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 50,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Rafael is under 18 years old, which makes him ineligible for student finance despite being enrolled in a full-time program.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 15,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Hannah is over 30 years old, which means the initial node 'Age' led to 'Program'. However, since her program's duration is less than 1 year, it results in 'NotEligible'.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Not"
+    },
+    {
+        "case_id": 89,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Anika is not enrolled as a full-time or dual student, which excludes part-time programs. Her program's duration does not meet the required minimum of 1 year.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 2,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Mark is over 30 years old, so the program duration criterion was not met.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 64,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Mia is enrolled as a part-time student, which is excluded from the program. Her age (29) also does not meet the eligibility criteria of being at least 18 and under 30 years old.",
+        "traversal": "Age -> Enrollment -> NotEligible"
+    },
+    {
+        "case_id": 65,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Zoe's program is recognized, she has Dutch nationality, and meets the age requirement. This makes her eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 32,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Eva's program is only 3 years long, which is less than the minimum required 1 year. Therefore, she is not eligible for student finance.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 66,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Amir's program lasts three years, which is more than one year, the decision falls under 'NotEligible'. Amir is also not enrolled as a full-time or dual student because he has a type IV residence permit.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 87,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Louise is enrolled in a private course that is not accredited as an HBO or university and the program lasts only one year, she does not meet the criteria for student finance eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 81,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Iris is under 18 years old, so the program enrollment node was reached, leading to not being eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 44,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Elias is enrolled as a full-time dual student, but his program only lasts 2 years. According to the decision tree, this is not enough to meet the 'at least 1 year' requirement.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 30,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Isa meets the age requirement and is enrolled in an MBO program, but the decision to be eligible is heavily influenced by her Dutch nationality",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 71,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Tobias is under 30 years old and not enrolled as a full-time or dual student, so the program duration criteria of at least 1 year cannot be met.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 17,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Olivia is under 30 years old, but her program only lasts three years. Therefore, the criteria for 'Program' was not met.",
+        "traversal": "Age -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 43,
+        "prediction": "Eligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Noor's age and enrollment status led to her being considered for student finance, but the lack of full-time/dual enrollment resulted in a not eligible decision. The duration of the program and recognition by the school ensured she was still considered. Her nationality and residence permit further solidified eligibility.",
+        "traversal": "Age -> Noor is at least 18 years old and under 30 years old -> Noor is enrolled in an mbo (bol), hbo, or university program, or planning to enroll -> Noor is not enrolled as a full-time or dual student -> Program duration: the three year degree does not last less than one year -> The program is recognized in the Netherlands -> Noor has the Dutch nationality or a residence permit"
+    },
+    {
+        "case_id": 95,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Leila's program is recognized and she has a residence permit, but it lasts less than 1 year, making her not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 100,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Elias is not enrolled as a full-time or dual student, and his program does not last at least 1 year. As he holds a type III residence permit, the program duration criterion applies, making him ineligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 14,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Victor is under 30 years old, so the age criterion allows him to proceed. However, his program lasts only three years, which does not meet the one-year duration requirement for full-time or dual students.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 47,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Emma is under 30 years old, but her program only lasts three years (less than the minimum of one year), making her not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 20,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Lucas is 29 years old, which is over the maximum age limit of 30 for a one-year master's degree. He is enrolled as a full-time student and his program lasts only 1 year. This does not meet the criteria, making him not eligible for student finance.",
+        "traversal": "Age -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 6,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Max is eligible for student finance because he meets all criteria: being at least 18 years old, enrolled in a recognized full-time program, and having Dutch nationality or a residence permit. The decision was influenced by the 'Nationality' node, as Max's nationality determines his eligibility for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 24,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Finn is under 30 years old, which meets the age requirement. However, his program lasts only three years, which is less than the minimum duration of one year required for full-time enrollment.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 28,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Nathan's program lasts three years, which is more than the minimum required duration of 1 year. Therefore, he does not meet this criterion.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 85,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Stella's program is only 2 years long, which does not meet the minimum duration of 1 year required for full-time or dual students. She is also under 18 years old, so her program falls into the MBO_Under18 category, making her not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 94,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "The program only lasts two years, which is less than the one-year requirement. As a result, Julian does not meet the criteria for part-time master's programs.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 82,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Karim is 25 years old, which is above the maximum age of 30 allowed for this program type. Therefore, his enrollment status and duration lead to a non-eligibility decision.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 46,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Ahmed is under 30 years old, so the first question about age is yes. As he is not enrolled as a full-time or dual student, the enrollment path is excluded. The program duration of two years does not meet the requirement of at least one year, leading to a decision of NotEligible.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 93,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Freya's program lasts less than 1 year, she is not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 58,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Victor is eligible to apply for student finance because he meets the age requirement and is enrolled in a recognized program as a dual student with Dutch nationality",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 83,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Ella is not eligible because her part-time program lasts only 3 years, which is less than the required 1 year for full-time or dual students.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 19,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "The program duration is less than 1 year, making Sarah not eligible for student finance.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 16,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Noah is eligible because he meets the age requirement, enrolls in an MBO program as a full-time student, and has Dutch nationality. The program is recognized, which further supports his eligibility for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 79,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Hana is under 30 years old, which does not meet the eligibility criteria. Additionally, she has a type III residence permit, but her nationality is not Dutch or recognized in the Netherlands, making her ineligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 31,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Aaron's program is recognized and lasts less than 1 year, so he does not meet the duration criterion. Although he meets other criteria like being a full-time student, this single factor leads to him not being eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 7,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Diana is under 30 years old, but her master's program in data science at a Dutch university lasts only two years, which does not meet the duration requirement of at least one year for full-time or dual students.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 51,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Peter is not eligible because his master's program in Data Science at a Dutch university does not last at least 1 year.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 78,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Jeroen meets the age criterion and is enrolled in a short MBO program. He also has Dutch nationality, making him eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 61,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Steven is eligible for student finance because he meets the age requirement (18-30 years old), is enrolled in a full-time or dual program, and has Dutch nationality",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 3,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Lina is under 18 years old, so she does not meet the age criterion. The program duration of two years also does not meet the requirement of at least one year.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 33,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Daniel is enrolled as a full-time student, but his master's program only lasts 2 years, which is less than the minimum required duration of 1 year. Therefore, he does not meet this criterion and is not eligible for student finance.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 69,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Anya's course lasts two years, which is less than the minimum required of one year for full-time or dual students. Therefore, she does not meet the eligibility criteria for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 11,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Yasmin is not eligible because her program lasts less than 1 year, even though she is enrolled as a full-time student.",
+        "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 57,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Julia is not eligible to apply for student finance because her program will last only three years, which is less than the required one year. Although she meets other criteria like being a Dutch national and enrolled in an unaccredited university, the short duration of her program makes her ineligible.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 91,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Since Sophie is 26 years old, her age is not within the eligible range of 18-30. She is also enrolled in a part-time program as a full-time student, which is excluded from eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 53,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Tom is not enrolled as a full-time or dual student, the program duration does not meet the criteria of being at least 1 year. Therefore, he is not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Not Eligible"
+    },
+    {
+        "case_id": 62,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Layla's program is not recognized in the Netherlands, which disqualifies her from applying for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 86,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Since Amir is under 30 years old and not enrolled as a full-time or dual student, the program duration criterion made him not eligible. The fact that his program lasts only one year further excluded him from eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 90,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Leo is under 18 years old, which excludes him from applying for student finance. The program duration does not meet the required minimum of 1 year.",
+        "traversal": "Age -> Program -> Enrollment -> Duration"
+    },
+    {
+        "case_id": 75,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Angela's program is short-term (6 months) and does not meet the 1-year duration requirement for eligible student finance, despite being a recognized MBO program.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> No"
+    },
+    {
+        "case_id": 84,
+        "prediction": "NotEligible",
+        "impact_node": "Duration",
+        "reasoning": "Jan's program is too short, lasting only 2 years. Therefore, he does not meet the eligibility criteria.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    },
+    {
+        "case_id": 77,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Fatima is over 30 years old, which exceeds the maximum age limit for student finance. Her enrollment status also indicates she is not a full-time or dual student, making her ineligible.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+    }
+]

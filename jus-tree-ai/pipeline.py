@@ -204,7 +204,7 @@ class Pipeline:
         '''
         # Specify the output format.
         prompt += '''
-        Please provide your answer in the following JSON format. Do NOT include any extra text or fields:
+        Please provide your answer in the following JSON format. Do NOT include any extra text:
         {
         "prediction": "<Eligible or NotEligible>",'''
         if self.args.decision_tree == 'yes':
