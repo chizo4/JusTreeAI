@@ -23,7 +23,7 @@
 # [task]          -> "duo-student-finance" (default: "duo-student-finance")
 # [decision_tree] -> "yes"/"no" (default: "yes")
 # [model]         -> "llama3.2", "qwen2.5:1.5b", "deepseek-r1:8b" (default: "llama3.2")
-# [temperature]   -> values 0-1.0 (default: 0.7)
+# [temperature]   -> values 0-1.0 (default: 0.8)
 
 ########################### CONFIGURATION & SETUP ###########################
 
