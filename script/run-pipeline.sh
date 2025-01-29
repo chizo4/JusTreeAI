@@ -19,6 +19,9 @@
 # USAGE:
 # bash script/run-pipeline.sh [task] [model] [decision_tree] [temperature]
 #
+# EXAMPLE:
+# bash script/run-pipeline.sh duo-student-finance yes llama3.2 0.8
+#
 # OPTIONS:
 # [task]          -> "duo-student-finance" (default: "duo-student-finance")
 # [decision_tree] -> "yes"/"no" (default: "yes")
