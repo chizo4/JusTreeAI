@@ -20,6 +20,7 @@ import argparse
 from datetime import datetime
 import json
 import os
+import re
 import subprocess
 
 class Pipeline:
@@ -98,6 +99,34 @@ class Pipeline:
             raise FileNotFoundError(f'File not found: {json_path}')
         with open(json_path, 'r') as f:
             return json.load(f)
+
+    @classmethod
+    def clean_json(cls, raw_output: str) -> str:
+        '''
+        Clean up the LLM output to ensure a valid JSON format.
+
+            Parameters:
+            -------------------------
+            raw_output : str
+                The raw text output from the model.
+
+            Returns:
+            -------------------------
+            cleaned_json : str
+                A clean JSON string.
+        '''
+        print('---CLEANING OUTPUT---') #temp!
+        raw_output = raw_output.strip()
+        # Attempt to extract JSON-like content using regex.
+        json_match = re.search(r'\{.*\}', raw_output, re.DOTALL)
+        if json_match:
+            return json_match.group(0)
+        # Handle missing brackets.
+        if not raw_output.startswith('{'):
+            cleaned_json = '{' + raw_output
+        if not raw_output.endswith('}'):
+            cleaned_json = raw_output + '}'
+        return cleaned_json
 
     def setup_task_files(self: 'Pipeline') -> None:
         '''
@@ -203,7 +232,8 @@ class Pipeline:
             )
             # DEBUG: print the LLM output.
             print("LLM Output:", result.stdout)
-            return json.loads(result.stdout.strip())
+            clean_output = self.clean_json(result.stdout)
+            return json.loads(clean_output)
         except Exception as e:
             raise RuntimeError(e)
 
