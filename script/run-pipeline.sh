@@ -23,7 +23,7 @@
 # [task]          -> "duo-student-finance" (default: "duo-student-finance")
 # [decision_tree] -> "yes"/"no" (default: "yes")
 # [model]         -> "llama3.2", "qwen2.5:1.5b", "deepseek-r1:8b" (default: "llama3.2")
-# [temperature]   -> values 0-1.0 (default: 0.5)
+# [temperature]   -> values 0-1.0 (default: 0.7)
 
 ########################### CONFIGURATION & SETUP ###########################
 
@@ -31,7 +31,7 @@
 TASK=${1:-"duo-student-finance"}
 DECISION_TREE=${2:-"yes"}
 MODEL=${3:-"llama3.2"}
-TEMPERATURE=${4:-0.5}
+TEMPERATURE=${4:-0.7}
 
 # STEP 1: Setup for input/output resources.
 RESULTS_DIR="results/$TASK"
@@ -51,7 +51,8 @@ fi
 ########################### RUN PIPELINE ###########################
 
 # STEP 2: Run the pipeline with the target LLM.
-echo "***PROCESSING CASES FOR TASK: '$TASK'***"; echo
+echo "***PROCESSING CASES FOR TASK: '$TASK'***"
+echo "***SETUP: (A) LLM: '$MODEL'. (B) TEMPERATURE: '$TEMPERATURE'.***"; echo
 python3 jus-tree-ai/pipeline.py \
     --task "$TASK" \
     --decision_tree "$DECISION_TREE" \
