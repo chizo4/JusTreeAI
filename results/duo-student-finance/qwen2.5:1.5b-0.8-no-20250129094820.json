@@ -1,0 +1,602 @@
+[
+    {
+        "case_id": 92,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Thomas is 30 years old, which falls outside the typical range of age for eligibility criteria for student financial assistance programs. Additionally, nationality is not a factor in determining eligibility based on the provided information."
+    },
+    {
+        "case_id": 40,
+        "prediction": "Not Eligible",
+        "impact_node": "Age",
+        "reasoning": "Jeroen is only 19 years old, which falls under the 'MBO_Under18' category. This program enrollment and age make it ineligible for the specified grant due to the minimum age requirement of 25 in that program."
+    },
+    {
+        "case_id": 48,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Recognition",
+        "reasoning": "Thijs is 18 years old, which means he is not eligible for the MBO (bol) program. Additionally, because it's a recognized MBO (bol) program in automotive technology, but without specific recognition as an HBO or MBO_Under18 program, his eligibility may be questioned."
+    },
+    {
+        "case_id": 52,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Sara is under 18 years old and enrolled in an MBO program, which are typically associated with education rather than financial assistance for the general public. Therefore, Sara's case does not meet the criteria for a student finance grant."
+    },
+    {
+        "case_id": 99,
+        "prediction": "Not Eligible",
+        "impact_node": "HBO_UNI",
+        "reasoning": "The case does not meet the eligibility criteria for the DUO student finance program, as the applicant (Vera) is enrolled in a one-year unrecognized program and not an HBO (Higher Education Bachelor) or MBO (Middle-level Vocational Education)."
+    },
+    {
+        "case_id": 76,
+        "prediction": "Not Eligible",
+        "impact_node": "HBO_UNI",
+        "reasoning": "The dual program at an unrecognized vocational training school is not recognized by Dutch authorities, which makes Milan ineligible for student finance support."
+    },
+    {
+        "case_id": 36,
+        "prediction": "Not Eligible",
+        "impact_node": "Nationality and Age",
+        "reasoning": "Freya is a Dutch national pursuing a master's degree at the University of Groningen, which requires specific eligibility criteria. Her age (22) and nationality are significant factors that determine her eligibility. The program duration is also relevant but not the primary factor for this decision."
+    },
+    {
+        "case_id": 1,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition and Duration",
+        "reasoning": "Anna is not eligible because her program is recognized, but the duration (three years) exceeds the typical four-year limit required for undergraduate programs in most countries. Additionally, while Dutch nationality is a factor, it does not override the legal requirements regarding student eligibility."
+    },
+    {
+        "case_id": 26,
+        "prediction": "Not Eligible",
+        "impact_node": "MBO_Under18",
+        "reasoning": "Ben's age and enrollment status are not explicitly mentioned as relevant factors. The most significant node that influenced the decision was 'MBO_Under18', which is missing from the provided information. Without this factor, it cannot be determined if Ben is eligible for the grant based on his other attributes."
+    },
+    {
+        "case_id": 27,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Lisa is Dutch and has Dutch nationality, which qualifies her based on the eligibility criteria provided."
+    },
+    {
+        "case_id": 21,
+        "prediction": "NotEligible",
+        "impact_node": "Age",
+        "reasoning": "Lotte is only 23 years old, which does not meet the minimum age requirement of 18 for most educational grants in the Netherlands. While she has Dutch nationality and enrollment details align with other required elements, her age disqualifies her from eligibility."
+    },
+    {
+        "case_id": 74,
+        "prediction": "Eligible",
+        "impact_node": "Recognition and Duration of Program",
+        "reasoning": "Victor is eligible because he has Dutch nationality (recognized) and his master\u2019s degree program at Delft University of Technology, which is recognized. The duration of the program (two years) meets the requirements for a postgraduate student grant. Additionally, as Victor is 29 years old, he is an adult who should be eligible for such grants."
+    },
+    {
+        "case_id": 63,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Hassan is pursuing a bachelor\u2019s degree program that lasts four years, which means he will be out of school for a total of seven years. This length exceeds the typical duration required by most educational institutions in the Netherlands (three to five years). Additionally, although Hassan is pursuing his studies at an unaccredited institution, the longer duration may indicate dissatisfaction with the quality or recognition of his program, which could affect eligibility."
+    },
+    {
+        "case_id": 39,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Program Duration",
+        "reasoning": "Paul is over 18 years old, which typically means he cannot be considered eligible for study-related grants. Additionally, the duration of his program (three years) does not meet the minimum required standard for study-related financial support."
+    },
+    {
+        "case_id": 56,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Although Carlos is 19 years old and enrolled full-time in an MBO (bbl) program, he does not meet the recognition criteria for a student grant. Recognition is typically required for grants to be eligible, especially if it involves specific academic or professional milestones."
+    },
+    {
+        "case_id": 60,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Ahmed is an adult (age 25) and does not have valid residency or Dutch/EU nationality, which are key factors for determining eligibility in many such programs. These criteria typically exclude individuals who do not meet the established requirements."
+    },
+    {
+        "case_id": 13,
+        "prediction": "Eligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Emma is a dual MBO (bol) program student, which means she qualifies based on the recognition of her program duration. Even though she is 19 years old, since the program lasts two years, it fulfills all other eligibility criteria such as enrollment, nationality, age, and recognition."
+    },
+    {
+        "case_id": 88,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition of Vocational Training Program",
+        "reasoning": "The vocational training program is not recognized as an MBO (bol) program, which is a requirement for eligibility based on the grant's criteria. Without recognition as a comparable level to an MBO program, Hugo does not meet the necessary conditions for grant eligibility."
+    },
+    {
+        "case_id": 34,
+        "prediction": "Not Eligible",
+        "impact_node": "MBO_Under18",
+        "reasoning": "Julia is not eligible because she is 19 years old, which falls under the 'MBO_Under18' category. This factor alone disqualifies her from being considered for a grant."
+    },
+    {
+        "case_id": 73,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "Noor is pursuing a dual degree program at a private institution that is not recognized as an HBO or university, which makes her ineligible for the grant. Additionally, since she does not meet the recognition criteria (HBO_UNI), it further reduces her eligibility."
+    },
+    {
+        "case_id": 8,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Enrollment",
+        "reasoning": "Johan is enrolled full-time in an HBO nursing program at the Hogeschool van Utrecht, which is recognized. However, for eligibility, it must be confirmed that the program is not fully funded by a government agency or another entity outside of DUO student finance. Since the program's recognition status is important but insufficient on its own to meet the funding criteria, this case may still require further verification from the relevant authorities."
+    },
+    {
+        "case_id": 9,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Elena is attending a bachelor program (Artificial Intelligence), which lasts three years, but her current age does not meet the minimum requirement for eligibility as determined by the grant application guidelines."
+    },
+    {
+        "case_id": 41,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "While Chloe meets all other criteria such as being of legal age, enrolled full-time in a recognized program at an accredited institution, and holding a type III residence permit, she does not hold a higher education degree (HBO_UNI or MBO_Under18). Since the eligibility requirement specifies recognition, which is missing for her case, it disqualifies her based on this key factor."
+    },
+    {
+        "case_id": 55,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition and Duration of Program",
+        "reasoning": "Aliyah is enrolled in a BBL (Bachelor's Level) program, which implies she has already completed high school or equivalent education. The recognition aspect is not specified, but if the program is highly regarded, it might reduce eligibility requirements. Additionally, her program duration of two years means it will likely last less than the typical 4-year bachelor degree, potentially making it ineligible for some scholarships or financial aid programs that are typically available for longer degrees."
+    },
+    {
+        "case_id": 72,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Nationality",
+        "reasoning": "Elise is enrolled in a non-recognized language program, which typically does not meet the requirements for educational loans or grants. Additionally, as an EU national, she likely has specific regulations that prevent financial aid based on nationality alone, unless there are special provisions regarding international students."
+    },
+    {
+        "case_id": 96,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Ravi is 19 years old, which means he has reached the age of majority in the Netherlands (20), thus becoming an adult. Additionally, even though he is enrolled in a recognized one-year MBO (bol) program in hospitality, his nationality as Dutch does not provide him with automatic eligibility for any student travel product offered by DUO due to its recognition criteria."
+    },
+    {
+        "case_id": 54,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Nina is enrolled in a course at a private institution, which does not fall under the recognized educational programs of MBO (Middelbaar Onderwijs), HBO (Hoger Onderwijs), or university in the Netherlands. Therefore, she cannot meet the eligibility criteria for any government grants that focus on recognized education providers."
+    },
+    {
+        "case_id": 68,
+        "prediction": "NotEligible",
+        "impact_node": "HBO_UNI",
+        "reasoning": "The program is classified as a post-secondary education (HBO) and not related to vocational training, which means it does not align with the criteria for a student loan or grant eligibility under the QUB scheme. Therefore, Luca cannot meet the criteria for eligibility based on this factor."
+    },
+    {
+        "case_id": 18,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Adam is pursuing a recognized program, which is crucial for eligibility. Additionally, being Dutch nationality and not enrolling in HBO_UNI or MBO_Under18 further support his eligibility."
+    },
+    {
+        "case_id": 67,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Program",
+        "reasoning": "Sophie is only 19 years old, which means she must be a student. The program lasts six months, but it's not accredited. Accredited programs typically provide recognition for completion, which Sophie does not meet due to the lack of accreditation. Her nationality (Dutch) and educational level (MBO_Under18) are also considered as factors that contribute to her ineligibility."
+    },
+    {
+        "case_id": 22,
+        "prediction": "NotEligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Matteo is 20 years old, which falls outside the typical age range (usually considered to be above 18 for most MBO programs). Additionally, although he has a type II residence permit and is studying full-time in an internationally recognized program, his nationality does not meet the eligibility criteria specified by DUO student finance. This combination of factors makes him ineligible according to their current guidelines."
+    },
+    {
+        "case_id": 42,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Recognition",
+        "reasoning": "Zain is 18 years old, which means he falls under the age of majority in many jurisdictions. While he has a recognized MBO (bol) program in software engineering, the requirement for eligibility based on recognition may not be met as it typically involves higher education or specific certification requirements that are not applicable to vocational programs like this one."
+    },
+    {
+        "case_id": 49,
+        "prediction": "NotEligible",
+        "impact_node": "HBO_UNI",
+        "reasoning": "The dual master\u2019s program at Wageningen University is recognized, but the requirement for eligibility explicitly mentions that only HBO (higher vocational education) degrees are eligible. Since Ava is a student enrolled in an MBO_Under18 (middle-level occupational training), she does not meet this criterion and therefore cannot be considered eligible."
+    },
+    {
+        "case_id": 23,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition and Nationality",
+        "reasoning": "Anna is pursuing a dual master's degree, which means she will be taking more than two years to complete the program. The recognition of the program as valid by the University of Amsterdam also contributes to her eligibility. However, her nationality (Dutch) and the fact that she has completed an HBO (Higher Education Admission) make it clear that she does not meet the minimum age requirement for Dutch nationals pursuing a postgraduate degree under 18 years old."
+    },
+    {
+        "case_id": 97,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "Sanne is enrolled at an unaccredited private university, which does not meet the recognition criteria for funding. Additionally, while she has EU nationality, accreditation of higher education institutions in the Netherlands is primarily based on national standards rather than international ones. The dual bachelor's degree program length and duration do not provide a clear advantage that would outweigh these factors."
+    },
+    {
+        "case_id": 12,
+        "prediction": "Not Eligible",
+        "impact_node": "Age",
+        "reasoning": "Ibrahim is only 21 years old, which means he has not yet completed his mandatory military service. The regulations require that students must complete their studies and have a certain number of hours in the labor market before applying for an HBO bachelor\u2019s degree program."
+    },
+    {
+        "case_id": 45,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Sophie is not eligible because she is under the age of 18 (MBO_Under18), which contradicts the requirement for this grant program. Additionally, her nationality is Dutch but she has not graduated from an HBO system institution recognized by DUO student finance in the Netherlands."
+    },
+    {
+        "case_id": 59,
+        "prediction": "NotEligible",
+        "impact_node": "Age and Program",
+        "reasoning": "Lea is a minor (age 21), so she is not eligible for the majority of student finance programs, even if part-time enrollment is recognized. The HBO program also indicates that the education itself does not meet the criteria for eligibility due to her age. Additionally, the 'MBO_Under18' factor implies that Lea has not yet completed a MBO (Netherlands Vocational Education and Training), which further narrows her eligibility based on national recognition requirements."
+    },
+    {
+        "case_id": 37,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Simon is currently 24 years old, which exceeds the age requirement for some programs. Additionally, without additional documentation or adjustment to his nationality conditions, he may not meet the eligibility criteria for this program as it pertains primarily to students within a specific age range."
+    },
+    {
+        "case_id": 10,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Lucas is enrolled in a recognized master\u2019s program, which meets the eligibility criteria of his nationality and residence permit. However, since he does not meet the recognition requirement (the type V residence permit), he cannot be considered eligible for the grant based on this criterion."
+    },
+    {
+        "case_id": 25,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Mila is 18 years old, which does not meet the age requirement of MBO (bol) programs. Additionally, she has Dutch nationality but has entered an MBO program in culinary arts, not HBO/UNI or MBO_Under18. Therefore, based on these criteria alone, Mila cannot be eligible for a grant under the given conditions."
+    },
+    {
+        "case_id": 98,
+        "prediction": "Eligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Hugo is enrolled in a part-time master's program at Maastricht University, which meets the recognition criteria. The two-year duration of the program also aligns with typical academic schedules. While his age (27) is over 18, Hugo can still be considered eligible as long as he has completed certain Dutch education requirements or has a specific exemption granted by DUO."
+    },
+    {
+        "case_id": 70,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Program Length",
+        "reasoning": "Rami is only 18 years old, which does not meet the minimum age requirement for most student loans or grants. Additionally, his program duration (one year) is relatively short compared to other student programs that might be eligible. Given these factors, he falls outside the typical eligibility criteria for the relevant grant programs."
+    },
+    {
+        "case_id": 29,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Program Length",
+        "reasoning": "Sophie is a dual student, but her age of 26 exceeds the typical eligibility criteria. Additionally, she is pursuing a longer-term program (two years), which may not meet all the requirements for funding."
+    },
+    {
+        "case_id": 38,
+        "prediction": "Eligible",
+        "impact_node": "Recognition and Duration",
+        "reasoning": "Amara is Dutch national, enrolled in a recognized dual master\u2019s program at Leiden University lasting two years. The recognition of the program likely indicates it meets the criteria for funding by DUO student finance, while her enrollment status suggests she is pursuing higher education, which aligns with their primary goals."
+    },
+    {
+        "case_id": 4,
+        "prediction": "Eligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "Ali is enrolled in an HBO institution (Higher Education Bachelor) program recognized by the Dutch government, which meets one of the key eligibility criteria for financial aid. Additionally, his type III residence permit indicates he has met another crucial requirement for accessing certain benefits. Therefore, based on these factors, Ali's case falls under the Eligible category."
+    },
+    {
+        "case_id": 5,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Sofia is pursuing a dual degree program which is recognized, but the six-year duration exceeds the standard grant eligibility requirements. Additionally, as an international student with no Dutch nationality (HBO_UNI = 0), she does not meet the minimum requirement for being eligible according to the current regulations."
+    },
+    {
+        "case_id": 35,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Marcus is studying a recognized master's program at Utrecht University, which fulfills the recognition requirement. Additionally, the duration of his studies and the fact that he holds a type V residence permit indicate eligibility for most funding programs in this context."
+    },
+    {
+        "case_id": 50,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Rafael's bachelor\u2019s degree is recognized, but it does not meet the specific requirements of DUO student finance for international students with a residence permit type II. Recognition alone is insufficient for meeting their eligibility criteria."
+    },
+    {
+        "case_id": 15,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Program Length",
+        "reasoning": "Hannah is over 18 years old, which disqualifies her from the current program requirements. Additionally, the dual master's degree program she is pursuing lasts two years, which exceeds the typical duration of a single master\u2019s degree in environmental science. Both these factors combined make it clear that Hannah does not meet the eligibility criteria for this specific program."
+    },
+    {
+        "case_id": 89,
+        "prediction": "NotEligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "Anika is studying a part-time program that lasts four years, which qualifies her for an application to the grant. However, since her residence permit falls under 'HBO_UNI' (Higher Vocational or University), it does not meet the criteria of 'MBO_Under18,' meaning she cannot apply based on this distinction alone. Additionally, while her age is 24 and in the correct format for a bachelor's degree program, she must fulfill the recognition requirement by obtaining a Master's Degree within three years after graduation from university-level education (HBO_UNI)."
+    },
+    {
+        "case_id": 2,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Recognition of Program Duration",
+        "reasoning": "Mark is 24 years old, which is beyond the typical age requirement for dual master's degrees in most countries. Additionally, while the program duration is two years, it is not recognized internationally, meaning that his qualifications may not be considered valid by many institutions outside the Netherlands. These factors combined make him ineligible based on the current criteria."
+    },
+    {
+        "case_id": 64,
+        "prediction": "Eligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "Mia's age, which is not the primary factor influencing eligibility, is within the general range of applicants. The recognition of her program as Dutch-recognized ensures that she meets the educational qualifications necessary for the grant. However, the key factors that determine eligibility are the availability of a recognized master\u2019s program and its duration."
+    },
+    {
+        "case_id": 65,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Although Zoe is Dutch and has completed a recognized dual MBO (bbl) program, her age of 18 means she does not qualify for the grant based on age criteria typically set by DUO student finance. The recognition factor for programs in the Netherlands usually refers to whether the program is officially recognized by higher education institutions or relevant bodies, which this one appears to be."
+    },
+    {
+        "case_id": 32,
+        "prediction": "Eligible",
+        "impact_node": "Age and Program Recognition",
+        "reasoning": "Eva is a resident of the Netherlands, holds a residence permit type I, and pursues a recognized dual bachelor's degree in environmental science. These factors indicate eligibility for grants or scholarships."
+    },
+    {
+        "case_id": 66,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Amir is enrolled in a non-recognized private university in the Netherlands, which likely does not meet the eligibility criteria for grants. Recognition of educational institutions as part of the grant application process is crucial."
+    },
+    {
+        "case_id": 87,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "The case description indicates that Louise is enrolled in a private course, not an HBO or university program, which is crucial for determining eligibility. Additionally, the fact that this program is not recognized as equivalent to such programs means it does not meet the necessary recognition criteria required for government funding."
+    },
+    {
+        "case_id": 81,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "Iris is enrolled in an unrecognized course, which means she is not following a recognized program. Additionally, her course does not have any specified recognition that would likely qualify her for financial aid through DUO student finance."
+    },
+    {
+        "case_id": 44,
+        "prediction": "Not Eligible",
+        "impact_node": "HBO_UNI",
+        "reasoning": "Elias is enrolled in a dual master's program, which typically requires an HBO (Higher Education Certificate) or UNI (University of the Netherlands). Since Elias has not provided this information and Tilburg University does not explicitly mention it as required for eligibility, it seems unlikely that he qualifies based on his enrollment alone."
+    },
+    {
+        "case_id": 80,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "Omar is studying at a non-recognized institution offering a two-year program in hospitality, which makes him ineligible for the grant. Additionally, because he does not hold a recognized residence permit (type II), his eligibility is further compromised."
+    },
+    {
+        "case_id": 30,
+        "prediction": "Not Eligible",
+        "impact_node": "Nationality and Recognition of Program Duration",
+        "reasoning": "The student is Dutch but the program does not provide recognition. The duration is two years, which exceeds the general MBO (bol) program's standard time frame. Additionally, there is no evidence provided about whether the program meets the HBO_UNI requirements or if it recognizes a specific set of qualifications, further complicating eligibility."
+    },
+    {
+        "case_id": 71,
+        "prediction": "Not Eligible",
+        "impact_node": "HBO_UNI",
+        "reasoning": "The case does not mention any program that is recognized by the Dutch government, nor does it indicate whether Tobias's program at Leiden University is a recognized bachelor\u2019s program. Additionally, while Tobias holds Dutch nationality, the information provided does not specify if this makes him eligible for specific financial support under the HBO_UNI (Higher Education Benefit - UNified) or MBO_Under18 programs."
+    },
+    {
+        "case_id": 17,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality and HBO_UNI (Higher Education Degree)",
+        "reasoning": "Olivia's case does not meet the eligibility criteria for grants. While she is 20 years old, enrolled full-time in a recognized bachelor's degree program at Utrecht University, and has a type IV residence permit, the key issue is her educational institution type (HBO_Under18). The university mentioned is HBO_UNI, which indicates that Olivia does not meet the eligibility requirements for grants under this system."
+    },
+    {
+        "case_id": 43,
+        "prediction": "NotEligible",
+        "impact_node": "Age and Program Length",
+        "reasoning": "Noor is 23 years old, which exceeds the typical age range often considered for bachelor's degrees. Additionally, the program length of three years does not typically fit within a standard undergraduate curriculum. While she has Dutch nationality and is pursuing recognition at Erasmus University Rotterdam, these factors do not meet the criteria required to be considered eligible for a grant based on the provided information."
+    },
+    {
+        "case_id": 95,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Leila is a participant in an unaccredited MBO program, which is not recognized under the Dutch system. This means she does not meet the recognition criteria necessary for eligibility for grants provided by DUO student finance."
+    },
+    {
+        "case_id": 100,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Recognition",
+        "reasoning": "Elias is pursuing a course at an MBO, HBO, or university, which are all recognized educational programs. He is also required to hold a type III residence permit, indicating he may be from outside the Netherlands. Given these factors, it does not meet the eligibility criteria set by DUO student finance for this program."
+    },
+    {
+        "case_id": 14,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Recognition",
+        "reasoning": "Victor is an international student enrolled in a recognized bachelor's program at Delft University of Technology, which requires him to prove his age and completion of the study. Since he is 22 years old, he likely does not meet the minimum age requirement for full-time studies, thus disqualifying him from eligibility."
+    },
+    {
+        "case_id": 47,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Emma is over 18 years old, which means she is not eligible to apply for a grant under the Dutch Higher Education Loans Scheme. Additionally, her nationality as Dutch does not meet the requirement of being resident in the Netherlands at least half of the year to be considered for eligibility."
+    },
+    {
+        "case_id": 20,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Lucas is enrolled in a recognized master's degree program, which meets the recognition criteria. Additionally, his residence permit indicates he holds a valid type V residence permit, further supporting eligibility."
+    },
+    {
+        "case_id": 6,
+        "prediction": "Eligible",
+        "impact_node": "Age and Program Recognition",
+        "reasoning": "Max meets all eligibility criteria: he is over the age of majority (18 years old), enrolled in an MBO program recognized by DUO student finance, and has Dutch nationality. The one-year duration and full-time enrollment further support his eligibility."
+    },
+    {
+        "case_id": 24,
+        "prediction": "Not Eligible",
+        "impact_node": "Nationality and Age",
+        "reasoning": "Finn is only 21 years old, which means he has not completed his required duration of higher education (typically at least four years for a bachelor's degree). Additionally, as an individual with Dutch nationality, Finn cannot be considered eligible unless all the other criteria are met. Although Finn is attending Delft University of Technology and the program is recognized, the combination of his age and nationality rules him out from being eligible for any student financial aid granted by DUO."
+    },
+    {
+        "case_id": 28,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Nathan is 20 years old, which falls within the range of eligibility for Dutch student loans. However, the program he is studying in (Bachelor's degree at a recognized university) and his nationality (Dutch), along with other unspecified factors not mentioned in the provided information, do not clearly align with the necessary criteria required to be considered eligible according to available information."
+    },
+    {
+        "case_id": 85,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Recognition",
+        "reasoning": "Stella is under 18 years old, which means she does not qualify for the student travel product. Additionally, her program (MBO) and recognition as a recognized program are key factors that determine eligibility, and neither meet these criteria."
+    },
+    {
+        "case_id": 94,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Recognition of Program",
+        "reasoning": "Julian is an adult (age 29), which typically disqualifies him from many educational grants. Additionally, while pursuing a recognized program at Utrecht University for physics, the recognition factor itself does not automatically make him eligible for a grant without further documentation or matching criteria provided by DUO."
+    },
+    {
+        "case_id": 82,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Karim is enrolled in an unaccredited MBO program that lasts three years, which is longer than the standard duration for accredited programs. Additionally, he does not hold a type IV residence permit, which typically indicates long-term residency status needed to apply for higher education grants or scholarships."
+    },
+    {
+        "case_id": 46,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Ahmed is pursuing a dual master's program that lasts two years, which exceeds the typical duration of an undergraduate or graduate program. Additionally, his residency permit type does not align with the recognition criteria typically required for international students in higher education programs."
+    },
+    {
+        "case_id": 93,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Freya's EU nationality is a significant factor that determines her eligibility. While she has an unrecognized one-year program and enrollment, her EU citizenship makes her ineligible for the grant provided by DUO student finance in the Netherlands."
+    },
+    {
+        "case_id": 58,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Victor is a minor (18 years old), and the dual program may not be recognized for minors in the Netherlands. Additionally, while he has Dutch nationality, his age is still considered an important factor that can influence eligibility."
+    },
+    {
+        "case_id": 83,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Ella is 22 years old, which typically qualifies her for a bachelor's degree program. However, she has EU nationality, which might affect the specific eligibility requirements of DUO student finance in the Netherlands. While age alone would suggest eligibility, additional factors such as EU nationality could be crucial based on the policies or guidelines set by DUO."
+    },
+    {
+        "case_id": 19,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Sarah is 28 years old, which typically exceeds the age eligibility requirement for most programs. Additionally, her nationality may affect eligibility due to residence permit requirements."
+    },
+    {
+        "case_id": 16,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Noah is 18 years old, which means he is eligible to apply for the program. However, his Dutch nationality along with the fact that his enrollment (MBO) is not within the specified age range of MBO_Under18 makes him ineligible. The key node most influencing this decision was his age and nationality."
+    },
+    {
+        "case_id": 79,
+        "prediction": "Not Eligible",
+        "impact_node": "Recognition and Enrollment Duration",
+        "reasoning": "Hana is attending a part-time program, which means she is not fully enrolled. Additionally, the duration of her program (two years) exceeds two semesters, making it ineligible under the typical eligibility criteria for DUO student finance in the Netherlands."
+    },
+    {
+        "case_id": 31,
+        "prediction": "Eligible",
+        "impact_node": "Recognition and Nationality",
+        "reasoning": "Aaron meets all the requirements for eligibility based on age, program, enrollment, duration, recognition, nationality, and whether he is studying full-time. The key determining factor here is that his program (bachelor\u2019s degree in computer engineering) is recognized by Eindhoven University of Technology."
+    },
+    {
+        "case_id": 7,
+        "prediction": "Not Eligible",
+        "impact_node": "Age",
+        "reasoning": "Diana is 22 years old, which means she is not considered a minor and thus does not meet the eligibility criteria for student loans or grants in most cases. She is also not listed as 'under 18' in her enrollment details, making it irrelevant to this specific factor."
+    },
+    {
+        "case_id": 51,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Peter is 31 years old, which exceeds the general eligibility criteria for student finance programs. Additionally, he is Dutch but has not held a recognized program or completed an MBO_Under18 course. These factors make it highly unlikely that he qualifies based on the provided information."
+    },
+    {
+        "case_id": 78,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Duration",
+        "reasoning": "Jeroen is only 18 years old, which falls under the age of majority (legal adulthood) in many jurisdictions. Additionally, his program lasts only six months, which does not meet the typical duration for higher education programs like HBO or MBO degrees. These factors combined make it clear that Jeroen is not eligible for a grant as they do not match the required criteria for such educational programs."
+    },
+    {
+        "case_id": 61,
+        "prediction": "Eligible",
+        "impact_node": "Program Recognition and Duration",
+        "reasoning": "Steven's dual bachelor\u2019s program is recognized, which is crucial for eligibility. The duration of three years, while long, aligns well with the typical graduate education period in the Netherlands. His age (32) falls within the range where many older individuals can still pursue higher education successfully."
+    },
+    {
+        "case_id": 3,
+        "prediction": "Eligible",
+        "impact_node": "Recognition and Nationality",
+        "reasoning": "Lina is recognized as an under-18 student because she is younger than 18 (she is 17). Additionally, since her program of studying hospitality in full-time MBO (bol) at a vocational school fulfills the recognition criteria for under-18 students, it meets the eligibility requirements. Her nationality as a Dutch citizen also contributes to her eligibility by meeting the nationality requirement."
+    },
+    {
+        "case_id": 33,
+        "prediction": "Eligible",
+        "impact_node": "Age and Program Enrollment",
+        "reasoning": "Daniel is an adult enrolled full-time in a two-year master's degree program, which meets the eligibility criteria for grants aimed at mature students pursuing advanced studies. His age (28) is not mentioned as a disqualifying factor."
+    },
+    {
+        "case_id": 69,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Recognition",
+        "reasoning": "Anya is a student, which indicates enrollment in a program. However, she is enrolled in a private, unrecognized training center with a type III residence permit. While her age (25 years old) is within the eligibility criteria, the lack of recognition for both the course and her place of residence means that she does not meet the necessary conditions to be considered eligible under the grant program."
+    },
+    {
+        "case_id": 11,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Yasmin is 23 years old, which typically exceeds the usual age requirement for student grants in many countries. Additionally, while she has Dutch nationality, the case does not mention any specific eligibility criteria related to nationality that might apply beyond standard age requirements."
+    },
+    {
+        "case_id": 57,
+        "prediction": "Not Eligible",
+        "impact_node": "HBO_UNI and MBO_Under18",
+        "reasoning": "Julia is enrolled in a program at an unaccredited university, which typically does not meet the criteria for financial assistance from student finance programs. Additionally, since she has not yet completed high school (MBO_Under18), she may not qualify based on the specific program requirements or duration of her education."
+    },
+    {
+        "case_id": 91,
+        "prediction": "Not Eligible",
+        "impact_node": "Age",
+        "reasoning": "Sophie is 26 years old, which exceeds the age requirement of 18 for Dutch students. Additionally, her program and enrollment status indicate that she has completed or will complete a higher education course (HBO_UNI), but since she is not below 30, she does not meet the eligibility criteria for a DUO student finance grant."
+    },
+    {
+        "case_id": 53,
+        "prediction": "NotEligible",
+        "impact_node": "Age and Program Recognition",
+        "reasoning": "Tom is a minor (under 18 years old), which makes him ineligible for most educational grants in the Netherlands. Additionally, while he is enrolled in an HBO institution recognized by government institutions, this alone does not necessarily make him eligible for a specific grant program unless it specifically addresses under-18s or minors."
+    },
+    {
+        "case_id": 62,
+        "prediction": "NotEligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Layla is enrolled in an unrecognized vocational training course, which does not meet the standard requirements for government funding. Additionally, she has less than two years of enrollment time, typically a minimum requirement for such programs. The combination of unrecognized status and short duration indicates that Layla does not qualify under recognized program standards or sufficient length of enrollment required by most schemes."
+    },
+    {
+        "case_id": 86,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Nationality",
+        "reasoning": "Amir is 23 years old, which exceeds the age requirement of most grant programs. Additionally, he has a type II residence permit, but this alone does not necessarily qualify him for the program in terms of age or nationality requirements."
+    },
+    {
+        "case_id": 90,
+        "prediction": "Not Eligible",
+        "impact_node": "Program and Duration",
+        "reasoning": "Leo is enrolled in a one-year dual program, which typically requires completion of both an HBO (Higher Education) and MBO (Middle Level Vocational Training) course. The unaccredited training center does not meet the educational recognition standards needed for this type of higher education."
+    },
+    {
+        "case_id": 75,
+        "prediction": "Not Eligible",
+        "impact_node": "Age and Recognition",
+        "reasoning": "Angela is over the age of majority (18), which typically means she is not eligible for most adult financial aid programs in the Netherlands. Additionally, her program is recognized by the government but does not meet the criteria explicitly outlined in the Eligible for Student Loans policy."
+    },
+    {
+        "case_id": 84,
+        "prediction": "Eligible",
+        "impact_node": "Recognition of Program",
+        "reasoning": "Jan has completed a dual master's degree program recognized by Delft University of Technology, which is an important factor in determining his eligibility for the grant."
+    },
+    {
+        "case_id": 77,
+        "prediction": "Not Eligible",
+        "impact_node": "HBO_UNI",
+        "reasoning": "Fatima is a student at a private, non-accredited university, which does not meet the requirements for eligibility under the given grant criteria."
+    }
+]

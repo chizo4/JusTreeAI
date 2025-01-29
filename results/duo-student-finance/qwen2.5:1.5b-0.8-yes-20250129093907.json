@@ -1,0 +1,702 @@
+[
+    {
+        "case_id": 92,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Thomas is at least 18 years old and under 30, enrolled in a recognized bachelor's degree program (HBO institution), and holds a type V residence permit. Therefore, he is eligible to apply for student finance.",
+        "traversal": "Age -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 40,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Jeroen is only 19 years old and attending a full-time MBO program in graphic design, which does not meet the eligibility criteria for student finance under Dutch law. The recognition of his program (MBO) as being recognized in the Netherlands is insufficient to make him eligible.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 48,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program must be recognized by the Dutch education system and administered by a recognized educational institution in The Netherlands. Since Thijs is 18 years old, enrolled in an MBO (bol) automotive technology program lasting one year, and has Dutch nationality or residence permit, he meets all criteria for student finance eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 52,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program length is less than one year, and it does not meet the minimum requirement of at least 1 year for eligibility. The recognition status also indicates that the student may not be eligible due to age restrictions or lack of legal residency.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 99,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Vera is 21 years old and does not meet the age criteria of being at least 18 years old. Additionally, her program is an unrecognized one-year journalism program that cannot be recognized in the Netherlands as per the provided information. Therefore, she is not eligible to apply for student finance or student travel products.",
+        "traversal": "Age (Eligible) -> Program (NotEligible) -> Enrollment (NotEligible) -> Recognition (NotEligible)"
+    },
+    {
+        "case_id": 76,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program Milan is enrolled in is not recognized by the Netherlands, and he does not have Dutch nationality or a valid residence permit. Therefore, he is not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 36,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program recognized in the Netherlands is not long enough (at least 1 year), and the student is under 30 years old, which are conditions that do not qualify for student finance.",
+        "traversal": "Age -> Program -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 1,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Anna is currently 19 years old, which falls within the age range of 18 to 30. However, her program duration (three years) does not meet the minimum requirement of at least one year as specified in the decision tree. Additionally, despite being Dutch nationals, she has not yet completed her studies and therefore is ineligible for student finance based on the provided criteria.",
+        "traversal": "Age -> Program -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 26,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program does not meet the minimum duration requirement of 1 year, so Ben is not eligible to apply for student finance. Additionally, although he has Dutch nationality and a type IV residence permit, which would normally qualify him, the recognition criterion was met by his enrolled school or university.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 27,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Lisa is 19 years old and does not meet the minimum age requirement of 18 years for student finance eligibility. Although she meets the recognition criteria, her nationality does not qualify her to apply based on the provided decision tree rules.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 21,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Lotte meets the age criteria (18-29), is enrolled in a university program, and her program has been recognized by DUO. Therefore, she qualifies for student finance support.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 74,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Victor meets the minimum age requirement (18 years old and under 30 years old), is enrolled in an mbo, hbo, or university program that lasts at least one year, and his program is recognized by Dutch authorities. These conditions make Victor eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 63,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Hassan is not enrolled in an accredited program, so he does not meet the eligibility criteria for student finance. The recognition status of his law program is not explicitly stated, but since it is a private institution without accreditation, it is likely that the program is not recognized in the Netherlands.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 39,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Paul is 21 years old, which falls within the age range of 18-30. However, he does not meet the full-time enrollment requirement for either hbo/university programs or dual students due to his program duration (one year). Since his residence permit type is IV, there are additional eligibility requirements that prevent him from being eligible for student finance under any circumstances.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 56,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Carlos is 19 years old and enrolled in an MBO (bbl) program lasting two years. The program meets the minimum duration requirement of at least one year, and he has a type I residence permit, which falls under recognition by DUO for other situations. Therefore, he is eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 60,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Ahmed is not enrolled in an MBO, HBO, or university program as a full-time student and does not have Dutch nationality or residence permit. This combination of factors makes him ineligible to apply for student finance.",
+        "traversal": "Age (No) -> Enrollment (No) -> Decision: 'NotEligible'"
+    },
+    {
+        "case_id": 13,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program is recognized, but the grant eligibility criteria require full-time or dual student enrollment. Emma is a dual MBO (bol) program student, which does not meet the full-time requirement. Additionally, her age of 19 years old also falls short of the minimum age for eligibility based on the given criteria.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 88,
+        "prediction": "NotEligible",
+        "impact_node": null,
+        "reasoning": "Hugo does not meet any of the criteria for student finance eligibility based on age, enrollment status, duration of training, or recognition of his programs. He is also not eligible to apply for the student travel product as he is under 18 years old and enrolled in a program recognized by DUO.",
+        "traversal": "Age (19 years old) -> Program (no recognized program, not an MBO, HBO, or University) -> Enrollment (not enrolled as a full-time student) -> Duration (program lasts less than 1 year) -> Recognition (unrecognized program and no residence permit)"
+    },
+    {
+        "case_id": 34,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Julia is enrolled in a MBO program, which meets the criteria of being an mbo, hbo, or university program excluding dual enrollment. However, her age does not meet the minimum eligibility requirement of 18 years old and under 30 years old as stated in the law.",
+        "traversal": "Age (Eligible) -> Enrollment (NotEligible) -> Decision: 'NotEligible'"
+    },
+    {
+        "case_id": 73,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Noor is over the age of 18 and under 30, which meets the minimum eligibility criteria. Since she has a residence permit type II, her program must be recognized in the Netherlands, based on the school's response. This recognition ensures that the program is eligible for student finance support.",
+        "traversal": "Age -> Program -> Recognition -> Nationality -> Duration -> Eligible"
+    },
+    {
+        "case_id": 8,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Johan is a Dutch national enrolled in an HBO nursing program that lasts four years and has been recognized by the Dutch government, making him eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 9,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Elena is 18 years old and attending a bachelor program at the VU, which is recognized. However, she is not enrolled as a full-time or dual student, so she does not meet the eligibility criteria for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 41,
+        "prediction": "Eligible",
+        "impact_node": "Program",
+        "reasoning": "Chloe meets the age requirement and is enrolled in a recognized university program. This combination qualifies her for eligibility based on her full-time enrollment.",
+        "traversal": "Age (18 -> 25) -> Program (MBO, HBO, or University program) -> Enrollment (Full-time/dual student) -> Duration (at least 1 year) -> Recognition (recognized in Netherlands) -> Nationality (Dutch nationality/residence permit)"
+    },
+    {
+        "case_id": 55,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Aliyah is not enrolled in an mbo BBL program recognized by the Netherlands, and she does not have Dutch nationality or a residence permit. Therefore, she is not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 72,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Elise meets the age requirement of at least 18 and under 30 years old. She is enrolled in a non-recognized language program that she plans to complete, which means she does not qualify for the university or hbo program options. Additionally, since the school cannot confirm if her program is recognized, it is uncertain whether she qualifies based on Dutch recognition requirements.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 96,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Ravi is over the age of 18 and under 30, which means he is eligible based on the Age criterion. Additionally, his program (recognized MBO in hospitality) meets the Eligible criteria for student finance, regardless of whether it's a full-time or part-time program.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 54,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Nina is a student enrolled in an institution that is not recognized as an MBO, HBO, or university in the Netherlands. As a result, she does not meet the eligibility criteria for obtaining student finance through this program.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 68,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Luca is recognized by Erasmus University, and the program lasts at least 1 year. Although he is under 20 years old, he meets all other criteria for student finance eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 18,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Adam is 25 years old, which falls under the 'age not applicable' category for student finance eligibility based on the provided decision tree criteria. The program is recognized and Dutch national status is not mentioned as a prerequisite.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 67,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Sophie is 19 years old and enrolled in a program lasting exactly six months, which qualifies her to apply for student finance under the 'Eligible' condition. However, she does not have Dutch nationality or a residence permit. Since the recognition criterion was not met, Sophie falls into the 'NotEligible' category.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 22,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Matteo is 20 years old and studying an MBO (bol) program in software development. Although he has a type II residence permit, which allows him to reside legally in the Netherlands, this does not meet the minimum age requirement of at least 18 years old and under 30 years old specified for eligibility criteria.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 42,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Zain is only 18 years old, which means he does not meet the minimum age requirement for the student finance program. Additionally, since his program (recognized MBO program) lasts two years, it falls short of meeting the one-year duration requirement for the eligibility criteria.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 49,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Ava is 26 years old and studying for a dual master's program, which meets the criteria to enroll in an mbo or university program. However, her age of 26 exceeds the minimum age requirement (18-30). Therefore, she is not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 23,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Anna is not enrolled in a recognized Dutch program, and she is not eligible for the student finance program. Her dual enrollment status does not override the recognition requirement.",
+        "traversal": "Age (Eligible) -> Program (NotEligible) -> Enrollment (NotEligible) -> Recognition (NotEligible)"
+    },
+    {
+        "case_id": 97,
+        "prediction": "NotEligible",
+        "impact_node": "Program",
+        "reasoning": "Sanne is enrolled in an unaccredited private university program, which does not meet the criteria for eligibility under the given law. Therefore, she is not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 12,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Ibrahim is eligible to apply for student finance because he meets the age criteria and has a recognized program. However, his program does not meet the minimum enrollment duration requirement of 1 year as specified by the law.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 45,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Sophie is at least 18 and under 30 years old, so she qualifies for eligibility. The recognition of her program as a full-time or dual student in Leiden University meets the requirement. Although not explicitly stated to be Dutch nationals or residents, there are no conditions that would disqualify her based on this decision tree.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 59,
+        "prediction": "NotEligible",
+        "impact_node": "Program",
+        "reasoning": "Lea is a student currently at an HBO institution and has not yet graduated, which means she does not meet the eligibility criteria for student finance. Additionally, her part-time study status also disqualifies her from this program.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 37,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Simon is eligible because he has the Dutch nationality or a residence permit, which allows him to apply for student finance. The recognition of his program ensures it meets the criteria set by DUO, thus qualifying him as eligible.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 10,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program is not recognized in the Netherlands, which means that Lucas cannot meet one of the eligibility criteria required to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 25,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Mila is at least 18 years old and meets the educational requirements of an MBO (bol) culinary arts program. The program lasts one year, which meets the minimum duration requirement. Additionally, she has Dutch nationality, indicating she fulfills the national eligibility criteria for student finance in the Netherlands.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 98,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Hugo is not eligible for student finance because he does not meet the age criteria. He is 27 years old, which exceeds the minimum age requirement of 18 and must be under 30 to qualify.",
+        "traversal": "Age -> Enrollment -> Recognition -> Nationality -> Decision"
+    },
+    {
+        "case_id": 70,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Rami is 18 years old, which qualifies him for student finance eligibility. However, he has not enrolled in an MBO program yet and does not meet the requirement of being a full-time or dual student. Therefore, based on the decision tree criteria, Rami is not eligible to apply for student finance.",
+        "traversal": "Age (18 and under) -> Program (NotMBO) -> Enrollment (NotFullTime) -> Decision: NotEligible"
+    },
+    {
+        "case_id": 29,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Sophie is not eligible for student finance because she does not have the Dutch nationality or a residence permit. The only situation where she might be considered eligible is if her program is recognized in the Netherlands, but this is not applicable to Sophie given her residency status.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 38,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Amara is not eligible for student finance because the program she is enrolled in (a dual master\u2019s program at Leiden University) is recognized, but she has Dutch nationality and does not meet the age requirement of being under 18 years old.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 4,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Ali is 20 years old, which falls under the 'not eligible' category for student finance eligibility based on the provided decision tree. While he meets other requirements like being in an HBO institution and having a residence permit, the fact that he is not Dutch nationals or hold a residence permit of types II through V means he does not meet the necessary nationality criteria to be considered eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 5,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Sofia is at least 18 years old, pursuing a recognized dual degree program in medicine lasting six years with a residence permit type V. The Dutch national education system recognizes this program and the student has Dutch nationality or a valid residence permit, thus qualifying for eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 35,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Marcus is 29 years old, which falls under the age of 30. Therefore, he does not meet the eligibility criteria for student finance as specified in the law.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 50,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The grant eligibility criteria are based on the recognition of the program. Since Rafael is enrolled in a university program and not an mbo/hbo program, he meets the requirement for the university program to be recognized. However, this does not satisfy the recognition criterion needed for student finance eligibility.",
+        "traversal": "Age (18) -> Program (enrolled at university, not mbo/hbo) -> Enrollment (full-time/dual student) -> Duration (at least 1 year) -> Recognition (university program recognized) -> Nationality (Dutch nationality/residence permit type II)"
+    },
+    {
+        "case_id": 15,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Hannah is not enrolled as a full-time or dual student, which makes her ineligible for the scholarship program she is applying to.",
+        "traversal": "Age -> Enrollment -> Recognition -> Duration -> Nationality"
+    },
+    {
+        "case_id": 89,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Anika is 24 years old and studying for a bachelor\u2019s degree in business, which meets the age requirement but does not meet the program or enrollment criteria as specified. Additionally, her residence permit type III indicates she may have dual nationality, potentially influencing the eligibility status.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 2,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Mark is a dual master's degree student in engineering at De Hogeschool van Amsterdam, enrolled as a full-time or dual student with a recognized program that lasts at least one year. He has the Dutch nationality and holds a valid type IV residence permit. These factors combined make him eligible to apply for student finance.",
+        "traversal": "Age (18-30) -> Program (Enrollment Full-time or Dual) -> Duration (Year) -> Recognition (Recognized) -> Nationality (Dutch Citizen/Resident)"
+    },
+    {
+        "case_id": 64,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Mia is not eligible to apply for student finance because she does not have Dutch nationality or a valid residence permit, despite being recognized as part of the program and enrolled as a full-time student.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 65,
+        "prediction": "Eligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Zoe meets all the criteria to be eligible for student finance: she is 18 years old and under 30, has Dutch nationality or a residence permit. The dual MBO program is recognized in the Netherlands, but not applicable as it's considered part of her full-time enrollment.",
+        "traversal": "Age (18 -> Age), Program (Program recognized, >1 year duration) -> Enrollment (Full-time or dual student) -> Recognition (Not applicable for mbo bbl) -> Nationality (Dutch nationality)"
+    },
+    {
+        "case_id": 32,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Eva meets the age criterion (21 years old) and is pursuing a recognized program at Wageningen University. The recognition of her educational program indicates that it complies with Dutch educational requirements, which is crucial for eligibility. Additionally, she has a residence permit type I, suggesting she satisfies residency criteria.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 66,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Amir is 20 years old, which falls under the category 'not eligible' based on the provided decision tree. The age criterion and lack of recognition in the Dutch system for non-recognized universities are both factors that disqualify him from eligibility.",
+        "traversal": "Age -> Enrollment -> Recognition -> Nationality -> Decision"
+    },
+    {
+        "case_id": 87,
+        "prediction": "NotEligible",
+        "impact_node": "Program",
+        "reasoning": "Louise is not enrolled in an HBO or university program, which means she cannot be eligible for student finance. Even though her nationality and the duration of the program meet other criteria, the lack of enrollment status disqualifies her from being considered eligible.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 81,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Iris is at least 18 years old and under 30, which qualifies her for student finance eligibility. Additionally, the program she's enrolled in (unrecognized course) does not disqualify her if recognized by a Dutch school or university.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 44,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Elias is over 30 years old and has a type V residence permit, which does not meet the legal requirements for applying for student finance. Therefore, the decision is that he is not eligible to apply for student finance.",
+        "traversal": "Age (18-30) -> Program (not applicable to Elias as he's over 30 years old and under 18) -> Enrollment (Full-time, dual student not eligible for this program) -> Recognition (unrecognized by Tilburg University) -> Nationality (type V residence permit does not meet the eligibility criteria)"
+    },
+    {
+        "case_id": 80,
+        "prediction": "Eligible",
+        "impact_node": "Recognition (recognized program in the Netherlands)",
+        "reasoning": "Omar is a type II holder with Dutch nationality. He is over 18 years old and enrolled in a recognized hospitality program that lasts at least one year, making him eligible for student finance.",
+        "traversal": "Age (18+) -> Program (Enrolled, at least 1 year) -> Recognition (Recognized) -> Nationality (Dutch or residence permit)"
+    },
+    {
+        "case_id": 30,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "The program is recognized in the Netherlands, but Isa's nationality does not qualify her for student finance based on the provided law. She must have Dutch nationality or a residence permit to be eligible.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 71,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Tobias is eligible because he meets the age requirement, is enrolled in a recognized bachelor's program at Leiden University lasting at least one year, and his nationality aligns with Dutch eligibility criteria.",
+        "traversal": "Age (18-30) -> Program (Recognized) -> Duration (At least 1 year) -> Recognition (Dutch program or recognized) -> Nationality (Dutch)"
+    },
+    {
+        "case_id": 17,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Olivia is 20 years old, which falls within the age range of 18 to 30. However, she is not enrolled as a full-time student in an mbo, hbo, or university program recognized by DUO, nor has she obtained a residence permit. Therefore, based on the decision tree provided, Olivia is not eligible for student finance under the given criteria.",
+        "traversal": "Age (Eligible) -> Program (Eligible) -> Enrollment (NotEligible)"
+    },
+    {
+        "case_id": 43,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Since Noor is 23 years old and has Dutch nationality, she meets the age requirement but may not be eligible for full-time university programs as of her current enrollment date. Her program duration is at least 1 year, which meets the minimum requirement for recognition. Therefore, based on the recognition criterion, she qualifies to apply for student finance.",
+        "traversal": "Age (NotEligible) -> Program (NotEligible) -> Duration (NotEligible) -> Recognition (Yes)"
+    },
+    {
+        "case_id": 95,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Leila's age and program details do not meet the minimum requirements for student finance eligibility. Her program is an unaccredited MBO in digital marketing, which does not fall under the standard Dutch education system recognized by DUO for student finance purposes.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 100,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Elias is under the age of 18 and not enrolled in an MBO, HBO, or university program. The recognition status of his educational program (either mbo, hbo, or university) determines eligibility for student finance grants.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 14,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Victor is over the minimum age requirement and enrolled in a recognized university program. Even though he has a residence permit type IV, which requires additional documentation for student finance eligibility, this does not negate his eligibility as long as it is recognized by DUO.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 47,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Even though Emma is eligible in several stages, the final decision based on nationality was not met. She is 21 years old and has Dutch nationality, which means she does not meet the criteria for eligibility as an international student program applicant.",
+        "traversal": "Age (Eligible) -> Program (Eligible) -> Enrollment (NotEligible) -> Recognition (Eligible) -> Nationality (NotEligible)"
+    },
+    {
+        "case_id": 20,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program is recognized in the Netherlands, but since it is for a one-year master\u2019s degree and does not meet the full-time enrollment criteria required for student finance eligibility, Lucas is not eligible to apply for student finance.",
+        "traversal": "Age (Yes) -> Recognition (No) -> Duration (No) -> Nationality (No)"
+    },
+    {
+        "case_id": 6,
+        "prediction": "Eligible",
+        "impact_node": "Recognition (DUO)",
+        "reasoning": "Max is 18 years old, enrolled in a recognized full-time MBO program for graphic design. The program lasts at least one year and meets all requirements. Since he has Dutch nationality, it meets the eligibility criteria for student finance.",
+        "traversal": "Age (18+) -> Program (MBO Bol) -> Duration (at least 1 year) -> Recognition (recognized by DUO) -> Nationality (Dutch nationality)"
+    },
+    {
+        "case_id": 24,
+        "prediction": "Eligible",
+        "impact_node": "Nationality",
+        "reasoning": "Finn is at least 18 years old and under 30, enrolled in a recognized university program (Delft University of Technology), and has the Dutch nationality. Therefore, he is eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 28,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "While Nathan is close to the age requirement for eligibility, he has not yet enrolled in an MBO (Bol), HBO, or university program recognized by the Netherlands. Therefore, despite being eligible based on other factors, he does not meet the criteria required by the grant program.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 85,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Stella's age is 17 years old and she is enrolled in an MBO program that has not requested the student travel product. Although her program is recognized, it does not last at least 1 year, which is a required criterion for eligibility based on the grant guidelines.",
+        "traversal": "Age (17) -> Program (MBO, not recognized or full-time dual student) -> Duration (Less than 1 year) -> Recognition (Does not meet recognition criteria)"
+    },
+    {
+        "case_id": 94,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Julian is 29 years old, which means he does not meet the minimum age requirement of at least 18 years old and under 30 years old. Additionally, even though he is pursuing a part-time master's degree in physics, the duration of the program (two years) does not meet the eligibility criteria for student finance applications as it is less than one year.",
+        "traversal": "Age (18+) -> Program -> Enrollment (Part-time) -> Duration <1 year> -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 82,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality (Dutch Nationality or Residence Permit Type IV, V)",
+        "reasoning": "Since Karim is between 18 and 25 years old but enrolled in an unaccredited MBO program that does not last longer than one year, he is not eligible for student finance under the Netherlands' educational system. The residence permit type also indicates he may not meet the national eligibility criteria due to residence abroad.",
+        "traversal": "Age (18-25) -> Program (Unaccredited MBO program and not in Hbo/University) -> Enrollment (Part-time student, <Program Duration> years, Not Recognized by Dutch Education System)"
+    },
+    {
+        "case_id": 46,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Ahmed is not eligible to apply for student finance because he is 29 years old, which falls under the age of 30 and older. Additionally, since his program lasts two years and does not meet the duration requirement (at least one year), this further disqualifies him from being considered eligible.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 93,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program is not recognized in the Netherlands, and Freya does not have Dutch nationality. Therefore, she is not eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 58,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program is recognized, but the student is under 18 years old. Therefore, they are not eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 83,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Ella is not an EU national, so she does not meet the eligibility criteria for student finance as specified by the Dutch government. The nationality requirement is a key factor in determining her eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 19,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Sarah is not eligible based on her age, program type, and nationality. She is only 28 years old, does not fit the full-time enrollment criteria for university programs (excluding part-time), and she has a residence permit of type II, which is insufficient to meet the eligibility requirements.",
+        "traversal": "Age -> Program -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 16,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Since the program is not recognized in the Netherlands and Noah is enrolled as a part-time student, he does not meet the eligibility criteria for student finance. The recognition requirement is crucial, but it appears to be an obstacle in this case.",
+        "traversal": "Age (18) -> Program (HBO/University) -> Enrollment (Part-time) -> Duration (less than 1 year) -> Recognition (not recognized)"
+    },
+    {
+        "case_id": 79,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program is recognized and lasts for two years, which qualifies her for student finance eligibility based on the recognition criteria. However, she must also have Dutch nationality or a residence permit to be eligible, which she does not possess in this case.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 31,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Aaron is eligible based on his age and nationality. He meets the requirements for full-time enrollment, which means he can apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 7,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Diana is 22 years old and enrolled in a recognized master's program at a Dutch university. Her residence permit type II indicates that she meets the eligibility criteria for student finance. Therefore, Diana is eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 51,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program must be recognized by the Netherlands to meet eligibility criteria for student finance. However, Peter's master Data Science program is not listed as one that is recognized in the Netherlands.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 78,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Jeroen is not under 18 years old, but he has Dutch nationality and enrolled in a recognized MBO (bol) program that lasts six months. Since the program qualifies as an eligible educational program and Jeroen meets all other criteria, he is considered eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 61,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Steven is not Dutch nationality, so he is not eligible to apply for student finance based on the criteria provided.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 3,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Lina is at least 18 years old and meets all other criteria. The program she is enrolled in, a recognized MBO bol program, qualifies her for student finance eligibility.",
+        "traversal": "Age (Yes) -> Program (No) -> Enrollment (Yes) -> Duration (Yes) -> Recognition (Yes)"
+    },
+    {
+        "case_id": 33,
+        "prediction": "NotEligible",
+        "impact_node": "Enrollment",
+        "reasoning": "Daniel is enrolled in a two-year master's degree program but not full-time, which makes him ineligible for the student finance grant.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 69,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Anya is not under 30 years old and does not have a residence permit from an authorized source. Therefore, she is not eligible to apply for student finance based on the given criteria.",
+        "traversal": "Age (18 or older) -> Program (not mbo, hbo, or university with a residence permit) -> Enrollment (not full-time, dual student) -> Duration (less than 1 year) -> Recognition (not recognized in the Netherlands)"
+    },
+    {
+        "case_id": 11,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Yasmin is over 18 years old and not under 30, so she does not meet the age criterion for eligibility. Additionally, since her program has already been recognized in the Netherlands, this further disqualifies her from meeting the recognition requirement.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 57,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Julia is enrolled in a program at an unaccredited university, which means she does not meet the minimum age requirement for the student finance grant. Therefore, she is not eligible to apply for this financial assistance.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 91,
+        "prediction": "NotEligible",
+        "impact_node": "Nationality",
+        "reasoning": "Sophie is Dutch, but she is not a full-time student enrolled in an mbo/hbo/university program. While part-time programs are not excluded per the law, this does not meet the criteria for eligibility as it pertains to the duration and nature of her educational enrollment.",
+        "traversal": "Age (Dutch Nationality) -> Program Enrollment Duration Recognition Nationality"
+    },
+    {
+        "case_id": 53,
+        "prediction": "NotEligible",
+        "impact_node": "Program",
+        "reasoning": "Tom is under 18 years old, which does not meet the minimum age requirement for student finance eligibility. Additionally, his enrollment status is part-time and does not qualify him for full-time or dual enrollment programs.",
+        "traversal": "Age (18) -> Program (not eligible) -> Enrollment (not eligible)"
+    },
+    {
+        "case_id": 62,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Since Layla is enrolled in an unrecognized vocational training course lasting two years and has Dutch nationality, she meets the eligibility criteria for student finance. The recognition of her program does not affect her overall status due to her age requirement.",
+        "traversal": "Age -> Program -> Enrollment -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 86,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Amir is 23 years old and pursuing a master's degree in sociology at Leiden University, which is recognized in the Netherlands. However, the duration of his program (one year) does not meet the minimum requirement of one year for student finance eligibility.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 90,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Leo is over 18 and under 30 years old, which meets the minimum age requirement. He holds a type IV residence permit, indicating he has the Dutch nationality or a valid permit that allows him to study in the Netherlands. Therefore, he can be considered eligible for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    },
+    {
+        "case_id": 75,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "Angela is under 18 years old and enrolled in an MBO program that lasts six months. However, her program is not recognized by the Netherlands, which is a requirement for eligibility. Therefore, she is not eligible to apply for student finance.",
+        "traversal": "Age (Under18) -> Enrollment (Full-time/Dual student, <6 months duration) -> Recognition (Unrecognized program) -> Nationality (Dutch nationality)"
+    },
+    {
+        "case_id": 84,
+        "prediction": "NotEligible",
+        "impact_node": "Recognition",
+        "reasoning": "The program is not recognized in the Netherlands, and it does not last at least one year. Therefore, Jan is not eligible to apply for student finance.",
+        "traversal": "Age (18 to 30) -> Program (mbo, hbo, university) -> Enrollment (part-time excluded) -> Duration (less than 1 year) -> Recognition (unrecognized or non-recognized in Netherlands) -> Nationality (Dutch nationality or residence permit)"
+    },
+    {
+        "case_id": 77,
+        "prediction": "Eligible",
+        "impact_node": "Recognition",
+        "reasoning": "Fatima is over 18 years old and under 30 years old, so she qualifies for the eligibility criteria. Additionally, her program lasts at least 1 year, which meets the duration requirement. The recognition of her program as a recognized university or HBO program in the Netherlands fulfills one of the eligibility requirements, making her eligible to apply for student finance.",
+        "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+    }
+]
