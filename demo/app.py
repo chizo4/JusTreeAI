@@ -9,14 +9,29 @@ def get_response_from_bot(input: List[str]) -> str:
     if input[0] == "Hello":
         return "Hi! How can I help you?"
 
-    if input[0] == "My name is Lydia, I just moved to the Netherlands from France to study a bachelor degree in the Den Haag Hogeschool. I am currently enrolled full-time.":
-        return "Great Lydia, could I ask whether you currently work alongside your studies?"
+    # I would like to request information on whether I am elegible for the student finance:
+    if "I would like" in input[0]:
+        return "Of course! Are you currently enrolled in any Dutch institution?"
     
-    if input[0] == "I am! Currently I am working every second Saturday in a local cafe.":
-        return "Unfortunately Lydia, you are not yet eligible for the student finance. However, you would be eligible if you increase your current working hours to 32 hours a month."
-
-    if input[0] == "Oh perfect! I will ask my employer to work every Saturday in that case, that should make me eligible and help with my studies. Thank you!":
-        return "You can find more information in Eligibility > Working Hours"
+    # Yes, I moved to the Netherlands from France to study a bachelor's degree in Den Haag Hogeschool. 
+    if "France" in input[0]:
+        return "Great! Are you enrolled full-time?"
+    
+    # "Yes! I am"
+    if "Yes! I am" in input[0]:
+        return "Good luck! And do you have any job on the side?"
+    
+    # "Yes, I work at a local cafe every other Saturday"
+    if "Saturday" in input[0]:
+        return "Unfortunately that does not make you elegible to student finance"
+    
+    # Why?
+    if "Why?" in input[0]:
+        return "As a EU citizen, you need to work at least 32 hours to be elegible."
+    
+    # Ah that's great to know, thanks!
+    if "to know" in input[0]:
+        return "You're welcome! You can find more information for your specific case in Eligibility > Working Hours"
 
     return "This is a response to: " + " ".join(input)
 
