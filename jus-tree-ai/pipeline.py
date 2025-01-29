@@ -4,7 +4,9 @@ FILE:
     jus-tree-ai/pipeline.py
 
 INFO:
-    TODO
+    This script processes legal decision-making cases using an LLM-based
+    pipeline. It evaluates the task eligibility by leveraging decision
+    trees and systematic reasoning, e.g., for DUO student finance.
 
 AUTHOR:
     @chizo4 (Filip J. Cierkosz)
@@ -133,7 +135,7 @@ class Pipeline:
         '''
         # Construct the prompt baseline.
         prompt = f'''
-        You are a legal reasoning assistant for DUO student finance in the Netherlands.
+        You are a legal assistant for DUO student finance in the Netherlands.
         Task: Please determine the grant eligibility based on the case description.
         Description: {description}
         '''
@@ -194,10 +196,8 @@ class Pipeline:
         # print(f'********PROMPT:********\n"{prompt}\n"')
         try:
             # Run the model using via Ollama CLI.
-            # TODO: proper params passed into LLM here.
             result = subprocess.run(
                 ['ollama', 'run', self.model, prompt],
-                # ['ollama', 'run', self.model, '--temperature', str(self.args.temperature), prompt],
                 capture_output=True,
                 text=True
             )
