@@ -51,7 +51,7 @@ fi
 ########################### RUN PIPELINE ###########################
 
 # STEP 2: Run the pipeline with the target LLM.
-echo "*PROCESSING CASES for '$TASK'...*"; echo
+echo "***PROCESSING CASES FOR TASK: '$TASK'***"; echo
 python3 jus-tree-ai/pipeline.py \
     --task "$TASK" \
     --decision_tree "$DECISION_TREE" \

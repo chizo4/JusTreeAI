@@ -115,7 +115,7 @@ class Pipeline:
         results_file = f'{self.model}-{self.temperature}-{self.args.decision_tree}-{curr_time}.json'
         self.results_path = f'{results_path}{results_file}'
 
-    def setup_prompt_llm(self: 'Pipeline', description: str) -> str:
+    def build_prompt_llm(self: 'Pipeline', description: str) -> str:
         '''
         Prompt engineering for the LLM. Currently, adjusted for the
         DUO student finance task, but can be easily adapted for other
@@ -131,7 +131,6 @@ class Pipeline:
             prompt : str
                 The prompt for the LLM.
         '''
-        print('prompt construction!')
         # Construct the prompt baseline.
         prompt = f'''
         You are a legal reasoning assistant for DUO student finance in the Netherlands.
@@ -173,8 +172,7 @@ class Pipeline:
         prompt += '''
         "impact_node": "<The node that most influenced the decision>",
         "reasoning": "<Explanation for your decision in max 2-3 sentences>"
-        }
-        '''
+        }'''
         return prompt
 
     def process_case_llm(self: 'Pipeline', description: str) -> dict:
@@ -191,21 +189,23 @@ class Pipeline:
             output : dict
                 The model's decision and reasoning as a JSON object.
         '''
-        prompt = self.setup_prompt_llm(description)
-        print(prompt)
-        # try:
-        #     # TODO: proper params passed into LLM here.
-        #     # Run the model using via Ollama CLI.
-        #     result = subprocess.run(
-        #         ['ollama', 'run', self.model, prompt],
-        #         # ['ollama', 'run', self.model, '--temperature', str(self.args.temperature), prompt],
-        #         capture_output=True,
-        #         text=True
-        #     )
-        #     print("Command Output:", result.stdout)  # Debug: Print model output
-        #     return json.loads(result.stdout.strip())
-        # except Exception as e:
-        #     raise RuntimeError(e)
+        prompt = self.build_prompt_llm(description)
+        # DEBUG: print the prompt.
+        # print(f'********PROMPT:********\n"{prompt}\n"')
+        try:
+            # Run the model using via Ollama CLI.
+            # TODO: proper params passed into LLM here.
+            result = subprocess.run(
+                ['ollama', 'run', self.model, prompt],
+                # ['ollama', 'run', self.model, '--temperature', str(self.args.temperature), prompt],
+                capture_output=True,
+                text=True
+            )
+            # DEBUG: print the LLM output.
+            print("LLM Output:", result.stdout)
+            return json.loads(result.stdout.strip())
+        except Exception as e:
+            raise RuntimeError(e)
 
     def process_cases(self: 'Pipeline') -> None:
         '''
@@ -216,14 +216,18 @@ class Pipeline:
             description = case.get('description')
             print(f'> PROCESS CASE: [{case_id}]\n')
             try:
-                self.process_case_llm(description)
-                # output = self.process_case_llm(description)
-                # TODO: what to store?
-                # self.results.append({
-                #     'case_id': case_id
-                #     # 'decision': output.get('decision'),
-                #     # 'reasoning': output.get('reasoning')
-                # })
+                # Process the case via LLM and store the results.
+                output = self.process_case_llm(description)
+                case_result = {
+                    'case_id': case_id,
+                    'prediction': output.get('prediction'),
+                    'impact_node': output.get('impact_node'),
+                    'reasoning': output.get('reasoning')
+                }
+                # Include traversal only if used the decision tree.
+                if self.args.decision_tree == 'yes':
+                    case_result['traversal'] = output.get('traversal')
+                self.results.append(case_result)
             except Exception as e:
                 print(f'ERROR for CASE {case_id}: {e}')
 
@@ -240,7 +244,7 @@ class Pipeline:
         Run the full model pipeline - process cases, and save results.
         '''
         self.process_cases()
-        # self.save_results()
+        self.save_results()
 
 if __name__ == '__main__':
     pipe = Pipeline()
