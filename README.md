@@ -14,6 +14,10 @@
 - [llama3.2](https://ollama.com/library/llama3.2) - 3.2 B params, 2.0 GB.
 - [qwen2.5](https://ollama.com/library/qwen2.5:1.5b) - 1.5 B params, 1.0 GB.
 
+# Resources
+- [Teaser video](https://www.youtube.com/watch?v=SdQKnaY8EWQ)
+- [Demo video]()
+
 
 ## TODO!
 - table of content

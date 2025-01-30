@@ -126,4 +126,5 @@ data/degree_average.txt
 # GH keys, etc.
 gh_token.txt
 
-# TODO: Project-specific (e.g., ignore for model download)?
+# Project-specific.
+temp/
