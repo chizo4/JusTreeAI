@@ -1,3 +1,20 @@
+'''
+--------------------------------------------------------------
+FILE:
+    jus-tree-ai/app.py
+
+INFO:
+    This script runs the demo app for the JusTreeAI chatbot.
+
+AUTHOR:
+    - @chizo4 (Filip J. Cierkosz)
+    - Eduard Cruset
+
+VERSION:
+    02/2025
+--------------------------------------------------------------
+'''
+
 from flask import Flask, render_template, request, jsonify
 from typing import List
 import os
@@ -9,36 +26,10 @@ from pipeline import Pipeline
 app = Flask(__name__, template_folder='ui', static_folder='ui/static')
 
 # Your chatbot function
-def get_response_from_bot(input: List[str]) -> str:
-
-    if input[0] == "Hello":
-        return "Hi! How can I help you?"
-
-    # I would like to request information on whether I am elegible for the student finance:
-    if "I would like" in input[0]:
-        return "Of course! Are you currently enrolled in any Dutch institution?"
-
-    # Yes, I moved to the Netherlands from France to study a bachelor's degree in Den Haag Hogeschool.
-    if "France" in input[0]:
-        return "Great! Are you enrolled full-time?"
-
-    # "Yes! I am"
-    if "Yes! I am" in input[0]:
-        return "Good luck! And do you have any job on the side?"
-
-    # "Yes, I work at a local cafe every other Saturday"
-    if "Saturday" in input[0]:
-        return "Unfortunately that does not make you elegible to student finance"
-
-    # Why?
-    if "Why?" in input[0]:
-        return "As a EU citizen, you need to work at least 32 hours to be elegible."
-
-    # Ah that's great to know, thanks!
-    if "to know" in input[0]:
-        return "You're welcome! You can find more information for your specific case in Eligibility > Working Hours"
-
-    return "This is a response to: " + " ".join(input)
+def get_response_from_bot(user_prompt: List[str]) -> str:
+    user_prompt = ' '.join(user_prompt)
+    print(f'\n{user_prompt}\n')
+    return 'Random answer.'
 
 @app.route('/')
 def home():
@@ -57,4 +48,6 @@ def chat():
     return jsonify({'response': bot_response})
 
 if __name__ == '__main__':
+    # Run the app and initialize the pipeline instance.
+    pipe = Pipeline()
     app.run(debug=True)
