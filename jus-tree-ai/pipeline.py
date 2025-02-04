@@ -49,6 +49,7 @@ class Pipeline:
         # Handle user case description - UI mode.
         if self.ui_mode:
             self.user_data = ''
+            self.user_prediction = None
 
     def set_args(self: 'Pipeline') -> argparse.Namespace:
         '''
@@ -330,7 +331,22 @@ class Pipeline:
             print(f"ERROR: Failed to save case {case_result.get('case_id')}: {e}")
             return False
 
-    def run(self: 'Pipeline', user_input=None) -> None:
+    def chat(self: 'Pipeline', user_input=None) -> str:
+        '''
+        Handle the LLM chat mode for the current case.
+        '''
+        # Handle resetting the case.
+        if user_input and user_input.strip().lower() == 'reset':
+            self.user_data = ''
+            return 'Successfully reset the chat! Please provide new case.'
+        # Run UI.
+        # print(f'HERE 1: current user data: {user_input}')
+        # Update the user data with the current input.
+        # self.user_data += f'{user_input} '
+        # print(f'HERE 2: total user data: {self.user_data}')
+        return 'random data'
+
+    def run(self: 'Pipeline', user_input=None):
         '''
         Run the full model pipeline; either: experiments or UI version.
 
@@ -340,11 +356,10 @@ class Pipeline:
                 User input data to process (from UI).
         '''
         if self.ui_mode:
-            # Run UI.
-            print(f'HERE 1: current user data: {user_input}')
-            # Update the user data with the current input.
-            self.user_data += f'{user_input} '
-            print(f'HERE 2: total user data: {self.user_data}')
+            if user_input:
+                llm_answer = self.chat(user_input)
+                return llm_answer
+            return None
         else:
             # Run EXPERIMENTS.
             self.process_cases()

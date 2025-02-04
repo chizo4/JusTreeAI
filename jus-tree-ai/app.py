@@ -45,8 +45,7 @@ def chat_with_llm_bot(raw_user_prompt: List[str]) -> str:
     if not user_prompt:
         return 'INVALID PROMPT: Please try again!'
     # LLM THINKING...
-    pipe.run(user_prompt)
-    llm_answer = pipe.llm_answer.strip()
+    llm_answer = pipe.run(user_prompt).strip()
     # Handle no/wrong response from LLM.
     if not llm_answer:
         return 'ERROR: Please try again!'
