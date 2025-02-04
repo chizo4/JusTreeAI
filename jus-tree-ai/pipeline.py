@@ -230,7 +230,7 @@ class Pipeline:
                 The model's decision and reasoning as a JSON object.
         '''
         prompt = self.build_prompt_llm(description)
-        # DEBUG: print the prompt.
+        # DEBUG: print the current prompt.
         # print(f'********PROMPT:********\n"{prompt}\n"')
         try:
             # Run the model using via Ollama CLI.
@@ -252,14 +252,14 @@ class Pipeline:
 
     def process_cases(self: 'Pipeline') -> None:
         '''
-        Process all cases via the target LLM.
+        Process all cases via the target LLM and save results.
         '''
-        for case in self.input_cases:
+        for i, case in enumerate(self.input_cases):
             case_id = case.get('id')
             description = case.get('description')
             print(f'> PROCESS CASE: [{case_id}]\n')
             try:
-                # Process the case via LLM and store the results.
+                # Process the case via LLM.
                 output = self.process_case_llm(description)
                 case_result = {
                     'case_id': case_id,
@@ -273,24 +273,60 @@ class Pipeline:
                 # Include thought-chain (if applicable).
                 if 'thought_chain' in output:
                     case_result['thought_chain'] = output['thought_chain']
-                self.results.append(case_result)
+                # Save the JSON results for the current sample.
+                case_last = (i == len(self.input_cases) - 1)
+                if self.save_results(case_result, case_last):
+                    print(f'RESULTS SAVED - CASE: [{case_id}].\n')
+                else:
+                    print(f'\nWARNING: FAILED TO SAVE RESULTS - CASE: [{case_id}].\n')
             except Exception as e:
                 print(f'ERROR for CASE {case_id}: {e}')
+        print(f'SUCCESS: The experiments for {self.task} are COMPLETE.\n')
 
-    def save_results(self: 'Pipeline') -> None:
+    def save_results(self: 'Pipeline', case_result: dict, case_last: bool) -> bool:
         '''
         Save the results to the specified output file.
+
+            Parameters:
+            -------------------------
+            case_result : dict
+                Results for the current case, encoded into dictionary.
+            case_last : bool
+                Boolean indication of the last case in the batch.
+
+            Returns:
+            -------------------------
+            bool
+                Boolean indication of successful operation for saving the results.
         '''
-        with open(self.results_path, 'w') as outfile:
-            json.dump(self.results, outfile, indent=4)
-        print(f'RESULTS SAVED: "{self.results_path}".')
+        try:
+            # Check if the file exists and whether is empty.
+            file_exists = os.path.exists(self.results_path)
+            is_empty = file_exists and os.path.getsize(self.results_path) == 0
+            # Open the file (append mode) to add the current result.
+            with open(self.results_path, 'a' if file_exists else 'w') as f:
+                # Handle a new file.
+                if not file_exists or is_empty:
+                    f.write('[\n')
+                else:
+                    f.seek(f.tell() - 2, os.SEEK_SET)
+                    f.write(',\n')
+                # Append the new case result.
+                json.dump(case_result, f, indent=4)
+                # Handle the last case in the batch.
+                if case_last:
+                    f.write('\n]')
+            return True
+        except (OSError, IOError, json.JSONDecodeError) as e:
+            print(f"ERROR: Failed to save case {case_result.get('case_id')}: {e}")
+            return False
 
     def run(self: 'Pipeline') -> None:
         '''
-        Run the full model pipeline - process cases, and save results.
+        Run the full model pipeline; either: experiments or UI version.
         '''
+        # TODO: Handle UI version.
         self.process_cases()
-        self.save_results()
 
 if __name__ == '__main__':
     pipe = Pipeline()
