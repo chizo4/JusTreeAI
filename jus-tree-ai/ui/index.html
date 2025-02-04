@@ -86,6 +86,19 @@
             border-radius: 10px;
         }
 
+        #disclaimer {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
         /* Chat Bubbles */
         .message {
             max-width: 75%;
@@ -153,6 +166,7 @@
     </style>
 </head>
 <body>
+    <div id="disclaimer">NOTE: THIS IS AN UNOFFICIAL COPY OF DUO.NL.</div>
 
     <!-- Chat Logo (Click to Open Chat) -->
     <img id="chat-logo" src="/static/logo.png" alt="Chat Logo" onclick="toggleChat()">
