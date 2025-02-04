@@ -25,10 +25,12 @@ from pipeline import Pipeline
 # Config for Flask app.
 app = Flask(__name__, template_folder='ui', static_folder='ui/static')
 
-# Your chatbot function
 def get_response_from_bot(user_prompt: List[str]) -> str:
+    '''
+    Handle chat by integrating Pipeline with UI.
+    '''
     user_prompt = ' '.join(user_prompt)
-    print(f'\n{user_prompt}\n')
+    pipe.run(user_prompt)
     return 'Random answer.'
 
 @app.route('/')

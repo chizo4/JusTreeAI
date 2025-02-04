@@ -46,6 +46,9 @@ class Pipeline:
         self.setup_task_files()
         # Set up the results resources (for the current config).
         self.results = []
+        # Handle user case description - UI mode.
+        if self.ui_mode:
+            self.user_data = ''
 
     def set_args(self: 'Pipeline') -> argparse.Namespace:
         '''
@@ -327,13 +330,21 @@ class Pipeline:
             print(f"ERROR: Failed to save case {case_result.get('case_id')}: {e}")
             return False
 
-    def run(self: 'Pipeline') -> None:
+    def run(self: 'Pipeline', user_input=None) -> None:
         '''
         Run the full model pipeline; either: experiments or UI version.
+
+            Parameters:
+            -------------------------
+            user_input : str or None
+                User input data to process (from UI).
         '''
         if self.ui_mode:
-            # TODO: Run UI.
-            print('UI MODE: todo')
+            # Run UI.
+            print(f'HERE 1: current user data: {user_input}')
+            # Update the user data with the current input.
+            self.user_data += f'{user_input} '
+            print(f'HERE 2: total user data: {self.user_data}')
         else:
             # Run EXPERIMENTS.
             self.process_cases()
