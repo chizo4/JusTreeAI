@@ -117,9 +117,9 @@ class Pipeline:
                 Extracted thoughts if applicable (for deepseek-r1:8b).
         '''
         raw_output = raw_output.strip()
-        # Extract <think></think> content for deepseek-r1:8b.
+        # Extract <think></think> content for deepseek-r1 models.
         thought_chain = None
-        if self.model == 'deepseek-r1:8b':
+        if 'deepseek-r1' in self.model:
             think_match = re.search(r'<think>(.*?)</think>', raw_output, re.DOTALL)
             if think_match:
                 thought_chain = think_match.group(1).strip()
