@@ -339,11 +339,12 @@ class Pipeline:
         if user_input and user_input.strip().lower() == 'reset':
             self.user_data = ''
             return 'Successfully reset the chat! Please provide new case.'
-        # Run UI.
-        # print(f'HERE 1: current user data: {user_input}')
-        # Update the user data with the current input.
-        # self.user_data += f'{user_input} '
-        # print(f'HERE 2: total user data: {self.user_data}')
+        # PSEUDO-CODE:
+        # #1: Engineer the current prompt - tune `build_prompt_llm`.
+        # #2: Above triggered by `process_case_llm`, so just receive results.
+        # #3: Scrape useful fields from JSON output.
+        # #4: return user-friendly response.
+        # (#5: adjust waiting time in UI)
         return 'random data'
 
     def run(self: 'Pipeline', user_input=None):
