@@ -40,6 +40,7 @@ class Pipeline:
         # Model-specific setup.
         self.model = self.args.model
         self.temperature = self.args.temperature
+        self.ui_mode = self.args.ui_mode
         # Task-specific setup/files/data.
         self.task = self.args.task
         self.setup_task_files()
@@ -77,6 +78,11 @@ class Pipeline:
             type=float,
             default=0.5,
             help='Temperature for LLM.'
+        )
+        parser.add_argument(
+            '--ui_mode',
+            action='store_true',
+            help='Enable UI mode (default: False).'
         )
         return parser.parse_args()
 
@@ -281,7 +287,7 @@ class Pipeline:
                     print(f'\nWARNING: FAILED TO SAVE RESULTS - CASE: [{case_id}].\n')
             except Exception as e:
                 print(f'ERROR for CASE {case_id}: {e}')
-        print(f'SUCCESS: The experiments for {self.task} are COMPLETE.\n')
+        print(f'SUCCESS: The experiments for {self.task} are COMPLETE.\nFILE SAVE: {self.results_path}\n')
 
     def save_results(self: 'Pipeline', case_result: dict, case_last: bool) -> bool:
         '''
@@ -325,8 +331,12 @@ class Pipeline:
         '''
         Run the full model pipeline; either: experiments or UI version.
         '''
-        # TODO: Handle UI version.
-        self.process_cases()
+        if self.ui_mode:
+            # TODO: Run UI.
+            print('UI MODE: todo')
+        else:
+            # Run EXPERIMENTS.
+            self.process_cases()
 
 if __name__ == '__main__':
     pipe = Pipeline()
