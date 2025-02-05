@@ -41,9 +41,7 @@ class Pipeline:
         # Model-specific setup.
         self.model = self.args.model
         self.temperature = self.args.temperature
-        # Task-specific setup/files/data.
         self.task = self.args.task
-        self.setup_task_files()
         # Set up the results resources (for the current config).
         self.results = []
 
@@ -65,7 +63,7 @@ class Pipeline:
         parser.add_argument(
             '--model',
             required=True,
-            help='LLM (e.g., llama3.2).'
+            help='LLM (e.g., llama3.2:3b).'
         )
         parser.add_argument(
             '--decision_tree',
@@ -144,7 +142,7 @@ class Pipeline:
         such as: input, output, etc.
         '''
         # Load the input data (cases).
-        self.input_file = f'data/{self.task}/cases-test.json'
+        self.input_file = f'data/{self.task}/cases.json'
         self.input_cases = self.load_json(self.input_file)
         # Handle loading JSON decision tree for the task.
         if self.args.decision_tree == 'yes':
@@ -327,6 +325,8 @@ class Pipeline:
         '''
         Run the full model pipeline for experiments.
         '''
+        # Task-specific setup/files/data.
+        self.setup_task_files()
         # Run EXPERIMENTS, i.e., process all dataset cases.
         self.process_cases()
 
