@@ -23,6 +23,7 @@
 - table of content
 - authors
 - short about section
+- resources (incl video links)
 - tested models as table
 - instructions:
     - deps installation
