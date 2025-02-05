@@ -20,12 +20,12 @@
 # bash script/run-pipeline.sh [task] [model] [decision_tree] [temperature]
 #
 # EXAMPLE:
-# bash script/run-pipeline.sh duo-student-finance yes llama3.2 0.8
+# bash script/run-pipeline.sh duo-student-finance yes llama3.2:3b 0.8
 #
 # OPTIONS:
 # [task]          -> "duo-student-finance" (default: "duo-student-finance")
 # [decision_tree] -> "yes"/"no" (default: "yes")
-# [model]         -> "llama3.2", "qwen2.5:1.5b", "deepseek-r1:8b" (default: "llama3.2")
+# [model]         -> "llama3.2:3b", "qwen2.5:1.5b", "deepseek-r1:8b" (default: "llama3.2:3b")
 # [temperature]   -> values 0-1.0 (default: 0.8)
 
 ########################### CONFIGURATION & SETUP ###########################
@@ -33,7 +33,7 @@
 # STEP 0: Fetch CLI args.
 TASK=${1:-"duo-student-finance"}
 DECISION_TREE=${2:-"yes"}
-MODEL=${3:-"llama3.2"}
+MODEL=${3:-"llama3.2:3b"}
 TEMPERATURE=${4:-0.8}
 
 # STEP 1: Setup for input/output resources.
@@ -52,7 +52,7 @@ if [ "$DECISION_TREE" == "yes" ] && [ ! -f "data/$TASK/decision-tree.json" ]; th
 fi
 
 # STEP 2: Validate the model name. Only support for 3 models now.
-VALID_MODELS=("llama3.2" "qwen2.5:1.5b" "deepseek-r1:8b")
+VALID_MODELS=("llama3.2:3b" "qwen2.5:1.5b" "deepseek-r1:8b")
 if [[ ! " ${VALID_MODELS[@]} " =~ " $MODEL " ]]; then
     echo "ERROR: Invalid model '$MODEL'."
     echo "Allowed models: ${VALID_MODELS[*]}"

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JusTreeAI - Chatbot Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Disclaimer. -->
+    <div id="note">NOTE: This is an unofficial copy of <a href="https://www.duo.nl" target="_blank" style="color: white; text-decoration: underline;">DUO.NL</a> with no affiliation to DUO.NL. <br> Project created as part of Data Systems Project at <a href="https://www.duo.nl" target="_blank" style="color: white; text-decoration: underline;">University of Amsterdam</a>.</div>
+
+    <!-- Chat logo: click to open/close chat. -->
+    <img id="chat-logo" src="/static/logo.png" alt="Chat Logo" onclick="toggleChat()">
+
+    <!-- Chat box window. -->
+    <div id="chat-container">
+        <div id="chat-header">
+            Chat with the JusTreeAI bot about DUO!
+            <span id="close-chat" onclick="toggleChat()">X</span>
+        </div>
+        <div id="chat-box"></div>
+        <div id="chat-input">
+            <input type="text" id="user-input" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
