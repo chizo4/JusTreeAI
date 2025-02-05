@@ -185,63 +185,6 @@
         </div>
     </div>
 
-    <script>
-        function toggleChat() {
-            let chatContainer = document.getElementById("chat-container");
-            chatContainer.style.display = (chatContainer.style.display === "block") ? "none" : "block";
-        }
-
-        function handleKeyPress(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                sendMessage();
-            }
-        }
-
-        function sendMessage() {
-            let inputField = document.getElementById("user-input");
-            let userMessage = inputField.value.trim();
-            if (userMessage === "") return;
-
-            let chatBox = document.getElementById("chat-box");
-
-            // Append user message
-            let userMsgElement = document.createElement("div");
-            userMsgElement.classList.add("message", "user-message");
-            userMsgElement.textContent = userMessage;
-            chatBox.appendChild(userMsgElement);
-
-            inputField.value = "";
-            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll
-
-            // Show "Bot is typing..." message
-            let typingElement = document.createElement("div");
-            typingElement.classList.add("message", "typing");
-            typingElement.textContent = "Bot is typing...";
-            chatBox.appendChild(typingElement);
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            // Wait 1 second before showing the actual bot response
-            setTimeout(() => {
-                typingElement.remove(); // Remove typing indicator
-
-                fetch("/chat", {
-                    method: "POST",
-                    body: JSON.stringify({ message: userMessage }),
-                    headers: { "Content-Type": "application/json" }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Append bot response
-                    let botMsgElement = document.createElement("div");
-                    botMsgElement.classList.add("message", "bot-message");
-                    botMsgElement.textContent = data.response;
-                    chatBox.appendChild(botMsgElement);
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                });
-            }, 1000);
-        }
-    </script>
-
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
 </body>
 </html>
