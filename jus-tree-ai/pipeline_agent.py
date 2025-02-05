@@ -39,16 +39,31 @@ class PipelineAgent(Pipeline):
         self.user_data = ''
         self.user_prediction = None
 
-    def reset_chat_memory(self: 'PipelineAgent') -> None:
-        pass
+    def handle_reset_chat_memory(self: 'PipelineAgent', user_input: str) -> bool:
+        '''
+        Handle resetting the chat memory.
+
+            Parameters:
+            -------------------------
+            user_input : str
+                User input data to process (from UI).
+
+            Returns:
+            -------------------------
+            bool
+                Boolean indication of whether the memory was reset.
+        '''
+        if user_input.strip().lower() == 'reset':
+            self.user_data = ''
+            return True
+        return False
 
     def chat(self: 'PipelineAgent', user_input=None) -> str:
         '''
         Handle the LLM chat mode for the current case.
         '''
-        # TODO: Handle resetting the case.
-        if user_input and user_input.strip().lower() == 'reset':
-            self.user_data = ''
+        # Listen for resetting chat memory.
+        if user_input and self.handle_reset_chat_memory(user_input):
             return 'Successfully reset the chat! Please provide new case.'
         # PSEUDO-CODE:
         # #1: Engineer the current prompt - tune `build_prompt_llm`.
@@ -71,3 +86,7 @@ class PipelineAgent(Pipeline):
             llm_answer = self.chat(user_input)
             return llm_answer
         return None
+
+if __name__ == '__main__':
+    pipe_agent = PipelineAgent()
+    pipe_agent.run()
