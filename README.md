@@ -22,6 +22,10 @@
 ## TODO!
 - table of content
 - authors
-- about
-- tested models
-- running instructions
+- short about section
+- tested models as table
+- instructions:
+    - deps installation
+    - running: experiments
+    - running: app
+- contribution
