@@ -20,7 +20,7 @@ import re
 from typing import List
 
 # Import the JusTreeAI pipeline.
-from pipeline import Pipeline
+from pipeline_agent import PipelineAgent
 
 # Config for Flask app.
 app = Flask(__name__, template_folder='ui', static_folder='ui/static')
@@ -45,7 +45,7 @@ def chat_with_llm_bot(raw_user_prompt: List[str]) -> str:
     if not user_prompt:
         return 'INVALID PROMPT: Please try again!'
     # LLM THINKING...
-    llm_answer = pipe.run(user_prompt).strip()
+    llm_answer = pipe_agent.run(user_prompt).strip()
     # Handle no/wrong response from LLM.
     if not llm_answer:
         return 'ERROR: Please try again!'
@@ -69,5 +69,5 @@ def chat():
 
 if __name__ == '__main__':
     # Run the app and initialize the pipeline instance.
-    pipe = Pipeline()
+    pipe_agent = PipelineAgent()
     app.run(debug=True)
