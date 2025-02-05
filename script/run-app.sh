@@ -37,4 +37,3 @@ python3 jus-tree-ai/app.py \
     --decision_tree "$DECISION_TREE" \
     --model "$MODEL" \
     --temperature "$TEMPERATURE" \
-    --ui_mode
