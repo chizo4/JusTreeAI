@@ -25,7 +25,7 @@ const handleKeyPress = (event) => {
 }
 
 // Handle sending messages.
-const sendMessage = () => {
+const sendMessage = async () => {
     let inputField = document.getElementById("user-input");
     let userMessage = inputField.value.trim();
     if (userMessage === "") return;
@@ -43,23 +43,35 @@ const sendMessage = () => {
     typingElement.textContent = "Bot is typing...";
     chatBox.appendChild(typingElement);
     chatBox.scrollTop = chatBox.scrollHeight;
-    // Wait 1 second before showing the actual bot response.
-    // TODO: instead of 1 sec wait for actual bot response!
-    setTimeout(() => {
-        typingElement.remove();
-        fetch("/chat", {
+    try {
+        // Send user message and wait for response.
+        const response = await fetch("/chat", {
             method: "POST",
             body: JSON.stringify({ message: userMessage }),
             headers: { "Content-Type": "application/json" }
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Append bot response.
-            let botMsgElement = document.createElement("div");
-            botMsgElement.classList.add("message", "bot-message");
-            botMsgElement.textContent = data.response;
-            chatBox.appendChild(botMsgElement);
-            chatBox.scrollTop = chatBox.scrollHeight;
         });
-    }, 1000);
-}
+        // Ensure response is valid.
+        if (!response.ok) {
+            throw new Error("Failed to fetch response from server.");
+        }
+        const data = await response.json();
+        // Remove "Bot is typing..." message.
+        typingElement.remove();
+        // Append bot response.
+        let botMsgElement = document.createElement("div");
+        botMsgElement.classList.add("message", "bot-message");
+        botMsgElement.textContent = data.response;
+        chatBox.appendChild(botMsgElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+    } catch (error) {
+        console.error("Error fetching response:", error);
+        typingElement.remove();
+        // Append error message in chat.
+        let errorMsgElement = document.createElement("div");
+        errorMsgElement.classList.add("message", "bot-message");
+        errorMsgElement.textContent = "Error: Unable to get a response. Please try again.";
+        chatBox.appendChild(errorMsgElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+};

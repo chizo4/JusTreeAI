@@ -18,6 +18,7 @@ VERSION:
 
 import json
 from pipeline import Pipeline
+import re
 import subprocess
 
 class PipelineAgent(Pipeline):
@@ -45,6 +46,33 @@ class PipelineAgent(Pipeline):
         # Load the task decision tree.
         self.decision_tree = self.load_json(f'data/{self.TASK}/decision-tree.json')
 
+    @classmethod
+    def clean_llm_response(cls, raw_response: str) -> str:
+        '''
+        Clean the raw LLM response by removing the content within <think> tags.
+        Function specific for the DeepSeek-R1 models.
+
+            Parameters:
+            -------------------------
+            raw_response : str
+                Raw response from the LLM model.
+
+            Returns:
+            -------------------------
+            str
+                Clean LLM response.
+        '''
+        clean_response = re.sub(
+            r'<think>.*?</think>',
+            '',
+            raw_response,
+            flags=re.DOTALL
+        ).strip()
+        return clean_response
+
+    def update_user_data(self: 'PipelineAgent', new_user_input: str) -> None:
+        self.user_data += f'{new_user_input} '
+
     def handle_reset_chat_memory(self: 'PipelineAgent', user_input: str) -> bool:
         '''
         Handle resetting the chat memory.
@@ -63,9 +91,6 @@ class PipelineAgent(Pipeline):
             self.user_data = ''
             return True
         return False
-
-    def update_user_data(self: 'PipelineAgent', new_user_input: str) -> None:
-        self.user_data += f'{new_user_input} '
 
     def build_prompt_llm(self: 'PipelineAgent') -> None:
         '''
@@ -100,7 +125,7 @@ class PipelineAgent(Pipeline):
         3. If unclear, ask for the missing details.
 
         Do not mention "decision tree" or internal processing in your response.
-        DO NOT answer any unrelated questions!
+        Refer to the user as "you". DO NOT answer any unrelated questions!
         '''
         return prompt
 
@@ -117,8 +142,8 @@ class PipelineAgent(Pipeline):
                 capture_output=True,
                 text=True
             )
-            print(result.stdout)
-            return result.stdout
+            response = self.clean_llm_response(raw_response=result.stdout)
+            return response
         except Exception as e:
             return None
 
