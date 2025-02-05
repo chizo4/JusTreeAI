@@ -27,8 +27,9 @@ class Pipeline:
     '''
     -------------------------
     Pipeline - A class for processing cases through the project pipeline
-               equpped with an LLM of choice (e.g., LLaMA-3.2). Handles
+               equipped with an LLM of choice (e.g., LLaMA-3.2). Handles
                CLI args, case processing, decision trees, and results.
+               Class mainly designed for experimental part of the project.
     -------------------------
     '''
 
@@ -40,16 +41,11 @@ class Pipeline:
         # Model-specific setup.
         self.model = self.args.model
         self.temperature = self.args.temperature
-        self.ui_mode = self.args.ui_mode
         # Task-specific setup/files/data.
         self.task = self.args.task
         self.setup_task_files()
         # Set up the results resources (for the current config).
         self.results = []
-        # Handle user case description - UI mode.
-        if self.ui_mode:
-            self.user_data = ''
-            self.user_prediction = None
 
     def set_args(self: 'Pipeline') -> argparse.Namespace:
         '''
@@ -82,11 +78,6 @@ class Pipeline:
             type=float,
             default=0.5,
             help='Temperature for LLM.'
-        )
-        parser.add_argument(
-            '--ui_mode',
-            action='store_true',
-            help='Enable UI mode (default: False).'
         )
         return parser.parse_args()
 
@@ -153,7 +144,7 @@ class Pipeline:
         such as: input, output, etc.
         '''
         # Load the input data (cases).
-        self.input_file = f'data/{self.task}/cases.json'
+        self.input_file = f'data/{self.task}/cases-test.json'
         self.input_cases = self.load_json(self.input_file)
         # Handle loading JSON decision tree for the task.
         if self.args.decision_tree == 'yes':
@@ -167,8 +158,8 @@ class Pipeline:
 
     def build_prompt_llm(self: 'Pipeline', description: str) -> str:
         '''
-        Prompt engineering for the LLM. Currently, adjusted for the
-        DUO student finance task, but can be easily adapted for other
+        Prompt engineering for the LLM for EXPERIMENTS. Currently, adjusted
+        for the DUO student finance task, but can be easily adapted for other
         tasks by reading the data from some specified prompt files.
 
             Parameters:
@@ -239,11 +230,12 @@ class Pipeline:
             output : dict
                 The model's decision and reasoning as a JSON object.
         '''
+        # Handle prompt engineering - EXPERIMENTS.
         prompt = self.build_prompt_llm(description)
         # DEBUG: print the current prompt.
         # print(f'********PROMPT:********\n"{prompt}\n"')
         try:
-            # Run the model using via Ollama CLI.
+            # Run the model using Ollama CLI.
             result = subprocess.run(
                 ['ollama', 'run', self.model, prompt],
                 capture_output=True,
@@ -331,39 +323,12 @@ class Pipeline:
             print(f"ERROR: Failed to save case {case_result.get('case_id')}: {e}")
             return False
 
-    def chat(self: 'Pipeline', user_input=None) -> str:
+    def run(self: 'Pipeline') -> None:
         '''
-        Handle the LLM chat mode for the current case.
+        Run the full model pipeline for experiments.
         '''
-        # Handle resetting the case.
-        if user_input and user_input.strip().lower() == 'reset':
-            self.user_data = ''
-            return 'Successfully reset the chat! Please provide new case.'
-        # PSEUDO-CODE:
-        # #1: Engineer the current prompt - tune `build_prompt_llm`.
-        # #2: Above triggered by `process_case_llm`, so just receive results.
-        # #3: Scrape useful fields from JSON output.
-        # #4: return user-friendly response.
-        # (#5: adjust waiting time in UI)
-        return 'random data'
-
-    def run(self: 'Pipeline', user_input=None):
-        '''
-        Run the full model pipeline; either: experiments or UI version.
-
-            Parameters:
-            -------------------------
-            user_input : str or None
-                User input data to process (from UI).
-        '''
-        if self.ui_mode:
-            if user_input:
-                llm_answer = self.chat(user_input)
-                return llm_answer
-            return None
-        else:
-            # Run EXPERIMENTS.
-            self.process_cases()
+        # Run EXPERIMENTS, i.e., process all dataset cases.
+        self.process_cases()
 
 if __name__ == '__main__':
     pipe = Pipeline()
