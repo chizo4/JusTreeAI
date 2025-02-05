@@ -16,7 +16,9 @@ VERSION:
 --------------------------------------------------------------
 '''
 
+import json
 from pipeline import Pipeline
+import subprocess
 
 class PipelineAgent(Pipeline):
     '''
@@ -30,6 +32,8 @@ class PipelineAgent(Pipeline):
     -------------------------
     '''
 
+    TASK = 'duo-student-finance'
+
     def __init__(self: 'PipelineAgent') -> None:
         '''
         Initialize the class for the agent version of the pipeline.
@@ -38,6 +42,8 @@ class PipelineAgent(Pipeline):
         # Handle user data in UI mode.
         self.user_data = ''
         self.user_prediction = None
+        # Load the task decision tree.
+        self.decision_tree = self.load_json(f'data/{self.TASK}/decision-tree.json')
 
     def handle_reset_chat_memory(self: 'PipelineAgent', user_input: str) -> bool:
         '''
@@ -58,24 +64,67 @@ class PipelineAgent(Pipeline):
             return True
         return False
 
-    def chat(self: 'PipelineAgent', user_input=None) -> str:
+    def update_user_data(self: 'PipelineAgent', new_user_input: str) -> None:
+        self.user_data += f'{new_user_input} '
+
+    def build_prompt_llm(self: 'PipelineAgent') -> None:
+        '''
+        Construct a structured prompt for the LLM in UI mode.
+        Uses self.user_data to dynamically build the case description.
+
+            Returns:
+            -------------------------
+            prompt : str
+                The prompt formatted for the LLM.
+        '''
+        # Ensure user data is available.
+        if not self.user_data.strip():
+            return 'No case information provided. Please enter relevant details.'
+        # Load the decision tree.
+        decision_tree_str = json.dumps(self.decision_tree, indent=4)
+        # Engineer the prompt.
+        prompt = f'''
+        You are an AI assistant assessing DUO student finance eligibility in the Netherlands.
+
+        User Case:
+        "{self.user_data.strip()}"
+
+        Decision Rules:
+        {decision_tree_str}
+
+        Determine if the user is eligible using these rules.
+
+        Respond in MAX 2 sentences and follow these guidelines:
+        1. If eligible, reply: "You are eligible." and briefly explain why.
+        2. If not eligible, reply: "Not eligible." and state the key reason.
+        3. If unclear, ask for the missing details.
+
+        Do not mention "decision tree" or internal processing in your response.
+        DO NOT answer any unrelated questions!
+        '''
+        return prompt
+
+    def chat(self: 'PipelineAgent') -> str:
         '''
         Handle the LLM chat mode for the current case.
         '''
-        # Listen for resetting chat memory.
-        if user_input and self.handle_reset_chat_memory(user_input):
-            return 'Successfully reset the chat! Please provide new case.'
-        # PSEUDO-CODE:
-        # #1: Engineer the current prompt - tune `build_prompt_llm`.
-        # #2: Above triggered by `process_case_llm`, so just receive results.
-        # #3: Scrape useful fields from JSON output.
-        # #4: return user-friendly response.
-        # (#5: adjust waiting time in UI)
-        return 'random data'
+        # Engineer the current prompt.
+        prompt = self.build_prompt_llm()
+        try:
+            # Run the model using Ollama CLI.
+            result = subprocess.run(
+                ['ollama', 'run', self.model, prompt],
+                capture_output=True,
+                text=True
+            )
+            print(result.stdout)
+            return result.stdout
+        except Exception as e:
+            return None
 
     def run(self: 'PipelineAgent', user_input=None) -> str:
         '''
-        Run the live agent, handling user prompts.
+        Run the live agent, handling user prompts. Over-writes Pipeline.run().
 
             Parameters:
             -------------------------
@@ -83,8 +132,13 @@ class PipelineAgent(Pipeline):
                 User input data to process (from UI).
         '''
         if user_input:
-            llm_answer = self.chat(user_input)
-            return llm_answer
+            # Listen for resetting chat memory.
+            if self.handle_reset_chat_memory(user_input):
+                return 'Successfully reset the chat! Please provide new case.'
+            else:
+                self.update_user_data(user_input)
+                llm_answer = self.chat()
+                return llm_answer
         return None
 
 if __name__ == '__main__':
