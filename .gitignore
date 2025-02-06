@@ -125,6 +125,3 @@ data/degree_average.txt
 
 # GH keys, etc.
 gh_token.txt
-
-# Project-specific.
-temp/
