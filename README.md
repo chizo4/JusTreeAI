@@ -8,7 +8,6 @@
 ## About
 `resources` - include poster, report, link to videos.
 
-
 ## Models
 - [deepseek-r1:8b](https://ollama.com/library/deepseek-r1:8b) - 8.0 B params, 4.7 GB.
 - [llama3.2](https://ollama.com/library/llama3.2) - 3.2 B params, 2.0 GB.
@@ -17,7 +16,6 @@
 # Resources
 - [Teaser video](https://www.youtube.com/watch?v=SdQKnaY8EWQ)
 - [Demo video]()
-
 
 ## TODO!
 - table of content
