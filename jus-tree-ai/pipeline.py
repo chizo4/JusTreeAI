@@ -226,7 +226,7 @@ class Pipeline:
                 text=True
             )
             # DEBUG: print the LLM output.
-            # print('LLM Output:', result.stdout)
+            print('LLM Output:', result.stdout)
             # Process the LLM output into JSON.
             clean_output, thought_chain = self.clean_json(result.stdout)
             json_output = json.loads(clean_output)
