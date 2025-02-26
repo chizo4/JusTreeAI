@@ -118,6 +118,7 @@ class Pipeline:
         raw_output = raw_output.strip()
         # Extract <think></think> content for deepseek-r1 models.
         thought_chain = None
+        # TODO: custom function(s) here for deepseek/openthinker.
         if 'deepseek-r1' in self.model:
             think_match = re.search(r'<think>(.*?)</think>', raw_output, re.DOTALL)
             if think_match:
@@ -148,6 +149,12 @@ class Pipeline:
         if self.args.decision_tree == 'yes':
             tree_file = f'data/{self.task}/decision-tree.json'
             self.decision_tree = self.load_json(tree_file)
+        # Load the prompt base.
+        prompt_file = f'data/{self.task}/prompt-base-pipeline.txt'
+        if not os.path.exists(prompt_file):
+            raise FileNotFoundError(f'Missing prompt template: {prompt_file}')
+        with open(prompt_file, 'r') as f:
+            self.prompt_base = f.read()
         # Create the resources to store the experimental results.
         curr_time = datetime.now().strftime('%Y%m%d%H%M%S')
         results_path = f'results/{self.task}/'
@@ -156,9 +163,9 @@ class Pipeline:
 
     def build_prompt_llm(self: 'Pipeline', description: str) -> str:
         '''
-        Prompt engineering for the LLM for EXPERIMENTS. Currently, adjusted
-        for the DUO student finance task, but can be easily adapted for other
-        tasks by reading the data from some specified prompt files.
+        Prompt engineering for the LLM for EXPERIMENTS. The function
+        reads the TXT base prompt template and customizes it with
+        the task data.
 
             Parameters:
             -------------------------
@@ -170,48 +177,19 @@ class Pipeline:
             prompt : str
                 The prompt for the LLM.
         '''
-        # Construct the prompt baseline.
-        prompt = f'''
-        You are a legal assistant for DUO student finance in the Netherlands.
-        Task: Please determine the grant eligibility based on the case description.
-        Description: {description}
-        '''
-        # Include the decision tree - if available.
+        # Construct the prompt customizing the base template.
+        prompt = self.prompt_base.replace('{DESCRIPTION}', description)
+        # Handle the decision tree inclusion - if available.
         if self.args.decision_tree == 'yes':
-            # Pre-process the JSON tree into string.
+            # Parse the decision tree and remove unused tags.
             decision_tree_str = json.dumps(self.decision_tree, indent=4)
-            prompt += f'''
-        Here is the decision tree in JSON format, based on the law.
-        Each node represents the task criterion. Please follow the tree
-        logically to derive the decision:\n\n<{decision_tree_str}>\n
-        When traversing the tree, follow the logical path you take to decide.
-        Example: Age (Eligible) -> Enrollment (NotEligible) -> Decision: "NotEligible".
-        '''
+            prompt = prompt.replace('{DECISION_TREE_JSON}', decision_tree_str)
+            prompt = re.sub(r'<DECISION-TREE-NO>.*?</DECISION-TREE-NO>', '', prompt, flags=re.DOTALL)
+            prompt = re.sub(r'</?DECISION-TREE-YES>', '', prompt)
         else:
-            # Otherwise, specify nodes explicitly to justify LLM's reasoning.
-            prompt += '''
-        Please analyze the case using these key factors for eligibility:
-        - Age
-        - Program
-        - Enrollment
-        - Duration
-        - Recognition
-        - Nationality
-        - HBO_UNI
-        - MBO_Under18\n
-        Identify the most important node (factor) for your decision.
-        '''
-        # Specify the output format.
-        prompt += '''
-        Please provide your answer in the following JSON format. Do NOT include any extra text:
-        {
-        "prediction": "<Eligible or NotEligible>",'''
-        if self.args.decision_tree == 'yes':
-            prompt += '"traversal": "<Node1 -> Node2 -> ...>",'
-        prompt += '''
-        "impact_node": "<The node that most influenced the decision>",
-        "reasoning": "<Explanation for your decision in max 2-3 sentences>"
-        }'''
+            # Otherwise, remove the decision tree JSON and its tags.
+            prompt = re.sub(r'<DECISION-TREE-YES>.*?</DECISION-TREE-YES>', '', prompt, flags=re.DOTALL)
+            prompt = re.sub(r'</?DECISION-TREE-NO>', '', prompt)
         return prompt
 
     def process_case_llm(self: 'Pipeline', description: str) -> dict:
@@ -231,7 +209,7 @@ class Pipeline:
         # Handle prompt engineering - EXPERIMENTS.
         prompt = self.build_prompt_llm(description)
         # DEBUG: print the current prompt.
-        # print(f'********PROMPT:********\n"{prompt}\n"')
+        # print(f'********PROMPT:********"\n{prompt}\n"')
         try:
             # Run the model using Ollama CLI.
             result = subprocess.run(
