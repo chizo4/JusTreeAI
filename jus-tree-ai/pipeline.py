@@ -153,6 +153,7 @@ class Pipeline:
                 The pre-processed output without the thoughts tags, etc.
         '''
         thought_chain = None
+        preprocess_output = raw_output.strip()
         if 'deepseek-r1' in self.model:
             match = re.search(r'<think>(.*?)</think>', raw_output, re.DOTALL)
             if match:
@@ -165,6 +166,11 @@ class Pipeline:
                 preprocess_output = raw_output.replace(match.group(0), '').strip()
                 preprocess_output = re.sub(r'<\|begin_of_solution\|>', '', preprocess_output)
                 preprocess_output = re.sub(r'<\|end_of_solution\|>', '', preprocess_output)
+            else:
+                # Check if the thought chain is too long to be processed...
+                if '<|begin_of_thought|>' in raw_output:
+                    print('WARNING: Openthinker output is too long to be processed.')
+                    thought_chain = None
         return thought_chain, preprocess_output
 
     def build_prompt_llm(self: 'Pipeline', description: str) -> str:
