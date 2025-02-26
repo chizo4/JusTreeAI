@@ -25,7 +25,7 @@ Please analyze the case using these key factors for eligibility:
 
 Identify the most important node (factor) for your decision.
 </DECISION-TREE-NO>
-Please provide your answer in the following JSON format. Do NOT include any extra text:
+Please provide your answer in the following JSON format. You must NOT include any extra text:
 {
 "prediction": "<Eligible or NotEligible>",
 <TRAVERSAL>"traversal": "<Node1 -> Node2 -> ...>",</TRAVERSAL>
