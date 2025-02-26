@@ -61,6 +61,9 @@ fi
 
 ########################### RUN PIPELINE ###########################
 
+# Start timer...
+START_TIME=$(date +%s)
+
 # STEP 3: Run the pipeline with the target LLM.
 echo "***PROCESSING CASES FOR TASK: '$TASK'***"
 echo "***SETUP: (A) LLM: '$MODEL'. (B) TEMPERATURE: '$TEMPERATURE'.***"; echo
@@ -69,3 +72,8 @@ python3 jus-tree-ai/pipeline.py \
     --decision_tree "$DECISION_TREE" \
     --model "$MODEL" \
     --temperature "$TEMPERATURE"
+
+# End timer...
+END_TIME=$(date +%s)
+EXECUTION_TIME=$((END_TIME - START_TIME))
+echo "***SETUP: (A) LLM: '$MODEL'. (B) TEMPERATURE: '$TEMPERATURE'. (C) TOTAL TIME: $EXECUTION_TIME (SEC) ***"; echo
