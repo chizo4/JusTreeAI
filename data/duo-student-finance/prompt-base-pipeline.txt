@@ -28,7 +28,7 @@ Identify the most important node (factor) for your decision.
 Please provide your answer in the following JSON format. Do NOT include any extra text:
 {
 "prediction": "<Eligible or NotEligible>",
-<traversal>"traversal": "<Node1 -> Node2 -> ...>",</traversal>
+<TRAVERSAL>"traversal": "<Node1 -> Node2 -> ...>",</TRAVERSAL>
 "impact_node": "<The node that most influenced the decision>",
 "reasoning": "<Explanation for your decision in max 2-3 sentences>"
 }

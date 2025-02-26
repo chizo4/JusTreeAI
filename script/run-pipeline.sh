@@ -76,4 +76,4 @@ python3 jus-tree-ai/pipeline.py \
 # End timer...
 END_TIME=$(date +%s)
 EXECUTION_TIME=$((END_TIME - START_TIME))
-echo "***SETUP: (A) LLM: '$MODEL'. (B) TEMPERATURE: '$TEMPERATURE'. (C) TOTAL TIME: $EXECUTION_TIME (SEC) ***"; echo
+echo "***SETUP: (A) LLM: '$MODEL'. (B) TEMPERATURE: '$TEMPERATURE'. (C) DECISION TREE: '$DECISION_TREE'. (D) TOTAL TIME: $EXECUTION_TIME (SEC) ***"; echo

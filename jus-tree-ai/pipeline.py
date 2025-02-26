@@ -192,10 +192,12 @@ class Pipeline:
             prompt = prompt.replace('{DECISION_TREE_JSON}', decision_tree_str)
             prompt = re.sub(r'<DECISION-TREE-NO>.*?</DECISION-TREE-NO>', '', prompt, flags=re.DOTALL)
             prompt = re.sub(r'</?DECISION-TREE-YES>', '', prompt)
+            prompt = re.sub(r'</?TRAVERSAL>', '', prompt)
         else:
             # Otherwise, remove the decision tree JSON and its tags.
             prompt = re.sub(r'<DECISION-TREE-YES>.*?</DECISION-TREE-YES>', '', prompt, flags=re.DOTALL)
             prompt = re.sub(r'</?DECISION-TREE-NO>', '', prompt)
+            prompt = re.sub(r'<TRAVERSAL>.*?</TRAVERSAL>', '', prompt, flags=re.DOTALL)
         return prompt
 
     def process_case_llm(self: 'Pipeline', description: str) -> dict:
