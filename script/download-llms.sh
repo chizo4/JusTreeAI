@@ -20,6 +20,7 @@ MODELS=(
     "llama3.2"
     "qwen2.5:1.5b"
     "deepseek-r1:8b"
+    "openthinker:7b"
 )
 
 # STEP 2: Pull the models at checkpoints.
