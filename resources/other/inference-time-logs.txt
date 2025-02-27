@@ -1,0 +1,13 @@
+HARDWARE: NVIDIA A100 Tensor Core GPU (GOOGLE COLAB)
+
+***SETUP: (A) LLM: 'llama3.2:3b'. (B) TEMPERATURE: '0.8'. (C) DECISION TREE: 'yes'. (D) TOTAL TIME: 101 (SEC) ***
+***SETUP: (A) LLM: 'llama3.2:3b'. (B) TEMPERATURE: '0.8'. (C) DECISION TREE: 'no'. (D) TOTAL TIME: 74 (SEC) ***
+
+***SETUP: (A) LLM: 'qwen2.5:1.5b'. (B) TEMPERATURE: '0.8'. (C) DECISION TREE: 'yes'. (D) TOTAL TIME: 104 (SEC) ***
+***SETUP: (A) LLM: 'qwen2.5:1.5b'. (B) TEMPERATURE: '0.8'. (C) DECISION TREE: 'no'. (D) TOTAL TIME: 75 (SEC) ***
+
+***SETUP: (A) LLM: 'deepseek-r1:8b'. (B) TEMPERATURE: '0.8'. (C) DECISION TREE: 'yes'. (D) TOTAL TIME: 493 (SEC) ***
+***SETUP: (A) LLM: 'deepseek-r1:8b'. (B) TEMPERATURE: '0.8'. (C) DECISION TREE: 'no'. (D) TOTAL TIME: 505 (SEC) ***
+
+***SETUP: (A) LLM: 'openthinker:7b'. (B) TEMPERATURE: '0.8'. (C) DECISION TREE: 'yes'. (D) TOTAL TIME: 1680 (SEC) ***
+***SETUP: (A) LLM: 'openthinker:7b'. (B) TEMPERATURE: '0.8'. (C) DECISION TREE: 'no'. (D) TOTAL TIME: 2973 (SEC) ***

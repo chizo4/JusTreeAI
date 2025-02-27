@@ -45,6 +45,8 @@ class PipelineAgent(Pipeline):
         self.user_prediction = None
         # Load the task decision tree.
         self.decision_tree = self.load_json(f'data/{self.TASK}/decision-tree.json')
+        # Specify the prompt template path.
+        self.prompt_file = f'data/{self.TASK}/prompt-base-app.txt'
 
     @classmethod
     def clean_llm_response(cls, raw_response: str) -> str:
@@ -92,10 +94,10 @@ class PipelineAgent(Pipeline):
             return True
         return False
 
-    def build_prompt_llm(self: 'PipelineAgent') -> None:
+    def build_prompt_llm(self: 'PipelineAgent') -> str:
         '''
         Construct a structured prompt for the LLM in UI mode.
-        Uses self.user_data to dynamically build the case description.
+        Load the base prompt from a text file and format it with user data.
 
             Returns:
             -------------------------
@@ -107,26 +109,11 @@ class PipelineAgent(Pipeline):
             return 'No case information provided. Please enter relevant details.'
         # Load the decision tree.
         decision_tree_str = json.dumps(self.decision_tree, indent=4)
-        # Engineer the prompt.
-        prompt = f'''
-        You are an AI assistant assessing DUO student finance eligibility in the Netherlands.
-
-        User Case:
-        "{self.user_data.strip()}"
-
-        Decision Rules:
-        {decision_tree_str}
-
-        Determine if the user is eligible using these rules.
-
-        Respond in MAX 2 sentences and follow these guidelines:
-        1. If eligible, reply: "You are eligible." and briefly explain why.
-        2. If not eligible, reply: "Not eligible." and state the key reason.
-        3. If unclear, ask for the missing details.
-
-        Do not mention "decision tree" or internal processing in your response.
-        Refer to the user as "you". DO NOT answer any unrelated questions!
-        '''
+        # Engineer the prompt utilizing the base template.
+        with open(self.prompt_file, 'r') as f:
+            prompt_template = f.read()
+        prompt = prompt_template.replace('{USER_CASE}', self.user_data.strip())
+        prompt = prompt.replace('{DECISION_TREE}', decision_tree_str)
         return prompt
 
     def chat(self: 'PipelineAgent') -> str:

@@ -115,15 +115,11 @@ class Pipeline:
             thought_chain : str or None
                 Extracted thoughts if applicable (for deepseek-r1:8b).
         '''
-        raw_output = raw_output.strip()
-        # Extract <think></think> content for deepseek-r1 models.
+        preprocess_output = raw_output.strip()
         thought_chain = None
-        if 'deepseek-r1' in self.model:
-            think_match = re.search(r'<think>(.*?)</think>', raw_output, re.DOTALL)
-            if think_match:
-                thought_chain = think_match.group(1).strip()
-                # Remove the <think></think> content from the raw output.
-                raw_output = raw_output.replace(think_match.group(0), '').strip()
+        # Handle thoughts for reasoning models.
+        if any(model in self.model for model in ['deepseek-r1', 'openthinker']):
+            thought_chain, preprocess_output = self.extract_thoughts(raw_output=preprocess_output)
         # Attempt to extract JSON-like content using regex.
         json_match = re.search(r'\{.*\}', raw_output, re.DOTALL)
         if json_match:
@@ -136,29 +132,52 @@ class Pipeline:
         cleaned_json = raw_output
         return cleaned_json, thought_chain
 
-    def setup_task_files(self: 'Pipeline') -> None:
+    def extract_thoughts(self: 'Pipeline', raw_output: str) -> str:
         '''
-        Handle loading ans setting up task-specific files,
-        such as: input, output, etc.
+        Extract the thought chain from reasoning model (if applicable).
+        Also, pre-process the initial output to remove the thought content.
+
+        NOTE: Currently adjusted to handle models from the DeepSeek-R1
+              and OpenThinker families.
+
+            Parameters:
+            -------------------------
+            raw_output : str
+                The raw text output from the model.
+
+            Returns:
+            -------------------------
+            thought_chain : str or None
+                Extracted thought content, if available.
+            preprocess_output : str
+                The pre-processed output without the thoughts tags, etc.
         '''
-        # Load the input data (cases).
-        self.input_file = f'data/{self.task}/cases.json'
-        self.input_cases = self.load_json(self.input_file)
-        # Handle loading JSON decision tree for the task.
-        if self.args.decision_tree == 'yes':
-            tree_file = f'data/{self.task}/decision-tree.json'
-            self.decision_tree = self.load_json(tree_file)
-        # Create the resources to store the experimental results.
-        curr_time = datetime.now().strftime('%Y%m%d%H%M%S')
-        results_path = f'results/{self.task}/'
-        results_file = f'{self.model}-{self.temperature}-{self.args.decision_tree}-{curr_time}.json'
-        self.results_path = f'{results_path}{results_file}'
+        thought_chain = None
+        preprocess_output = raw_output.strip()
+        if 'deepseek-r1' in self.model:
+            match = re.search(r'<think>(.*?)</think>', raw_output, re.DOTALL)
+            if match:
+                thought_chain = match.group(1).strip()
+                preprocess_output = raw_output.replace(match.group(0), '').strip()
+        elif 'openthinker' in self.model:
+            match = re.search(r'<\|begin_of_thought\|>(.*?)<\|end_of_thought\|>', raw_output, re.DOTALL)
+            if match:
+                thought_chain = match.group(1).strip()
+                preprocess_output = raw_output.replace(match.group(0), '').strip()
+                preprocess_output = re.sub(r'<\|begin_of_solution\|>', '', preprocess_output)
+                preprocess_output = re.sub(r'<\|end_of_solution\|>', '', preprocess_output)
+            else:
+                # Check if the thought chain is too long to be processed...
+                if '<|begin_of_thought|>' in raw_output:
+                    print('WARNING: Openthinker output is too long to be processed.')
+                    thought_chain = None
+        return thought_chain, preprocess_output
 
     def build_prompt_llm(self: 'Pipeline', description: str) -> str:
         '''
-        Prompt engineering for the LLM for EXPERIMENTS. Currently, adjusted
-        for the DUO student finance task, but can be easily adapted for other
-        tasks by reading the data from some specified prompt files.
+        Prompt engineering for the LLM for EXPERIMENTS. The function
+        reads the TXT base prompt template and customizes it with
+        the task data.
 
             Parameters:
             -------------------------
@@ -170,48 +189,21 @@ class Pipeline:
             prompt : str
                 The prompt for the LLM.
         '''
-        # Construct the prompt baseline.
-        prompt = f'''
-        You are a legal assistant for DUO student finance in the Netherlands.
-        Task: Please determine the grant eligibility based on the case description.
-        Description: {description}
-        '''
-        # Include the decision tree - if available.
+        # Construct the prompt customizing the base template.
+        prompt = self.prompt_base.replace('{DESCRIPTION}', description)
+        # Handle the decision tree inclusion - if available.
         if self.args.decision_tree == 'yes':
-            # Pre-process the JSON tree into string.
+            # Parse the decision tree and remove unused tags.
             decision_tree_str = json.dumps(self.decision_tree, indent=4)
-            prompt += f'''
-        Here is the decision tree in JSON format, based on the law.
-        Each node represents the task criterion. Please follow the tree
-        logically to derive the decision:\n\n<{decision_tree_str}>\n
-        When traversing the tree, follow the logical path you take to decide.
-        Example: Age (Eligible) -> Enrollment (NotEligible) -> Decision: "NotEligible".
-        '''
+            prompt = prompt.replace('{DECISION_TREE_JSON}', decision_tree_str)
+            prompt = re.sub(r'<DECISION-TREE-NO>.*?</DECISION-TREE-NO>', '', prompt, flags=re.DOTALL)
+            prompt = re.sub(r'</?DECISION-TREE-YES>', '', prompt)
+            prompt = re.sub(r'</?TRAVERSAL>', '', prompt)
         else:
-            # Otherwise, specify nodes explicitly to justify LLM's reasoning.
-            prompt += '''
-        Please analyze the case using these key factors for eligibility:
-        - Age
-        - Program
-        - Enrollment
-        - Duration
-        - Recognition
-        - Nationality
-        - HBO_UNI
-        - MBO_Under18\n
-        Identify the most important node (factor) for your decision.
-        '''
-        # Specify the output format.
-        prompt += '''
-        Please provide your answer in the following JSON format. Do NOT include any extra text:
-        {
-        "prediction": "<Eligible or NotEligible>",'''
-        if self.args.decision_tree == 'yes':
-            prompt += '"traversal": "<Node1 -> Node2 -> ...>",'
-        prompt += '''
-        "impact_node": "<The node that most influenced the decision>",
-        "reasoning": "<Explanation for your decision in max 2-3 sentences>"
-        }'''
+            # Otherwise, remove the decision tree JSON and its tags.
+            prompt = re.sub(r'<DECISION-TREE-YES>.*?</DECISION-TREE-YES>', '', prompt, flags=re.DOTALL)
+            prompt = re.sub(r'</?DECISION-TREE-NO>', '', prompt)
+            prompt = re.sub(r'<TRAVERSAL>.*?</TRAVERSAL>', '', prompt, flags=re.DOTALL)
         return prompt
 
     def process_case_llm(self: 'Pipeline', description: str) -> dict:
@@ -231,7 +223,7 @@ class Pipeline:
         # Handle prompt engineering - EXPERIMENTS.
         prompt = self.build_prompt_llm(description)
         # DEBUG: print the current prompt.
-        # print(f'********PROMPT:********\n"{prompt}\n"')
+        # print(f'********PROMPT:********"\n{prompt}\n"')
         try:
             # Run the model using Ollama CLI.
             result = subprocess.run(
@@ -320,6 +312,30 @@ class Pipeline:
         except (OSError, IOError, json.JSONDecodeError) as e:
             print(f"ERROR: Failed to save case {case_result.get('case_id')}: {e}")
             return False
+
+    def setup_task_files(self: 'Pipeline') -> None:
+        '''
+        Handle loading ans setting up task-specific files,
+        such as: input, output, etc.
+        '''
+        # Load the input data (cases).
+        self.input_file = f'data/{self.task}/cases.json'
+        self.input_cases = self.load_json(self.input_file)
+        # Handle loading JSON decision tree for the task.
+        if self.args.decision_tree == 'yes':
+            tree_file = f'data/{self.task}/decision-tree.json'
+            self.decision_tree = self.load_json(tree_file)
+        # Load the prompt base.
+        prompt_file = f'data/{self.task}/prompt-base-pipeline.txt'
+        if not os.path.exists(prompt_file):
+            raise FileNotFoundError(f'Missing prompt template: {prompt_file}')
+        with open(prompt_file, 'r') as f:
+            self.prompt_base = f.read()
+        # Create the resources to store the experimental results.
+        curr_time = datetime.now().strftime('%Y%m%d%H%M%S')
+        results_path = f'results/{self.task}/'
+        results_file = f'{self.model}-{self.temperature}-{self.args.decision_tree}-{curr_time}.json'
+        self.results_path = f'{results_path}{results_file}'
 
     def run(self: 'Pipeline') -> None:
         '''

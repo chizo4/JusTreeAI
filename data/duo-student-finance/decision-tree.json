@@ -17,32 +17,26 @@
             "node": "Nationality",
             "question": "Do you have the Dutch nationality or a residence permit? (Permit types II, III, IV, V. Check DUO for other situations)",
             "yes": {
-              "result": "Eligible",
-              "message": "You are eligible to apply for student finance."
+              "result": "Eligible"
             },
             "no": {
-              "result": "NotEligible",
-              "message": "You are not eligible to apply for student finance."
+              "result": "NotEligible"
             }
           },
           "no": {
-            "result": "NotEligible",
-            "message": "You are not eligible to apply for student finance."
+            "result": "NotEligible"
           }
         },
         "no": {
-          "result": "NotEligible",
-          "message": "You are not eligible to apply for student finance."
+          "result": "NotEligible"
         }
       },
       "no": {
-        "result": "NotEligible",
-        "message": "You are not eligible to apply for student finance."
+        "result": "NotEligible"
       }
     },
     "no": {
-      "result": "NotEligible",
-      "message": "You are not eligible to apply for student finance."
+      "result": "NotEligible"
     }
   },
   "no": {
@@ -61,39 +55,32 @@
             "node": "Nationality",
             "question": "Do you have the Dutch nationality or a residence permit? (Permit types II, III, IV, V. Check DUO for other situations)",
             "yes": {
-              "result": "Eligible",
-              "message": "You are eligible to apply for student finance."
+              "result": "Eligible"
             },
             "no": {
-              "result": "NotEligible",
-              "message": "You are not eligible to apply for student finance."
+              "result": "NotEligible"
             }
           },
           "no": {
-            "result": "NotEligible",
-            "message": "You are not eligible to apply for student finance."
+            "result": "NotEligible"
           }
         },
         "no": {
-          "result": "NotEligible",
-          "message": "You are not eligible to apply for student finance."
+          "result": "NotEligible"
         }
       },
       "no": {
-        "result": "NotEligible",
-        "message": "You are not eligible to apply for student finance."
+        "result": "NotEligible"
       }
     },
     "no": {
       "node": "MBO_Under18",
       "question": "Are you in mbo and under 18 years old? (You can already apply for the student travel product)",
       "yes": {
-        "result": "StudentTravel",
-        "message": "You can apply for the student travel product."
+        "result": "StudentTravel"
       },
       "no": {
-        "result": "NotEligible",
-        "message": "You are not eligible to apply for student finance."
+        "result": "NotEligible"
       }
     }
   }
