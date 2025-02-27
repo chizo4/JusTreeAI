@@ -1,0 +1,695 @@
+[
+{
+    "case_id": 92,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Thomas is under 30 years old, which led to the assessment of his program duration. Since the program lasts only 3 years, it doesn't meet the minimum duration requirement. Therefore, Thomas is not eligible for the grant.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 40,
+    "prediction": "Eligible",
+    "impact_node": "Recognition",
+    "reasoning": "Jeroen is at least 18 years old and enrolled in a full-time MBO program, which is recognized in the Netherlands. He also holds Dutch nationality, making him eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 48,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Thijs meets all the criteria, being at least 18 years old and under 30, enrolled in an mbo program, meeting its duration requirement, having a recognized program, and holding Dutch nationality.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 52,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Sara is under 18 years old, so the program duration criterion does not apply. However, since she is not enrolled as a full-time or dual student and the program only lasts 6 months, it meets the criteria for MBO_Under18, making her 'NotEligible' for a grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 99,
+    "prediction": "NotEligible",
+    "impact_node": "Recognition",
+    "reasoning": "Vera's program is not recognized in the Netherlands, so she does not meet this criterion. The program being unrecognized leads to the result NotEligible.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 76,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "The program only lasts one year, making it ineligible for the grant. Milan's type IV residence permit is also a factor, as it does not fall under the specified permit types (II, III, IV, V) that are eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotRecognition -> NotEligible"
+},
+{
+    "case_id": 36,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Freya is a Dutch national, which meets the nationality requirement. Her age (22) and program details also meet the other criteria, making her eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 1,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Anna's program is recognized and she has Dutch nationality, making her eligible for the grant. Her age falls within the specified range of 18-30 years old.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 26,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Ben is 27 years old, which exceeds the maximum age of 30 allowed for full-time or dual students. The program duration also does not meet the minimum requirement of 1 year.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 27,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Lisa is under 18 years old, so the minimum duration of 1 year for full-time or dual students makes her not eligible.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 21,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Lotte is under 18 years old, so the minimum age requirement of 1 year for the program does not apply. However, she enrolled as a full-time student in a three-year bachelor\u2019s degree, which exceeds the 1-year duration threshold. Therefore, she is not eligible.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 74,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Victor's part-time master's program lasts only two years, which is less than the required one year for eligibility. The decision tree led to the conclusion that he does not meet the duration requirement.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 63,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Hassan is under 30 years old, so the Age criterion directs to Program. Hassan's program does not last at least 1 year, leading to a NotEligible decision.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 39,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since the program only lasts one year, it does not meet the duration requirement of at least one year. Therefore, Paul is not eligible for a grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 56,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Carlos is not enrolled as a full-time or dual student, which makes him not eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 60,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Ahmed is under 30 years old, so the Age node branches to Program. He is enrolled as a full-time student, but his program only lasts two years, which is less than one year. Therefore, he does not meet the criteria for eligibility.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 13,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Emma meets the age requirement, is enrolled as a dual student and has a recognized program. Her nationality as Dutch citizen makes her eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 88,
+    "prediction": "NotEligible",
+    "impact_node": "Recognition",
+    "reasoning": "Hugo's vocational training program is not recognized as an MBO (bol) program, which led to the decision that he is not eligible for a grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition"
+},
+{
+    "case_id": 34,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Julia is at least 18 years old and enrolled in a recognized MBO program, making her eligible for the grant. Her Dutch nationality is also recognized, which further supports her eligibility.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 8,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Johan's age, program type and enrollment status align with the eligibility criteria. His Dutch nationality further supports his grant eligibility.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 9,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Elena is under 18 years old, so her program duration does not meet the eligibility criteria.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 41,
+    "prediction": "NotEligible",
+    "impact_node": "Recognition",
+    "reasoning": "Chloe is 25 years old, so she does not meet the age requirement. Although her program is recognized and she has a residence permit, her age disqualifies her from being eligible for a grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition"
+},
+{
+    "case_id": 55,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Aliyah is over 30 years old, which disqualifies her from the program. The program duration being under 1 year due to being a BBL program does not qualify her for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Not recognized"
+},
+{
+    "case_id": 72,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Elise is under 18 years old, so the program duration does not need to be at least 1 year. The next condition Enrollment (Part-time programs are excluded) was met as false because she is in a part-time program. Therefore, NotEligible was chosen.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 96,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Ravi is under 18 years old, so the program duration does not meet the requirement of at least 1 year. He also does not have the Dutch nationality or a residence permit, which further disqualifies him from the grant. As such, Ravi is not eligible for the student finance.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 54,
+    "prediction": "NotEligible",
+    "impact_node": "Recognition",
+    "reasoning": "Nina's program is not recognized in the Netherlands, which leads to her not being eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 68,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Luca is part-time, so he's not enrolled as a full-time or dual student. Therefore, the program duration and recognition are irrelevant to his eligibility.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 18,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Adam's program is only 3 years long, which is less than the required 1 year. Therefore, he does not meet the eligibility criteria under this node.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 67,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Sophie is eligible for the grant because she is under 30 years old, enrolled in an HBO program, and has Dutch nationality. Her program's duration of six months does not meet the one-year requirement but her nationality makes her eligible according to DUO guidelines.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 22,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Matteo's program is recognized, but it lasts less than 1 year, making him ineligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotRecognition -> NotEligible"
+},
+{
+    "case_id": 42,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Zain is not enrolled in a recognized program that lasts at least 1 year, so he does not meet the criteria for the student grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotRecognized"
+},
+{
+    "case_id": 49,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Ava is enrolled as a dual student, which does not meet the full-time or dual student criterion. The program duration of 2 years also meets the requirement of at least 1 year.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 23,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Anna's dual master's degree program is recognized, she has Dutch nationality and meets the age criteria. Therefore, she is eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 97,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Sanne is under 30 years old, but she's enrolled in a part-time program, which is excluded. Therefore, the decision is based on this criterion.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 12,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Ibrahim is under 18 years old (21 years), so the duration criterion made him not eligible. The program's length does not matter for this age group, but his age itself disqualifies him.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 45,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Sophie meets the minimum age criteria and is enrolled in a recognized university program. She has the Dutch nationality, making her eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 59,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Lea is not enrolled as a full-time or dual student, but only part-time. The program duration is less than 1 year.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 37,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Simon is enrolled as a full-time student, but his program only lasts three years which is less than the minimum required 1 year for full eligibility. He also has a type II residence permit, but this does not meet the specific requirements for nationality or Dutch residency. Therefore, Simon is not eligible.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 10,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Lucas is not eligible because his master's degree program in architecture lasts only 3 years, which is less than the minimum required duration of 1 year for grant eligibility.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 25,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Mila meets the criteria for a recognized program in the Netherlands with Dutch nationality, making her eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 98,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Hugo's program is recognized and lasts less than 1 year, making him not eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 70,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since the program lasts less than 1 year, it does not meet the duration requirement for eligibility. This led to a decision of NotEligible.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 29,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Sophie is under 30 years old, so she doesn't meet the minimum age requirement. Although she's enrolled in a full-time dual master's program, this isn't enough to overcome her age.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 38,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Amara is enrolled as a dual student, which is excluded from part-time programs. Therefore, she does not meet the criteria for eligibility.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 4,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Ali is at least 18 years old, enrolled in a recognized HBO program, and holds a type III residence permit, making him eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 5,
+    "prediction": "NotEligible",
+    "impact_node": "Recognition",
+    "reasoning": "Since Sofia's program is not recognized in the Netherlands, she is not eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 35,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Since Marcus is over 18 and under 30 years old, the decision to proceed to the next node was made based on his age. However, being enrolled in a full-time or dual student program did not meet the criteria for eligibility since the program only lasts two years.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 50,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Rafael is not enrolled as a full-time or dual student, which excludes him from the grant eligibility. His program only lasts three years, which does not meet the minimum duration requirement.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 15,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since the program lasts two years, it does not meet the minimum duration requirement of one year. Therefore, Hannah is not eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 89,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Anika's part-time program is not at least 1 year long, so she does not meet the eligibility criteria for a DUO grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 2,
+    "prediction": "NotEligible",
+    "impact_node": "Nationality",
+    "reasoning": "Mark is 24 years old, which exceeds the maximum age limit of 30 for DUO student finance. The program recognition and nationality also do not meet the eligibility criteria.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 64,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Mia's part-time master's program in biology lasts two years, which is less than the minimum duration of one year required for grant eligibility.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 65,
+    "prediction": "NotEligible",
+    "impact_node": "Nationality",
+    "reasoning": "Zoe is not eligible because she has Dutch nationality and her program's recognition status was not recognized in the Netherlands. Since she has a recognized program, the next question about recognition becomes irrelevant. The decision is influenced by Zoe's nationality.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 32,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Eva's program lasts only three years, which is less than the required one year. Although she meets other criteria, this short duration makes her not eligible for the grant.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 66,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since Amir is under 18 years old, the program duration does not meet the requirement of lasting at least 1 year. Therefore, he is not eligible for a grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 87,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since the program is only one year long, it does not meet the minimum duration requirement. Therefore, the decision to reject the grant application is influenced by this node.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 81,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Iris is enrolled as a full-time student in an unrecognized creative arts program, which lasts for only 1 year. The program does not meet the requirement of lasting at least 1 year, making Iris ineligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 44,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since the program lasts less than a year, Elias is not eligible for the grant. His age and residence permit type do not affect this decision.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 80,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Omar is 20 years old and the program lasts less than 1 year, so he does not meet the eligibility criteria for a recognized institution.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 30,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Isa is at least 18 years old and under 30, enrolled in an MBO program, has a recognized program of at least 1 year duration, and holds the Dutch nationality",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 71,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Tobias is enrolled as a part-time student, which excludes full-time or dual students. Since the program lasts four years, it does not meet the minimum duration requirement of one year.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 17,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Olivia is over 18 years old and under 30, but her program only lasts three years. The decision tree indicates that the program must last at least one year to be eligible for a grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotRecognition -> NotEligible"
+},
+{
+    "case_id": 43,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Noor is not enrolled as a full-time or dual student, only because the program lasts three years which is more than one year. The tree assumes you can't start studying at 23 because that would mean you weren't finished with your education yet. This rule is assumed to be in effect by law.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 95,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Leila's program is less than 1 year long, so she does not meet the duration criterion. As a result, her application for a grant is denied.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 100,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Elias is 20 years old and the program lasts only one year, so he does not meet the requirement of a one-year program. The decision to reject him as eligible is influenced by the outcome of the Duration node.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 14,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Victor is under 30 years old, but his program only lasts for 3 years, which is less than the minimum required duration of 1 year. Therefore, he does not meet this criterion and is not eligible.",
+    "traversal": "Age -> Enrollment -> Duration"
+},
+{
+    "case_id": 47,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Emma meets all criteria, starting from her age being at least 18 years old. She is enrolled in a full-time program and it lasts at least 1 year. The program is also recognized and she has Dutch nationality, making her eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 20,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Lucas is 29 years old, which is above the maximum age limit of 30. This led to him being classified as not eligible, despite meeting other criteria.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 6,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Max is eligible because he meets the age requirement, enrolled in a recognized MBO program as a full-time student, and has Dutch nationality.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 24,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Finn meets the age requirement and is enrolled in a recognized program at a university, making him eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 28,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Nathan meets the criteria for being enrolled in a recognized program as a full-time student, with a duration of at least 1 year. He also holds the Dutch nationality and therefore fulfills the necessary conditions for grant eligibility.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 85,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Since Stella is not enrolled as a full-time or dual student, she does not meet the criteria for the program. The age criterion was met, but enrollment was not.",
+    "traversal": "Age -> Program -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 94,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since Julian is 29 years old, his program does not last at least 1 year, making him ineligible for the grant. Additionally, his program is part-time, which is excluded from the criteria.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 82,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Karim is under 30 years old, so the Age node closes off the Eligible path. Since Karim is not enrolled as a full-time or dual student, his enrollment status leads to the NotEligible outcome",
+    "traversal": "Age -> Program -> Enrollment -> NotEligible -> NotEligible"
+},
+{
+    "case_id": 46,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Because Ahmed's program is only two years long, which does not meet the requirement of lasting at least one year. The subsequent questions related to recognition and nationality do not change this outcome.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 93,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Freya's program is less than 1 year, which excludes her from being eligible. She does not meet the age requirement of at least 18 years old and under 30 years old either. Her EU nationality does not provide a separate exemption in this case.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 58,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Victor is at least 18 years old, enrolled in a recognized program, and has Dutch nationality, making him eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 83,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Since Ella is 22 years old, which is above the maximum age of 30 for eligible students in part-time HBO programs, she does not meet this criterion. The subsequent questions did not change this outcome as her enrollment status as a full-time student and program duration were less than required to potentially meet eligibility.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 19,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Sarah is enrolled in a recognized dual degree program, has a residence permit type II, and meets the age requirement. Her nationality or residence permit makes her eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 16,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Noah is eligible because he has the Dutch nationality and meets all other criteria. The recognition of his program was not a factor in this case, as it is implied that MBO programs are recognized by DUO.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 79,
+    "prediction": "NotEligible",
+    "impact_node": "Nationality",
+    "reasoning": "Hana is under 30 years old, which excludes her from the eligible age range. Since she has a type III residence permit, not Dutch nationality, she does not meet the eligibility criteria.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 31,
+    "prediction": "Eligible",
+    "impact_node": "Recognition",
+    "reasoning": "Aaron's program is recognized and he has Dutch nationality, meeting the criteria for eligibility",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 7,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Diana is not enrolled as a full-time or dual student, so she does not meet the eligibility criteria for the grant.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 51,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since the master's program lasts less than 1 year, Peter is not eligible for the grant. The tree branches off to 'NotEligible' as soon as the duration of the program is less than 1 year.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 78,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Jeroen's program is too short, lasting only six months. This meets the criterion of not being at least 1 year long, leading to a 'NotEligible' decision.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 61,
+    "prediction": "Eligible",
+    "impact_node": "Recognition",
+    "reasoning": "Steven meets all the criteria, as he is under 30 years old (node: Age), enrolled in a recognized university program (node: Program), and has Dutch nationality (node: Recognition). The decision tree stops at this node because Steven's program duration is less than 1 year is not a condition for eligibility. ",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 3,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Lina meets all eligibility criteria: she is at least 18 years old, enrolled in a recognized full-time MBO program, and has Dutch nationality or a residence permit.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 33,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Daniel is not eligible because his master's degree program lasts less than 1 year. His type IV residence permit does not meet the recognition criteria. Although he meets the age and enrollment requirements, his program duration is a disqualifying factor.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 69,
+    "prediction": "NotEligible",
+    "impact_node": "Recognition",
+    "reasoning": "Anya does not have the Dutch nationality or a residence permit, which makes her ineligible for the grant. Her type III residence permit is not considered as having the Dutch nationality.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 11,
+    "prediction": "Eligible",
+    "impact_node": "Nationality",
+    "reasoning": "Yasmin meets the age requirement and is enrolled in a full-time program at Leiden University. The program is recognized, and Yasmin has Dutch nationality, making her eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> Recognition -> Nationality"
+},
+{
+    "case_id": 57,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since Julia is under 30 years old, she does not meet the age requirement for eligibility. The program duration of three years also exceeds the minimum one-year requirement, leading to an ineligible decision.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 91,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Since Sophie's part-time program lasts two years, which is less than 1 year, she does not meet the duration criterion for eligibility. This decision point influenced the outcome because it led to a 'NotEligible' result at its conclusion.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 53,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Since Tom is not enrolled as a full-time or dual student (part-time program), the duration of his HBO program does not meet the minimum requirement of 1 year, leading to a 'NotEligible' decision",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 62,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Layla is under 18 years old, which means she does not meet the duration requirement. Even though her program is recognized and she has Dutch nationality, this age criterion makes her ineligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration"
+},
+{
+    "case_id": 86,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Amir is not enrolled as a full-time or dual student, and his master's program in sociology only lasts one year, which does not meet the criteria of being at least 1 year long.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 90,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Leo is enrolled in a one-year dual program, which does not meet the minimum duration requirement of 1 year. As such, he is not eligible for the grant.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 75,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Angela is under 18 years old (22), so she doesn't meet the duration criteria of at least 1 year for an MBO program, leading to her not being eligible.",
+    "traversal": "Age -> Enrollment -> Duration -> NotEligible"
+},
+{
+    "case_id": 84,
+    "prediction": "NotEligible",
+    "impact_node": "Enrollment",
+    "reasoning": "Jan is under 30 years old, so the Age node led to the Enrollment node. Since Jan is a dual student and not part-time, the Enrollment node led to the NotEligible decision.",
+    "traversal": "Age -> Enrollment -> NotEligible"
+},
+{
+    "case_id": 77,
+    "prediction": "NotEligible",
+    "impact_node": "Duration",
+    "reasoning": "Fatima's program lasts three years, which is less than the required 1 year for a full-time or dual student. Therefore, she does not meet the criteria for recognition by DUO.",
+    "traversal": "Age -> Program -> Enrollment -> Duration -> NotEligible"
+}
+]
