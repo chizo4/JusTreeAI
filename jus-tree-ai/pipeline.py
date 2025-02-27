@@ -16,20 +16,22 @@ VERSION:
 --------------------------------------------------------------
 '''
 
-import argparse
 from datetime import datetime
 import json
 import os
 import re
 import subprocess
 
+# Include custom pipeline utils.
+from pipeline_utils import PipelineUtils
+
 class Pipeline:
     '''
     -------------------------
     Pipeline - A class for processing cases through the project pipeline
                equipped with an LLM of choice (e.g., LLaMA-3.2). Handles
-               CLI args, case processing, decision trees, and results.
-               Class mainly designed for experimental part of the project.
+               case processing, decision trees, etc. Class mainly designed
+               for experimental part of the project. Applies PipelineUtils.
     -------------------------
     '''
 
@@ -37,7 +39,7 @@ class Pipeline:
         '''
         Initialize the Pipeline class.
         '''
-        self.args = self.set_args()
+        self.args = PipelineUtils.set_args()
         # Model-specific setup.
         self.model = self.args.model
         self.temperature = self.args.temperature
@@ -45,133 +47,29 @@ class Pipeline:
         # Set up the results resources (for the current config).
         self.results = []
 
-    def set_args(self: 'Pipeline') -> argparse.Namespace:
+    def setup_task_files(self: 'Pipeline') -> None:
         '''
-        Parse and handle the CLI arguments.
-
-            Returns:
-            -------------------------
-            args : argparse.Namespace
-                Parsed arguments for the script.
+        Handle loading ans setting up task-specific files,
+        such as: input, output, etc.
         '''
-        parser = argparse.ArgumentParser(description='Data for processing cases.')
-        parser.add_argument(
-            '--task',
-            required=True,
-            help='Task (e.g., duo-student-finance).'
-        )
-        parser.add_argument(
-            '--model',
-            required=True,
-            help='LLM (e.g., llama3.2:3b).'
-        )
-        parser.add_argument(
-            '--decision_tree',
-            required=True,
-            choices=['yes', 'no'],
-            help='Boolean for decision tree.'
-        )
-        parser.add_argument(
-            '--temperature',
-            type=float,
-            default=0.5,
-            help='Temperature for LLM.'
-        )
-        return parser.parse_args()
-
-    @classmethod
-    def load_json(cls, json_path: str) -> list:
-        '''
-        Helper method to load data from a JSON file.
-
-            Parameters:
-            -------------------------
-            json_path : str
-                The path to the JSON file.
-
-            Returns:
-            -------------------------
-            data : list
-                Parsed JSON data.
-        '''
-        if not os.path.exists(json_path):
-            raise FileNotFoundError(f'File not found: {json_path}')
-        with open(json_path, 'r') as f:
-            return json.load(f)
-
-    def clean_json(self: 'Pipeline', raw_output: str) -> tuple:
-        '''
-        Clean up the LLM output to ensure a valid JSON format.
-
-            Parameters:
-            -------------------------
-            raw_output : str
-                The raw text output from the model.
-
-            Returns:
-            -------------------------
-            cleaned_json : str
-                A clean JSON string.
-            thought_chain : str or None
-                Extracted thoughts if applicable (for deepseek-r1:8b).
-        '''
-        preprocess_output = raw_output.strip()
-        thought_chain = None
-        # Handle thoughts for reasoning models.
-        if any(model in self.model for model in ['deepseek-r1', 'openthinker']):
-            thought_chain, preprocess_output = self.extract_thoughts(raw_output=preprocess_output)
-        # Attempt to extract JSON-like content using regex.
-        json_match = re.search(r'\{.*\}', raw_output, re.DOTALL)
-        if json_match:
-            return json_match.group(0), thought_chain
-        # Handle missing brackets.
-        if not raw_output.startswith('{'):
-            raw_output = '{' + raw_output
-        if not raw_output.endswith('}'):
-            raw_output = raw_output + '}'
-        cleaned_json = raw_output
-        return cleaned_json, thought_chain
-
-    def extract_thoughts(self: 'Pipeline', raw_output: str) -> str:
-        '''
-        Extract the thought chain from reasoning model (if applicable).
-        Also, pre-process the initial output to remove the thought content.
-
-        NOTE: Currently adjusted to handle models from the DeepSeek-R1
-              and OpenThinker families.
-
-            Parameters:
-            -------------------------
-            raw_output : str
-                The raw text output from the model.
-
-            Returns:
-            -------------------------
-            thought_chain : str or None
-                Extracted thought content, if available.
-            preprocess_output : str
-                The pre-processed output without the thoughts tags, etc.
-        '''
-        thought_chain = None
-        preprocess_output = raw_output.strip()
-        if 'deepseek-r1' in self.model:
-            match = re.search(r'<think>(.*?)</think>', raw_output, re.DOTALL)
-            if match:
-                thought_chain = match.group(1).strip()
-                preprocess_output = raw_output.replace(match.group(0), '').strip()
-        elif 'openthinker' in self.model:
-            match = re.search(r'<\|begin_of_thought\|>(.*?)<\|end_of_thought\|>', raw_output, re.DOTALL)
-            if match:
-                thought_chain = match.group(1).strip()
-                preprocess_output = raw_output.replace(match.group(0), '').strip()
-                preprocess_output = re.sub(r'<\|begin_of_solution\|>', '', preprocess_output)
-                preprocess_output = re.sub(r'<\|end_of_solution\|>', '', preprocess_output)
-            else:
-                # Check if the thought chain is too long to be processed...
-                if '<|begin_of_thought|>' in raw_output:
-                    print('WARNING: Openthinker output is too long to be processed.')
-                    thought_chain = None
-        return thought_chain, preprocess_output
+        # Load the input data (cases).
+        self.input_file = f'data/{self.task}/cases.json'
+        self.input_cases = PipelineUtils.load_json(self.input_file)
+        # Handle loading JSON decision tree for the task.
+        if self.args.decision_tree == 'yes':
+            tree_file = f'data/{self.task}/decision-tree.json'
+            self.decision_tree = PipelineUtils.load_json(tree_file)
+        # Load the prompt base.
+        prompt_file = f'data/{self.task}/prompt-base-pipeline.txt'
+        if not os.path.exists(prompt_file):
+            raise FileNotFoundError(f'Missing prompt template: {prompt_file}')
+        with open(prompt_file, 'r') as f:
+            self.prompt_base = f.read()
+        # Create the resources to store the experimental results.
+        curr_time = datetime.now().strftime('%Y%m%d%H%M%S')
+        results_path = f'results/{self.task}/'
+        results_file = f'{self.model}-{self.temperature}-{self.args.decision_tree}-{curr_time}.json'
+        self.results_path = f'{results_path}{results_file}'
 
     def build_prompt_llm(self: 'Pipeline', description: str) -> str:
         '''
@@ -234,7 +132,10 @@ class Pipeline:
             # DEBUG: print the LLM output.
             print('LLM Output:', result.stdout)
             # Process the LLM output into JSON.
-            clean_output, thought_chain = self.clean_json(result.stdout)
+            clean_output, thought_chain = PipelineUtils.clean_json(
+                raw_output=result.stdout,
+                model=self.model
+            )
             json_output = json.loads(clean_output)
             if thought_chain:
                 json_output['thought_chain'] = thought_chain
@@ -267,75 +168,13 @@ class Pipeline:
                     case_result['thought_chain'] = output['thought_chain']
                 # Save the JSON results for the current sample.
                 case_last = (i == len(self.input_cases) - 1)
-                if self.save_results(case_result, case_last):
+                if PipelineUtils.save_results(self.results_path, case_result, case_last):
                     print(f'RESULTS SAVED - CASE: [{case_id}].\n')
                 else:
                     print(f'\nWARNING: FAILED TO SAVE RESULTS - CASE: [{case_id}].\n')
             except Exception as e:
                 print(f'ERROR for CASE {case_id}: {e}')
         print(f'SUCCESS: The experiments for {self.task} are COMPLETE.\nFILE SAVE: {self.results_path}\n')
-
-    def save_results(self: 'Pipeline', case_result: dict, case_last: bool) -> bool:
-        '''
-        Save the results to the specified output file.
-
-            Parameters:
-            -------------------------
-            case_result : dict
-                Results for the current case, encoded into dictionary.
-            case_last : bool
-                Boolean indication of the last case in the batch.
-
-            Returns:
-            -------------------------
-            bool
-                Boolean indication of successful operation for saving the results.
-        '''
-        try:
-            # Check if the file exists and whether is empty.
-            file_exists = os.path.exists(self.results_path)
-            is_empty = file_exists and os.path.getsize(self.results_path) == 0
-            # Open the file (append mode) to add the current result.
-            with open(self.results_path, 'a' if file_exists else 'w') as f:
-                # Handle a new file.
-                if not file_exists or is_empty:
-                    f.write('[\n')
-                else:
-                    f.seek(f.tell() - 2, os.SEEK_SET)
-                    f.write(',\n')
-                # Append the new case result.
-                json.dump(case_result, f, indent=4)
-                # Handle the last case in the batch.
-                if case_last:
-                    f.write('\n]')
-            return True
-        except (OSError, IOError, json.JSONDecodeError) as e:
-            print(f"ERROR: Failed to save case {case_result.get('case_id')}: {e}")
-            return False
-
-    def setup_task_files(self: 'Pipeline') -> None:
-        '''
-        Handle loading ans setting up task-specific files,
-        such as: input, output, etc.
-        '''
-        # Load the input data (cases).
-        self.input_file = f'data/{self.task}/cases.json'
-        self.input_cases = self.load_json(self.input_file)
-        # Handle loading JSON decision tree for the task.
-        if self.args.decision_tree == 'yes':
-            tree_file = f'data/{self.task}/decision-tree.json'
-            self.decision_tree = self.load_json(tree_file)
-        # Load the prompt base.
-        prompt_file = f'data/{self.task}/prompt-base-pipeline.txt'
-        if not os.path.exists(prompt_file):
-            raise FileNotFoundError(f'Missing prompt template: {prompt_file}')
-        with open(prompt_file, 'r') as f:
-            self.prompt_base = f.read()
-        # Create the resources to store the experimental results.
-        curr_time = datetime.now().strftime('%Y%m%d%H%M%S')
-        results_path = f'results/{self.task}/'
-        results_file = f'{self.model}-{self.temperature}-{self.args.decision_tree}-{curr_time}.json'
-        self.results_path = f'{results_path}{results_file}'
 
     def run(self: 'Pipeline') -> None:
         '''

@@ -18,6 +18,7 @@ VERSION:
 
 import json
 from pipeline import Pipeline
+from pipeline_utils import PipelineUtils
 import re
 import subprocess
 
@@ -44,7 +45,7 @@ class PipelineAgent(Pipeline):
         self.user_data = ''
         self.user_prediction = None
         # Load the task decision tree.
-        self.decision_tree = self.load_json(f'data/{self.TASK}/decision-tree.json')
+        self.decision_tree = PipelineUtils.load_json(f'data/{self.TASK}/decision-tree.json')
         # Specify the prompt template path.
         self.prompt_file = f'data/{self.TASK}/prompt-base-app.txt'
 
