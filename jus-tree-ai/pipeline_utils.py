@@ -83,6 +83,35 @@ class PipelineUtils:
         with open(json_path, 'r') as f:
             return json.load(f)
 
+    def build_llm_result_json(log_file: str, model: str) -> dict:
+        '''
+        Build the LLM results JSON from the log file.
+
+            Parameters:
+            -------------------------
+            log_file : str
+                The path to the LLM log file.
+            model : str
+                The current LLM model name.
+
+            Returns:
+            -------------------------
+            json_output : dict
+                The JSON output constructed from the LLM log file.
+        '''
+        # Reload the contents of the TXT log file.
+        with open(log_file, 'r') as f:
+            raw_output = f.read()
+            # Process the LLM output into JSON.
+            clean_output, thought_chain = PipelineUtils.clean_json(
+                raw_output=raw_output,
+                model=model
+            )
+            json_output = json.loads(clean_output)
+            if thought_chain:
+                json_output['thought_chain'] = thought_chain
+            return json_output
+
     @staticmethod
     def clean_json(raw_output: str, model: str) -> tuple:
         '''

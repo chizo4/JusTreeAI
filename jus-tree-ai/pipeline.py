@@ -35,6 +35,9 @@ class Pipeline:
     -------------------------
     '''
 
+    # Static log file for LLM output processing.
+    LLM_LOG_FILE = './log/llm_output.txt'
+
     def __init__(self: 'Pipeline') -> None:
         '''
         Initialize the Pipeline class.
@@ -70,6 +73,9 @@ class Pipeline:
         results_path = f'results/{self.task}/'
         results_file = f'{self.model}-{self.temperature}-{self.args.decision_tree}-{curr_time}.json'
         self.results_path = f'{results_path}{results_file}'
+        # Initialize the LLM output LOG file and reset its content.
+        os.makedirs(os.path.dirname(self.LLM_LOG_FILE), exist_ok=True)
+        open(self.LLM_LOG_FILE, 'w').close()
 
     def build_prompt_llm(self: 'Pipeline', description: str) -> str:
         '''
@@ -104,6 +110,30 @@ class Pipeline:
             prompt = re.sub(r'<TRAVERSAL>.*?</TRAVERSAL>', '', prompt, flags=re.DOTALL)
         return prompt
 
+    def ollama_llm(self: 'Pipeline', prompt: str) -> None:
+        '''
+        Run the model using Ollama CLI. Stream output into TXT log file.
+
+            Parameters:
+            -------------------------
+            prompt : str
+                The prompt for the LLM.
+        '''
+        with open(self.LLM_LOG_FILE, 'w') as f:
+            # Run Ollama CLI.
+            process = subprocess.Popen(
+                ['ollama', 'run', self.model, prompt],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            # Stream output line-by-line to the log file. Avoid truncation issues.
+            full_output = []
+            for line in iter(process.stdout.readline, ''):
+                f.write(line)
+                f.flush()
+                full_output.append(line.strip())
+
     def process_case_llm(self: 'Pipeline', description: str) -> dict:
         '''
         Process a single case using the target LLM (e.g., LLAMA).
@@ -118,27 +148,20 @@ class Pipeline:
             output : dict
                 The model's decision and reasoning as a JSON object.
         '''
+        # Reset the log file for each case.
+        open(self.LLM_LOG_FILE, 'w').close()
         # Handle prompt engineering - EXPERIMENTS.
         prompt = self.build_prompt_llm(description)
         # DEBUG: print the current prompt.
         # print(f'********PROMPT:********"\n{prompt}\n"')
         try:
-            # Run the model using Ollama CLI.
-            result = subprocess.run(
-                ['ollama', 'run', self.model, prompt],
-                capture_output=True,
-                text=True
-            )
-            # DEBUG: print the LLM output.
-            print('LLM Output:', result.stdout)
-            # Process the LLM output into JSON.
-            clean_output, thought_chain = PipelineUtils.clean_json(
-                raw_output=result.stdout,
+            # Run the model using Ollama CLI and stream its output.
+            self.ollama_llm(prompt=prompt)
+            # Read back LLM output from TXT and clean results.
+            json_output = PipelineUtils.build_llm_result_json(
+                log_file=self.LLM_LOG_FILE,
                 model=self.model
             )
-            json_output = json.loads(clean_output)
-            if thought_chain:
-                json_output['thought_chain'] = thought_chain
             return json_output
         except Exception as e:
             raise RuntimeError(e)
